@@ -54,6 +54,7 @@ other.
 | Skill | What it does |
 |---|---|
 | [`itscm-program-assessment`](skills/itscm-program-assessment/) | Interview an organization to find out what its continuity program actually contains, then produce a one month, three month and one year roadmap. Assumes none of the opscontinuum tooling is installed in the environment being assessed. |
+| [`bia-workshop`](skills/bia-workshop/) | Facilitate the Business Impact Analysis that becomes ISCP Appendix L, in the order NIST states it. Keeps recovery objectives keyed to business processes rather than to systems or tiers. |
 | [`iscp-from-worksheet`](skills/iscp-from-worksheet/) | Take a filled data-collection workbook and turn it into a plan, after checking that the data can support one. Validates the joins between tabs rather than the presence of cells, and writes nothing it was not given. |
 | [`iscp-sufficiency`](skills/iscp-sufficiency/) | Decide whether a plan carries enough data to actually build a program from it. Judges by derivability: a field is required only when a named downstream artifact provably cannot be produced without it. Distinguishes absent, blank template, keyed to the wrong unit, and agreed by nobody, because those need four different remedies. |
 | [`iscp-completeness`](skills/iscp-completeness/) | Audit an Information System Contingency Plan against FedRAMP SSP Appendix G ISCP Template v5.0 and NIST SP 800-34 Rev. 1 Appendix B. Reports what is missing, what is present but unfilled, and what is present and answered. Also asks whether the plan carries a fact sheet for whoever meets an incident first, and traces each field back to the section that already holds it. |
@@ -90,6 +91,27 @@ common reason a complete-looking plan cannot answer what to fix first, and the w
 on its own tab with a warning rather than leaving it to be inferred.
 
 Fill it, then hand it to `iscp-from-worksheet`.
+
+## The keying rule
+
+**The unit of analysis for a recovery objective is the mission or business process.** Not the
+system, not the server, not the tier. Systems are what processes depend on; a system tier is
+derived from process requirements by a stated mapping and is never a substitute for them.
+
+This is stated here, once, because it is the failure that a completeness audit cannot see. A
+plan whose objectives are keyed to infrastructure tiers looks finished: every heading present,
+every table filled, real numbers honestly derived. It simply cannot answer the question an
+outage asks, which is whose work has stopped and for how long. A tier is a property of
+infrastructure. Only a business process has a maximum tolerable downtime.
+
+It is violated almost entirely by competent people, because an infrastructure team naturally
+states objectives against the thing it owns, and because tooling that builds a register of
+systems invites hanging the numbers on the system row.
+
+Two consequences run through these skills. `bia-workshop` elicits MTD before RTO, from the
+business rather than from IT, and stops the session when a row appears that a non-engineer
+would not recognize. The workbook's dropdowns make the rule mechanical: an objective can only
+be recorded against a process somebody named on the processes tab.
 
 ## The rule these skills follow
 
