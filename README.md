@@ -83,12 +83,16 @@ objective cannot be recorded against a process nobody named, and a dependency ca
 component that does not exist. Referential integrity, enforced by the spreadsheet rather than by
 a reviewer noticing later.
 
-**Tab 7 exists because no standard template asks for it.** It records which resources each
-process depends on. Without that link, per-process recovery objectives and a resource inventory
-sit on either side of a gap, and no recovery order can be derived from either one: there is no
-way to get from "payroll matters most" to "therefore restore the database first". It is the most
-common reason a complete-looking plan cannot answer what to fix first, and the workbook puts it
-on its own tab with a warning rather than leaving it to be inferred.
+**Tab 7 exists because no standard template prompts for it, though none forbids it either.** It
+records which resources each process depends on. Without that link, per-process recovery
+objectives and a resource inventory sit on either side of a gap, and no recovery order can be
+derived from either one: there is no way to get from "payroll matters most" to "therefore
+restore the database first".
+
+NIST's third BIA step, identify recovery priorities for system resources, cannot be performed
+without it, so the mapping is an unstated prerequisite of a required step rather than an
+addition to the method. It is the most common reason a complete-looking plan cannot answer what
+to fix first, and the workbook gives it its own tab rather than leaving it to be inferred.
 
 Fill it, then hand it to `iscp-from-worksheet`.
 

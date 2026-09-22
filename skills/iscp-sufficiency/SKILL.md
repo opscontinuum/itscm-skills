@@ -122,18 +122,28 @@ is underivable no matter how good it looks.
   recovery priority      ->  the order to bring them back
 ```
 
-### The link that is usually missing, and is not in anybody's template
+### The link nothing prompts for, and nothing forbids
 
 **Process to resource.** Look at that chain again. NIST SP 800-34 Rev. 1
 Appendix B gives a table for processes, a table for impacts, a table for
-objectives, a table for resources, and a table for priorities. It gives **no
-table that says which resources each process depends on.**
+objectives, a table for resources, and a table for priorities. It gives no
+table that says which resources each process depends on.
+
+**Do not read that as a standard declining to require it.** Nothing in NIST
+excludes the mapping, and its own third step presupposes one: identifying
+recovery priorities for system resources cannot be done without knowing which
+processes each resource serves. The priority is derived from the objective, and
+this is the derivation. A plan that records it is more conformant, not less.
 
 That mapping is the join. Without it, per-process recovery objectives and a list
 of system resources sit on either side of a gap, and no amount of quality in
 either one produces a recovery order. You cannot get from "payroll must run
 within four hours" to "therefore restore the database before the reporting
 server" without knowing that payroll uses the database.
+
+So when you find it absent, the finding is not that the plan omitted something
+optional. It is that a required step was performed without its input, which means
+the priorities below it were asserted rather than derived.
 
 So check for it explicitly, and expect it to be absent or scattered. It usually
 lives, if it lives anywhere, in an architecture document, a dependency diagram,

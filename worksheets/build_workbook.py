@@ -102,8 +102,9 @@ INTRO = [
     "",
     "2. Tab 7 is the one everybody skips, and nothing works without it.",
     "   Standard BIA templates ask for processes, and for resources, and never ask which resources",
-    "   each process uses. Without that link there is no way to get from 'payroll matters most' to",
-    "   'therefore restore the database first', so no recovery order can be produced at all.",
+    "   each process uses. They do not forbid it either, and working out a recovery order requires it,",
+    "   so this is a prerequisite rather than an extra. Without that link there is no way to get from",
+    "   'payroll matters most' to 'therefore restore the database first', and no recovery order exists.",
     "",
     "3. These are the business's numbers, not IT's.",
     "   Do not work out an objective from what the system can currently do. State what the business",
@@ -258,7 +259,8 @@ ws = sheet(
     "THE TAB EVERYBODY SKIPS. One row for every pairing: which components does each process actually need in order "
     "to work? Both columns are dropdowns, so you cannot invent either side. Without this tab there is no way to turn "
     "'payroll matters most' into 'therefore restore the database first', and no recovery order can be produced at all. "
-    "Standard templates do not ask for this. That is why so many plans cannot answer what to fix first.",
+    "No standard template prompts for this and none forbids it: working out a recovery order requires it, "
+    "so it is a prerequisite rather than an extra. That is why so many plans cannot answer what to fix first.",
     ["Mission/Business process", "Depends on this resource", "Essential or degraded?", "Notes"],
     [34, 34, 24, 52],
     notes="Essential: the process cannot run at all without it. Degraded: the process runs in a reduced form. "

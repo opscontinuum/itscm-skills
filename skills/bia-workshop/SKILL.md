@@ -175,20 +175,26 @@ the judgment columns.** Recovery priority and recovery time are left empty on pu
 human to fill, and an inventory that arrives with them pre-filled has had somebody's guess
 inserted where a decision belongs.
 
-### The dependency map, which is not in NIST's template
+### The dependency map, which NIST's third step presupposes
 
 Before priorities, record **which resources each process depends on**, and whether the process
 is unusable or merely degraded without each one.
 
 NIST gives a table for processes, one for impacts, one for objectives, one for resources and
-one for priorities, and **no table joining resources back to processes.** Without that join,
-per-process objectives and a resource inventory sit on either side of a gap and no priority
-order can be derived from either. There is no route from "payroll must run within four hours"
-to "therefore restore the database before the reporting server" unless somebody has written
-down that payroll uses the database.
+one for priorities, and no table joining resources back to processes. **That is an absence of a
+prompt, not a prohibition.** Nothing in the method excludes the mapping, and the method in fact
+depends on it: NIST's own third step is to identify recovery priorities for system resources,
+and that step cannot be performed at all without knowing which processes each resource serves.
+The priority in §3.3 is derived from the objective in §3.1.1, and the mapping is the derivation.
+
+So collecting it is not an extension of the method. It is an unstated prerequisite of a step
+the method requires, and a session that skips it has no route from "payroll must run within
+four hours" to "therefore restore the database before the reporting server."
 
 This is the step most sessions skip, and skipping it is the most common reason a finished plan
-cannot say what to fix first.
+cannot say what to fix first. Add the table. Nobody will object to a BIA that shows its
+working, and an assessor reading §3.3 will find the derivation behind it rather than an
+assertion.
 
 ### Priorities
 
