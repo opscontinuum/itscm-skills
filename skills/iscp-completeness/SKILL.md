@@ -1,6 +1,6 @@
 ---
 name: iscp-completeness
-description: Audit an Information System Contingency Plan against FedRAMP SSP Appendix G ISCP Template v5.0 and NIST SP 800-34 Rev. 1 Appendix B. Reports every required heading, table, table column and prescribed row as PRESENT AND ANSWERED, PRESENT BUT UNFILLED, or MISSING, and never scores a requirement it could not evaluate.
+description: Audit an Information System Contingency Plan against FedRAMP SSP Appendix G ISCP Template v5.0 and NIST SP 800-34 Rev. 1 Appendix B. Reports every required heading, table, table column and prescribed row as PRESENT AND ANSWERED, PRESENT BUT UNFILLED, or MISSING, and never scores a requirement it could not evaluate. Also asks whether the plan carries a front-of-document fact sheet for whoever meets an incident first, and traces each field the organization wants back to the section that already holds it.
 ---
 
 # Auditing an ISCP for completeness
@@ -335,6 +335,113 @@ Report each as its own finding:
 - **Surviving instructional text**, per the placeholder section above.
 - **NIST's worked examples**, per the placeholder section above.
 
+## Part 6: the fact sheet, which you ask about rather than score
+
+A plan can pass every check in Parts 1 through 5 and still be unopenable by the
+person who meets it first. The usual first reader is not the system owner. It is
+a watch function: a virtual NOC, a duty operator, an on-call who covers many
+systems and wrote none of them. That reader needs about eight facts in the first
+minute, and every one of those facts is already somewhere in the plan you just
+audited. What is missing is a page at the front that carries them.
+
+Call it the **fact sheet**.
+
+### It is not a requirement, and you must not report it as one
+
+FedRAMP SSP Appendix G does not ask for one. NIST SP 800-34 Rev. 1 does not ask
+for one. **A plan with no fact sheet is not deficient**, and a verdict of
+`MISSING` against it would be you inventing a requirement and then failing a
+document for not meeting it. That is the one thing this skill exists to not do.
+
+So the fact sheet never enters the verdict set, never enters the denominator,
+and never appears in the `MISSING` list. It gets its own section of the report,
+written as an observation and a set of questions.
+
+What licenses the observation is that neither authority prescribes a layout.
+NIST 800-34 gives content guidance and a sample format. FedRAMP gives a template
+whose required content an assessor checks for presence. Neither forbids a page
+in front. Adding one removes no required section and fails no check.
+
+### Step 1: say whether the plan already has one
+
+Look ahead of section 1 for a quick-reference page, summary card, at-a-glance
+table, or equivalent, whatever it is called. Report one of:
+
+- **Present.** Say what it carries, then go to step 3 and check its fields
+  against their sources, because a fact sheet that disagrees with the body is
+  worse than none: it is the page the reader will trust fastest.
+- **Absent.** Say so as an observation, not a defect, and go to step 2.
+
+### Step 2: ask, because the layout is the business's to decide
+
+Do not propose a page. What belongs on it depends on who reads it, what else
+they hold, and what they are permitted to do, and those differ per organization.
+Ask, and ask the person who owns the plan:
+
+1. **Who reads this first at two in the morning, and do they know this system?**
+   A team that owns one system needs a different page from a watch function
+   covering two hundred.
+2. **What are they allowed to do?** Declare and activate, or detect and
+   escalate? This is the question that changes the page most. A detect-only
+   reader needs the escalation target and the criteria for meeting it, and does
+   not need the recovery sequence at all.
+3. **What do they already have in front of them?** If their console already
+   carries the system owner and the support contract, repeating those on the
+   fact sheet creates a second copy that will drift.
+4. **What decision do they have to make in the first sixty seconds?** Usually
+   one of: is this the thing I escalate, how long until this becomes a different
+   problem, or which of several failing things do I chase first.
+5. **How many plans does this reader hold?** If it is many, the fact sheets
+   should be identical in shape across all of them, and that shape is a decision
+   made once for the organization rather than once per plan.
+6. **What is the review cadence for this page specifically?** This is the
+   question people skip and it is the one that decides whether the page is an
+   asset. Contact lists and dependency order churn faster than an annual plan
+   review. A fact sheet refreshed annually puts the stalest data where it is
+   trusted most.
+
+### Step 3: for every field they name, find its source in the plan
+
+This is the part that pays for the exercise. For each field the organization
+wants, locate where that fact already lives in the document you just audited:
+
+| Field a reader typically asks for | Where the plan already carries it |
+|---|---|
+| System name, boundary, owner | 1 Introduction and Purpose, 2 Concept of Operations |
+| What order to recover things in | Appendix L BIA, table 3.3, Priority · System Resource/Component · Recovery Time Objective |
+| How long before this is a different problem | Appendix L BIA, table 3.1.1, MTD · RTO · RPO |
+| When this counts as an incident | 3.1 Activation Criteria |
+| Who declares it | 3 Activation and Notification |
+| Who to escalate to | 4.3 Recovery Escalation Notices/Awareness |
+| Whether there is somewhere else to run | Table 2.4 Alternate Site Types, Table 2.5 Primary and Alternative Site Locations |
+| Who to call | Appendix A Key Personnel and Team Member Contact List |
+| Which vendor and under what contract | Appendix B Vendor Contact List |
+
+Then report each field as one of:
+
+- **Derivable.** Name the section it comes from. That field is settled.
+- **Derivable but `UNFILLED`.** The plan has the right heading and no content
+  there. The fact sheet cannot be built until that section is answered, which
+  makes it a reason to fix the `UNFILLED` rather than a separate problem.
+- **Not in the plan.** This is a real finding and the audit above could not have
+  produced it. Every heading can be present and answered while a fact the first
+  reader needs is nowhere in the document, because no heading asked for it. Say
+  which field, say that the plan does not carry it, and let the owner decide
+  whether the field is wrong or the plan is.
+
+### The rule for the page itself
+
+**No field on a fact sheet may be typed. Every one is copied from a named
+section of the plan.** A hand-authored fact sheet is a second copy of facts that
+already exist in section 2, section 3, Appendix A and Appendix L, and second
+copies diverge. Within a year the front page says four hours and Appendix L says
+twelve, and the reader trusts the page they were pointed at.
+
+If the organization cannot commit to deriving it, say plainly that a fact sheet
+refreshed by hand at a different cadence from the plan will eventually be wrong
+in the direction of looking right, and that no fact sheet is better than one
+nobody re-derives.
+
 ## How to run the audit
 
 1. **Read the whole document first.** Do not audit section by section as you
@@ -347,7 +454,11 @@ Report each as its own finding:
    a verdict.
 4. **Then Part 5**, which is a different kind of finding and goes in its own
    section.
-5. **Count, and show the denominator.** Never emit a finding count alone.
+5. **Then Part 6**, which is not a finding at all. It is an observation and a
+   set of questions, it stays out of the verdict set and out of the denominator,
+   and its one genuine finding is a field the first reader needs that the plan
+   does not carry anywhere.
+6. **Count, and show the denominator.** Never emit a finding count alone.
    "23 of 67 headings answered" is a reading somebody can act on. "23 findings"
    is not.
 
@@ -375,10 +486,24 @@ NOT ASSESSED                                                 <n>
   ...
 
 ANSWERED                                                     <n> of <total>
+
+FACT SHEET (not a FedRAMP or NIST requirement, not counted above)
+  Present / absent ahead of section 1:  <which>
+  Fields requested by the owner:        <n>
+    derivable from      <field>  <-  <section that carries it>
+    blocked by UNFILLED <field>  <-  <section, which is empty>
+    not in the plan     <field>  <-  no section carries this
+  Questions outstanding: <the ones in Part 6 nobody answered>
 ```
 
 Lead with `UNFILLED`. It is the category a table of contents hides and an
 assessor finds.
+
+The fact sheet block sits below the count and outside it. Nothing in it is a
+deficiency against FedRAMP or NIST, with one exception worth stating out loud:
+a field the first reader needs that no section of the plan carries is a real
+gap, and it is one the heading-by-heading audit above structurally cannot find,
+because the heading was present and answered.
 
 Do not compute a percentage or a grade. A contingency plan is not complete
 because 90 percent of its headings carry text; it is complete when a person who

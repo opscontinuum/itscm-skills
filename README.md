@@ -13,7 +13,7 @@ generator source, the template file, or a network connection to fetch either.
 | Skill | What it does |
 |---|---|
 | [`itscm-program-assessment`](skills/itscm-program-assessment/) | Interview an organization to find out what its continuity program actually contains, then produce a one month, three month and one year roadmap. Assumes none of the opscontinuum tooling is installed in the environment being assessed. |
-| [`iscp-completeness`](skills/iscp-completeness/) | Audit an Information System Contingency Plan against FedRAMP SSP Appendix G ISCP Template v5.0 and NIST SP 800-34 Rev. 1 Appendix B. Reports what is missing, what is present but unfilled, and what is present and answered. |
+| [`iscp-completeness`](skills/iscp-completeness/) | Audit an Information System Contingency Plan against FedRAMP SSP Appendix G ISCP Template v5.0 and NIST SP 800-34 Rev. 1 Appendix B. Reports what is missing, what is present but unfilled, and what is present and answered. Also asks whether the plan carries a fact sheet for whoever meets an incident first, and traces each field back to the section that already holds it. |
 
 `itscm-program-assessment` is the entry point. It calls `iscp-completeness` when
 the organization has a plan to audit, and works without it when they do not.
