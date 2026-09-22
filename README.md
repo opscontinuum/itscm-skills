@@ -93,6 +93,23 @@ flowchart TD
     class X1,X2,X3 full
     class X6 some
     class X4,X5,X7,X8,X9,X10 none
+
+    click B1 href "skills/bia-workshop/" "bia-workshop, step 1: name the processes"
+    click B2 href "skills/bia-workshop/" "bia-workshop, step 2: build the impact scale"
+    click B3 href "skills/bia-workshop/" "bia-workshop, step 2: rate each process"
+    click B4 href "skills/bia-workshop/" "bia-workshop, step 3: MTD then RTO then RPO"
+    click B5 href "skills/bia-workshop/" "bia-workshop, step 3: alternate means"
+    click B6 href "skills/bia-workshop/" "bia-workshop: get it signed in the room"
+    click P1 href "skills/itscm-program-assessment/" "itscm-program-assessment"
+    click P2 href "skills/iscp-completeness/" "iscp-completeness"
+    click P3 href "skills/iscp-sufficiency/" "iscp-sufficiency"
+    click P4 href "worksheets/" "the data-collection workbook"
+    click P5 href "worksheets/" "workbook tab 6"
+    click P6 href "worksheets/" "workbook tab 7, the join"
+    click P7 href "skills/bia-workshop/" "bia-workshop, step 4: derive priorities"
+    click P8 href "skills/iscp-from-worksheet/" "iscp-from-worksheet"
+    click P10 href "skills/enterprise-bia/" "enterprise-bia"
+    click P11 href "skills/itscm-coordinator-review/" "itscm-coordinator-review"
 ```
 
 ### Reading it
@@ -103,6 +120,9 @@ flowchart TD
 | **Amber** | The method exists, the mechanism that enforces it does not |
 | **Orange** | A fragment exists, mostly as an example rather than a procedure |
 | **Red** | Nothing exists |
+
+**A box you can click is a box that exists.** Every green and amber node links to the skill or
+worksheet that performs it. The red ones link nowhere, because there is nothing to open.
 
 **Section 1 is done.** A business impact session can be run today, start to finish.
 
