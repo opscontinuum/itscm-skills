@@ -286,6 +286,23 @@ They are routed into two entry points rather than one, deliberately. The busines
 IT leg collect different halves of one comparison, and a single entry point that ran all of
 them would put IT in the room when the recovery objectives are set.
 
+## A worked example
+
+[`examples/oci-itscp-business-leg.md`](examples/oci-itscp-business-leg.md) is the business leg
+run end to end against a real architecture: Oracle E-Business Suite on Exadata, with the
+product owner asking for realtime operation, 99.9% availability and zero or near-zero data
+loss.
+
+It is here because it shows what a finished business leg actually contains, and because running
+it surfaced things the method alone does not. The most useful: **an RPO cannot vary by process
+when the processes share a database.** One synchronous standby protects one database, so a
+first pass setting zero for revenue and five minutes for procurement was asking for something
+not purchasable. RPO is stated per replication boundary.
+
+Also worth the read: 99.9% turns out to be the more rigorous ask rather than the weaker one,
+because against a 45 minute recovery it permits about one event a month, where 99.99% permits
+about one a year and is really a promise never to invoke recovery at all.
+
 ## The workbook
 
 [`worksheets/iscp-data-collection.xlsx`](worksheets/) collects everything a plan needs across
