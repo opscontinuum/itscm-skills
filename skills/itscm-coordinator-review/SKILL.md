@@ -320,8 +320,13 @@ LEVELS
   7 Governance, review and change          <level>
   8 Supplier and dependency continuity     <level>
 
-  Overall: <lowest dimension level>
+  Overall claimed:   <lowest claimed level>
+  Overall evidenced: <lowest evidenced level>
   Constrained by: <which dimension, and the one criterion it fails>
+
+PROVEN OR UNPROVEN
+  <one word>.  Last test that demonstrated anything: <date, or NEVER>
+  <if unproven: one sentence naming what the documentation claims and nothing confirms>
 
 WHAT BLOCKS THE NEXT LEVEL
   <dimension>   <the specific criterion>   <what would satisfy it>
@@ -330,6 +335,33 @@ WHAT BLOCKS THE NEXT LEVEL
 EVIDENCE NOT SEEN
   <criterion>   <the document that would have settled it>
 ```
+
+### Claimed against evidenced
+
+A level on its own does not say whether recovery works, and somebody reading a 3 will assume it
+does. Report each dimension twice:
+
+| | |
+|---|---|
+| **Claimed** | The level the documentation supports |
+| **Evidenced** | The level a test, drill or real incident has demonstrated |
+
+**Where nothing has been tested, evidenced is 1** on every dimension that depends on proof,
+however good the documents are. That is not an ITIL demotion and you should not present it as
+one: ITIL's level 1 means "not well organised; performed as initial/intuitive", which is about
+disorder, and a well documented untested program is not disorderly. ITIL puts proof at level 4,
+where "performance is continually measured and assessed", so on their scale an untested
+practice caps at 3. The evidenced reading is a separate statement the scale cannot carry.
+
+Dimensions where claimed and evidenced can differ: continuity strategy and design, plans and
+procedures, testing and exercises, training, supplier continuity, and scope and inventory.
+
+Dimensions where they do not: business impact analysis and the governance of it. A signed
+recovery objective is a requirement the business committed to, not a claim about capability, so
+a test neither confirms nor refutes it.
+
+**Say "unproven" in words, above the levels, with the date of the last test that demonstrated
+anything.** A reader who has to work it out from a number will not.
 
 ### Why overall is the lowest and not an average
 
