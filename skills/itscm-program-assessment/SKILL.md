@@ -51,6 +51,29 @@ as "halfway" is describing nothing.
 Record who said each thing. A continuity fact with no name attached decays
 without anybody noticing.
 
+## Who you put each question to
+
+Two halves of one comparison get collected here, and they must come from different people.
+
+**The business states the requirement.** How long the work can stop, what it costs, what data
+loss means. Process owners, finance, whoever is accountable for the work itself.
+
+**IT states the capability.** What recovery time is achievable, what the replication actually
+permits, what components exist and which ones each process needs.
+
+Never collect the first half from the second group. A maximum tolerable downtime set by IT is
+IT deciding what it is allowed to fail at, and a requirement copied from a capability destroys
+the comparison this whole assessment exists to make: the plan can then never tell anybody the
+architecture is inadequate, because it was written to describe the architecture.
+
+If the only people available for a business question are technical, record the question as
+`Unknown` and name who has to answer it. That is a finding. A filled-in guess is not.
+
+The same rule governs anything you hand off to. Do not route a session collecting recovery
+objectives to an audience of engineers, and do not route a session collecting architecture
+capability to an audience of process owners. Both sessions are valid; running either with the
+wrong room produces numbers that look complete and mean nothing.
+
 ## Part 1: the eight questions that decide everything else
 
 Ask these first, in this order. The order is deliberate: each one makes the
