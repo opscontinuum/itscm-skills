@@ -86,6 +86,22 @@ is a document nobody will produce during an incident. And the overall level is t
 dimension rather than an average, because a well designed and widely trained recovery
 capability that has never been tested is an unproven one, and averaging hides exactly that.
 
+### You own ITSCM across more than one program
+
+Your problem is not any one plan. It is that every plan can be right on its own and the
+organization still cannot recover, because each was written as though its program were alone.
+
+[`enterprise-bia`](skills/enterprise-bia/) lays them against each other. It finds four kinds of
+contention, and most reviews only look for the first: two processes sharing a resource with
+different deadlines, the same with different data loss tolerances, two programs planning to
+fail over into the same DR capacity that was sized for one of them, and the same named engineer
+appearing in six recovery rosters that would all activate in the same regional event.
+
+It produces a ranked recovery priority list and a board paper, because the conflicts it finds
+are funding decisions and you are not the one who gets to make them. It will not resolve a
+contention by defaulting to the tightest deadline, which is the tempting answer that makes a
+report look finished while quietly committing money nobody approved.
+
 ### You run the infrastructure
 
 Your part is to say what the system can actually do, and to keep that separate from what the
@@ -114,6 +130,7 @@ and want to know whether it can actually drive anything.
 | Skill | What it does |
 |---|---|
 | [`itscm-program-assessment`](skills/itscm-program-assessment/) | Interview an organization to find out what its continuity program actually contains, then produce a one month, three month and one year roadmap. Assumes none of the opscontinuum tooling is installed. |
+| [`enterprise-bia`](skills/enterprise-bia/) | Lay every program's BIA against the others, find where they contend for the same resource, DR capacity or people, and produce a ranked recovery priority list plus a board paper. Never defaults a contention to the tightest deadline. |
 | [`bia-workshop`](skills/bia-workshop/) | Facilitate the Business Impact Analysis that becomes ISCP Appendix L, in the order NIST states it. Keeps recovery objectives keyed to business processes rather than to systems or tiers. |
 | [`itscm-coordinator-review`](skills/itscm-coordinator-review/) | Assess a whole continuity documentation set rather than one plan. Requests every document it needs, records what did not arrive, and reports a capability level per dimension against ITIL 4 Service Continuity Management. |
 | [`iscp-completeness`](skills/iscp-completeness/) | Audit a plan against FedRAMP SSP Appendix G v5.0 and NIST SP 800-34 Rev. 1 Appendix B. Reports what is missing, what is present but unfilled, and what is present and answered. Also asks whether the plan carries a fact sheet for whoever meets an incident first. |
