@@ -230,7 +230,7 @@ organization still cannot recover, because each was written as though its progra
 
 [`enterprise-bia`](skills/product-owner/enterprise-bia/) lays them against each other. It finds four kinds of
 contention, and most reviews only look for the first: two processes sharing a resource with
-different deadlines, the same with different data loss tolerances, two programs planning to
+different deadlines, the same with different recovery point objectives, two programs planning to
 fail over into the same DR capacity that was sized for one of them, and the same named engineer
 appearing in six recovery rosters that would all activate in the same regional event.
 
@@ -321,8 +321,8 @@ them would put IT in the room when the recovery objectives are set.
 
 [`examples/ebs-exadata-business-leg.md`](examples/ebs-exadata-business-leg.md) is the business
 leg run end to end against a real architecture: Oracle E-Business Suite on Exadata across two
-regions, with the product owner asking for realtime operation, 99.9% availability and zero or
-near-zero data loss. The architecture it needs is reproduced inside it, so it stands alone.
+regions, with the product owner asking for realtime operation, 99.9% availability and a
+recovery point objective of zero or near zero. The architecture it needs is reproduced inside it, so it stands alone.
 
 It is here because it shows what a finished business leg actually contains, and because running
 it surfaced things the method alone does not. The most useful: **an RPO cannot vary by process

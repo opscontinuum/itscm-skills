@@ -5,8 +5,8 @@ with regional disaster recovery to a second region roughly 3,000 km away. A hypo
 enterprise; every figure below is theirs, not a default.
 
 **Role played:** product owner for the program, who came in with three requirements. The system
-is operated as realtime, availability is committed at **99.9%**, and data loss is to be **zero
-or near zero**.
+is operated as realtime, availability is committed at **99.9%**, and the recovery point
+objective is to be **zero or near zero**.
 
 **Session:** `bia-workshop`, steps 1 through 4. Signatures are assumed for this exercise; the
 mechanism that binds a signature to the content signed is not yet designed.
@@ -37,6 +37,14 @@ technically available from the time to make it usable by the business:
   shortens. It comes down through interface design and rehearsal.
 - **MTD = RTO + WRT.** This decomposition is the plan's own. NIST names the second interval only
   as "additional processing time" and gives it no name.
+
+**RPO and data loss are not the same word twice.** The RPO is the objective, which the business
+states: how much committed work it can afford to lose. Data loss is the outcome, which a
+mechanism produces: how much would actually be gone if it failed over right now. The tables
+below headed *Data loss* describe what each replication leg costs, and the RPO column in §3
+describes what the business will accept. A system meets its RPO when the second number stays
+inside the first, and the only way to know that is to measure it continuously rather than to
+discover it during a failover.
 
 **Four service tiers**, of which two matter below:
 

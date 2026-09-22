@@ -122,6 +122,14 @@ Use NIST's definitions verbatim, because paraphrase is where the meaning slips:
   outage, to which mission/business process data must be recovered (given the most recent
   backup copy of the data) after an outage."
 
+**Keep the objective and the outcome in different words.** The RPO is what the business will
+accept losing. The data loss is what a mechanism would actually cost on the day. They are
+compared, not equated: a system with a five minute RPO that loses eight seconds met its
+objective, and one with a zero RPO that loses eight seconds did not.
+
+In the room, ask for the objective in plain language rather than by name, because nobody outside
+IT thinks in recovery points. Record it as the RPO afterwards.
+
 ### The constraint to enforce in the room
 
 "Because the RTO must ensure that the MTD is not exceeded, the RTO must normally be shorter
