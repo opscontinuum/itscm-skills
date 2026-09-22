@@ -104,6 +104,12 @@ report look finished while quietly committing money nobody approved.
 
 ### You run the infrastructure
 
+> **There is no skill for your part yet.** This section tells you what you own and what to
+> refuse. It does not walk you through a session. The infrastructure and application interviews
+> exist in `itscm-onboarding` and have not been ported here, so a start-to-finish walkthrough
+> currently stops after the product owner. Tracked as G7 in
+> `devsecops-planning/docs/specs/ITSCM-PROGRAM-CAPTURE.md`.
+
 Your part is to say what the system can actually do, and to keep that separate from what the
 business needs it to do.
 
@@ -144,6 +150,23 @@ The three document skills answer different questions about the same file and sho
 collapsed into one. Whether the document is intact, whether a program can be derived from it,
 and what the organization has in people and cadence are three findings with three different
 remedies.
+
+## What is not here yet
+
+A start-to-finish walkthrough works for the business and the product owner and then stops.
+These are the pieces still to be ported, tracked as G7 in
+`devsecops-planning/docs/specs/ITSCM-PROGRAM-CAPTURE.md`:
+
+| Missing | What it would do |
+|---|---|
+| Infrastructure and application interviews | The IT leg. What the architecture can actually deliver, and the dependency map |
+| Governance and continuity interviews | Ownership, cadence, and the continuity questions that sit outside the BIA |
+| `dr-runbook-authoring` | Operational writing discipline for recovery procedures. Nothing here covers it |
+| Portfolio and dependency scope | Building the register across systems. `enterprise-bia` assumes it exists |
+
+They are routed into two entry points rather than one, deliberately. The business leg and the
+IT leg collect different halves of one comparison, and a single entry point that ran all of
+them would put IT in the room when the recovery objectives are set.
 
 ## The workbook
 
