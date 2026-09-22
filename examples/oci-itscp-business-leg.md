@@ -1,7 +1,16 @@
 # Worked example: the business leg, run end to end
 
 **System:** Oracle E-Business Suite on Exadata, OCI `us-ashburn-1` with regional DR to
-`us-phoenix-1`. The architecture is the one documented in `opscontinuum/oci-itscp`.
+`us-phoenix-1`.
+
+**The architecture is not described here.** It lives in
+[`opscontinuum/oci-itscp`](https://github.com/opscontinuum/oci-itscp), a separate public
+repository, and every file path cited below names a file in *that* repository, not this one.
+The three cited most:
+
+- [`docs/01-architecture.md`](https://github.com/opscontinuum/oci-itscp/blob/main/docs/01-architecture.md) the two-region, two-availability-domain design
+- [`docs/02-mtd-tiers.md`](https://github.com/opscontinuum/oci-itscp/blob/main/docs/02-mtd-tiers.md) the recovery tiers and what each one's replication achieves
+- [`checklists/tier-assignment-workshop.md`](https://github.com/opscontinuum/oci-itscp/blob/main/checklists/tier-assignment-workshop.md) the session this example performs
 
 **Role played:** product owner for the program, who came in with three requirements: the system
 is operated as realtime, availability is committed at **99.9%**, and data loss is to be **zero
@@ -18,7 +27,7 @@ business's, not a default, and a real program replaces all of them.
 ## Step 0: what the product owner asked for, checked against the architecture
 
 Before any process was named, three stated requirements were tested against what
-`docs/02-mtd-tiers.md` says the system can do. Two hold. One needed a correction the product
+[`docs/02-mtd-tiers.md`](https://github.com/opscontinuum/oci-itscp/blob/main/docs/02-mtd-tiers.md) says the system can do. Two hold. One needed a correction the product
 owner accepted.
 
 ### 99.9% and a fifteen minute recovery are compatible. 99.99% would not have been
@@ -41,7 +50,7 @@ more rigorous one.
 
 ### Zero RPO is available, and it is available in one direction only
 
-`docs/02-mtd-tiers.md` and `docs/01-architecture.md` give two replication legs with different
+[`docs/02-mtd-tiers.md`](https://github.com/opscontinuum/oci-itscp/blob/main/docs/02-mtd-tiers.md) and [`docs/01-architecture.md`](https://github.com/opscontinuum/oci-itscp/blob/main/docs/01-architecture.md) give two replication legs with different
 properties:
 
 | Failure | Mechanism | Data loss |
@@ -78,7 +87,7 @@ This is the kind of thing that surfaces only when the objectives are written dow
 
 ## Step 1: the business processes
 
-Nine, taken from `checklists/tier-assignment-workshop.md` §2 and described in the business's
+Nine, taken from [`checklists/tier-assignment-workshop.md`](https://github.com/opscontinuum/oci-itscp/blob/main/checklists/tier-assignment-workshop.md) §2 and described in the business's
 own words.
 
 | Mission/Business process | Description | Owner |
@@ -151,11 +160,11 @@ from the replication boundary.
 | Reporting and BI | | 24 hr | 12 hr | ≤ 1 hr | Internal convenience |
 
 Every RTO is shorter than its MTD, as NIST SP 800-34 Rev. 1 §3.2.1 requires, with the WRT from
-`docs/02` §2 accounting for the difference.
+[`docs/02`](https://github.com/opscontinuum/oci-itscp/blob/main/docs/02-mtd-tiers.md) §2 accounting for the difference.
 
 **Three processes carry two rows.** Their tolerance changes with the calendar, and one averaged
 number would be far too loose inside the window and needlessly expensive for the other eleven
-months. The freeze rules in `checklists/tier-assignment-workshop.md` §5 are the operational
+months. The freeze rules in [`checklists/tier-assignment-workshop.md`](https://github.com/opscontinuum/oci-itscp/blob/main/checklists/tier-assignment-workshop.md) §5 are the operational
 expression of these rows.
 
 ### Where the margin actually is
@@ -168,7 +177,7 @@ Checked against the architecture rather than assumed, and one result is uncomfor
 | **Region** | **60 min** | **30 min** | **90 min** | **30 min of margin** |
 
 The 60 minute cross-region figure is itself conditional on EBS logical host names being
-preserved, per `docs/01-architecture.md` §5.1. Without that, `docs/02` §5 adds three to five
+preserved, per [`docs/01-architecture.md`](https://github.com/opscontinuum/oci-itscp/blob/main/docs/01-architecture.md) §5.1. Without that, [`docs/02`](https://github.com/opscontinuum/oci-itscp/blob/main/docs/02-mtd-tiers.md) §5 adds three to five
 hours for `FND_CONC_CLONE.SETUP_CLEAN` and AutoConfig, and **order entry breaches its MTD in a
 regional event.**
 

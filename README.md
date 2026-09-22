@@ -137,8 +137,7 @@ end-to-end process and it is four skills.
 
 **Section 4 is three green boxes and seven red ones.** What exists is reconciliation, the
 approval control and the execution record, and all three are real. What does not exist is
-anywhere to put a program, an objective, a signature, or a countdown. The full analysis is
-`devsecops-planning/docs/specs/ITSCM-PROGRAM-CAPTURE.md`.
+anywhere to put a program, an objective, a signature, or a countdown.
 
 The two dotted lines into section 3 are the point of the whole arrangement. The business states
 what it needs, IT states what it can do, and the gap between them is either a funded project or
@@ -245,8 +244,7 @@ report look finished while quietly committing money nobody approved.
 > **There is no skill for your part yet.** This section tells you what you own and what to
 > refuse. It does not walk you through a session. The infrastructure and application interviews
 > exist in `itscm-onboarding` and have not been ported here, so a start-to-finish walkthrough
-> currently stops after the product owner. Tracked as G7 in
-> `devsecops-planning/docs/specs/ITSCM-PROGRAM-CAPTURE.md`.
+> currently stops after the product owner.
 
 Your part is to say what the system can actually do, and to keep that separate from what the
 business needs it to do.
@@ -292,8 +290,7 @@ remedies.
 ## What is not here yet
 
 A start-to-finish walkthrough works for the business and the product owner and then stops.
-These are the pieces still to be ported, tracked as G7 in
-`devsecops-planning/docs/specs/ITSCM-PROGRAM-CAPTURE.md`:
+These are the pieces still to be ported:
 
 | Missing | What it would do |
 |---|---|
@@ -402,6 +399,21 @@ and every level is reported alongside the specific criterion blocking the next o
 exists so a coordinator can compare forty systems or show movement across two years, which a
 gap list genuinely cannot do. The sentence naming the blocker is still the part anybody acts
 on.
+
+## Citing anything outside this repository
+
+A path in these documents either resolves inside this repository or is a full URL. Nothing in
+between.
+
+The rule is here because it was broken. The worked example cited `docs/02-mtd-tiers.md` and
+`checklists/tier-assignment-workshop.md`, which are files in
+[`opscontinuum/oci-itscp`](https://github.com/opscontinuum/oci-itscp). They read as local paths,
+and anyone following them found nothing.
+
+Two related repositories are **private**, so they are not cited here at all rather than cited as
+links that dead-end: `devsecops-planning` holds the program goals and the gap analysis, and
+`ci-observe` is the implementation. Where something tracked in either matters to a reader here,
+it is stated in full rather than pointed at.
 
 ## Provenance
 
