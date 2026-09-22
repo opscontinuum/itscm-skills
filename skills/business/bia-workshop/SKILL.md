@@ -244,7 +244,7 @@ missing: the processes, the impacts, and the derivation.
 
 Every number from this session needs a home, and a signature.
 
-[`worksheets/iscp-data-collection.xlsx`](../../worksheets/) has a tab per step of this
+[`worksheets/iscp-data-collection.xlsx`](../../../worksheets/) has a tab per step of this
 workshop: processes on tab 2, the impact scale on 3, impacts on 4, objectives on 5, resources
 on 6, the dependency map on 7, priorities on 8, and the signatures on 12. Its dropdowns enforce
 the keying rule mechanically, since an objective can only be recorded against a process

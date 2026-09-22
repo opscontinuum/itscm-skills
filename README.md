@@ -94,22 +94,22 @@ flowchart TD
     class X6 some
     class X4,X5,X7,X8,X9,X10 none
 
-    click B1 href "skills/bia-workshop/" "bia-workshop, step 1: name the processes"
-    click B2 href "skills/bia-workshop/" "bia-workshop, step 2: build the impact scale"
-    click B3 href "skills/bia-workshop/" "bia-workshop, step 2: rate each process"
-    click B4 href "skills/bia-workshop/" "bia-workshop, step 3: MTD then RTO then RPO"
-    click B5 href "skills/bia-workshop/" "bia-workshop, step 3: alternate means"
-    click B6 href "skills/bia-workshop/" "bia-workshop: get it signed in the room"
-    click P1 href "skills/itscm-program-assessment/" "itscm-program-assessment"
-    click P2 href "skills/iscp-completeness/" "iscp-completeness"
-    click P3 href "skills/iscp-sufficiency/" "iscp-sufficiency"
+    click B1 href "skills/business/bia-workshop/" "bia-workshop, step 1: name the processes"
+    click B2 href "skills/business/bia-workshop/" "bia-workshop, step 2: build the impact scale"
+    click B3 href "skills/business/bia-workshop/" "bia-workshop, step 2: rate each process"
+    click B4 href "skills/business/bia-workshop/" "bia-workshop, step 3: MTD then RTO then RPO"
+    click B5 href "skills/business/bia-workshop/" "bia-workshop, step 3: alternate means"
+    click B6 href "skills/business/bia-workshop/" "bia-workshop: get it signed in the room"
+    click P1 href "skills/product-owner/itscm-program-assessment/" "itscm-program-assessment"
+    click P2 href "skills/product-owner/iscp-completeness/" "iscp-completeness"
+    click P3 href "skills/product-owner/iscp-sufficiency/" "iscp-sufficiency"
     click P4 href "worksheets/" "the data-collection workbook"
     click P5 href "worksheets/" "workbook tab 6"
     click P6 href "worksheets/" "workbook tab 7, the join"
-    click P7 href "skills/bia-workshop/" "bia-workshop, step 4: derive priorities"
-    click P8 href "skills/iscp-from-worksheet/" "iscp-from-worksheet"
-    click P10 href "skills/enterprise-bia/" "enterprise-bia"
-    click P11 href "skills/itscm-coordinator-review/" "itscm-coordinator-review"
+    click P7 href "skills/business/bia-workshop/" "bia-workshop, step 4: derive priorities"
+    click P8 href "skills/product-owner/iscp-from-worksheet/" "iscp-from-worksheet"
+    click P10 href "skills/product-owner/enterprise-bia/" "enterprise-bia"
+    click P11 href "skills/product-owner/itscm-coordinator-review/" "itscm-coordinator-review"
 ```
 
 ### Reading it
@@ -170,7 +170,7 @@ Tuesday.
 Your numbers are a proposal until you sign them. An objective nobody signed cannot be missed,
 because nobody promised it.
 
-Read [`bia-workshop`](skills/bia-workshop/) if you want to know what the session will ask
+Read [`bia-workshop`](skills/business/bia-workshop/) if you want to know what the session will ask
 before you walk into it.
 
 ### You own a system and have to produce a plan
@@ -179,22 +179,22 @@ You are running this. The order matters, because each step feeds the next and do
 order is how plans end up describing infrastructure instead of the business.
 
 1. Find out what already exists.
-   [`itscm-program-assessment`](skills/itscm-program-assessment/) asks eight questions about
+   [`itscm-program-assessment`](skills/product-owner/itscm-program-assessment/) asks eight questions about
    your organization and produces a one month, three month and one year roadmap. Start here
    even when you are sure the answer is "nothing", because that produces a three item roadmap
    rather than a forty item one.
 2. If a plan already exists, test it twice.
-   [`iscp-completeness`](skills/iscp-completeness/) asks whether the document is intact against
-   the standard that governs it. [`iscp-sufficiency`](skills/iscp-sufficiency/) asks whether
+   [`iscp-completeness`](skills/product-owner/iscp-completeness/) asks whether the document is intact against
+   the standard that governs it. [`iscp-sufficiency`](skills/product-owner/iscp-sufficiency/) asks whether
    anything can be built from what it contains. A plan can pass either and fail the other.
 3. Collect the data.
    [`worksheets/iscp-data-collection.xlsx`](worksheets/) has a tab for each thing a plan needs.
    Fill it in the order the tabs are numbered.
 4. Run the session that produces the numbers.
-   [`bia-workshop`](skills/bia-workshop/) is half a day with the business, and it is where the
+   [`bia-workshop`](skills/business/bia-workshop/) is half a day with the business, and it is where the
    recovery objectives come from.
 5. Write the plan.
-   [`iscp-from-worksheet`](skills/iscp-from-worksheet/) takes the filled workbook and produces
+   [`iscp-from-worksheet`](skills/product-owner/iscp-from-worksheet/) takes the filled workbook and produces
    the document, refusing to write any section the data does not support.
 
 One warning, because it is the thing most likely to sink you. Tab 7 of the workbook records
@@ -208,7 +208,7 @@ to fix first.
 You are not producing a plan. You are answering whether the practice is in good order, usually
 for somebody who will not read a plan.
 
-[`itscm-coordinator-review`](skills/itscm-coordinator-review/) is yours. It asks for the whole
+[`itscm-coordinator-review`](skills/product-owner/itscm-coordinator-review/) is yours. It asks for the whole
 documentation set in one request, records what did not arrive as evidence in its own right, and
 reports a capability level from 1 to 5 across eight dimensions, using the ITIL Maturity Model's
 practice capability scale applied to ITIL 4's Service Continuity Management practice. The scale
@@ -228,7 +228,7 @@ capability that has never been tested is an unproven one, and averaging hides ex
 Your problem is not any one plan. It is that every plan can be right on its own and the
 organization still cannot recover, because each was written as though its program were alone.
 
-[`enterprise-bia`](skills/enterprise-bia/) lays them against each other. It finds four kinds of
+[`enterprise-bia`](skills/product-owner/enterprise-bia/) lays them against each other. It finds four kinds of
 contention, and most reviews only look for the first: two processes sharing a resource with
 different deadlines, the same with different data loss tolerances, two programs planning to
 fail over into the same DR capacity that was sized for one of them, and the same named engineer
@@ -264,20 +264,34 @@ owned, dated gap item, which NIST calls a Plan of Action and Milestone. It is no
 relaxed target. Writing the achievable number into the requirement makes the gap invisible and
 guarantees nobody funds closing it.
 
-[`iscp-sufficiency`](skills/iscp-sufficiency/) is the one to read if you have inherited a plan
+[`iscp-sufficiency`](skills/product-owner/iscp-sufficiency/) is the one to read if you have inherited a plan
 and want to know whether it can actually drive anything.
 
 ## The skills
 
+They are grouped by who runs them, because running someone else's part is the main way this
+goes wrong.
+
+```
+skills/
+├── business/        states the requirement    1 skill
+├── product-owner/   assembles the program     6 skills
+└── it/              states the capability     empty, and that is the finding
+```
+
+[`skills/it/`](skills/it/) holds a README and no skills. The folder exists so the gap is
+structural rather than a footnote: six pieces belong there and none is written, which is why a
+walkthrough stops after the product owner.
+
 | Skill | What it does |
 |---|---|
-| [`itscm-program-assessment`](skills/itscm-program-assessment/) | Interview an organization to find out what its continuity program actually contains, then produce a one month, three month and one year roadmap. Assumes no continuity tooling is installed. |
-| [`enterprise-bia`](skills/enterprise-bia/) | Lay every program's BIA against the others, find where they contend for the same resource, DR capacity or people, and produce a ranked recovery priority list plus a board paper. Never defaults a contention to the tightest deadline. |
-| [`bia-workshop`](skills/bia-workshop/) | Facilitate the Business Impact Analysis that becomes ISCP Appendix L, in the order NIST states it. Keeps recovery objectives keyed to business processes rather than to systems or tiers. |
-| [`itscm-coordinator-review`](skills/itscm-coordinator-review/) | Assess a whole continuity documentation set rather than one plan. Requests every document it needs, records what did not arrive, and reports a capability level per dimension against ITIL 4 Service Continuity Management. |
-| [`iscp-completeness`](skills/iscp-completeness/) | Audit a plan against FedRAMP SSP Appendix G v5.0 and NIST SP 800-34 Rev. 1 Appendix B. Reports what is missing, what is present but unfilled, and what is present and answered. Also asks whether the plan carries a fact sheet for whoever meets an incident first. |
-| [`iscp-sufficiency`](skills/iscp-sufficiency/) | Decide whether a plan carries enough data to build a program from it. A field is required only when a named downstream artifact provably cannot be produced without it. |
-| [`iscp-from-worksheet`](skills/iscp-from-worksheet/) | Turn a filled data-collection workbook into a plan, after checking the data can support one. Validates the joins between tabs rather than the presence of cells. |
+| [`itscm-program-assessment`](skills/product-owner/itscm-program-assessment/) | Interview an organization to find out what its continuity program actually contains, then produce a one month, three month and one year roadmap. Assumes no continuity tooling is installed. |
+| [`enterprise-bia`](skills/product-owner/enterprise-bia/) | Lay every program's BIA against the others, find where they contend for the same resource, DR capacity or people, and produce a ranked recovery priority list plus a board paper. Never defaults a contention to the tightest deadline. |
+| [`bia-workshop`](skills/business/bia-workshop/) | Facilitate the Business Impact Analysis that becomes ISCP Appendix L, in the order NIST states it. Keeps recovery objectives keyed to business processes rather than to systems or tiers. |
+| [`itscm-coordinator-review`](skills/product-owner/itscm-coordinator-review/) | Assess a whole continuity documentation set rather than one plan. Requests every document it needs, records what did not arrive, and reports a capability level per dimension against ITIL 4 Service Continuity Management. |
+| [`iscp-completeness`](skills/product-owner/iscp-completeness/) | Audit a plan against FedRAMP SSP Appendix G v5.0 and NIST SP 800-34 Rev. 1 Appendix B. Reports what is missing, what is present but unfilled, and what is present and answered. Also asks whether the plan carries a fact sheet for whoever meets an incident first. |
+| [`iscp-sufficiency`](skills/product-owner/iscp-sufficiency/) | Decide whether a plan carries enough data to build a program from it. A field is required only when a named downstream artifact provably cannot be produced without it. |
+| [`iscp-from-worksheet`](skills/product-owner/iscp-from-worksheet/) | Turn a filled data-collection workbook into a plan, after checking the data can support one. Validates the joins between tabs rather than the presence of cells. |
 
 `itscm-program-assessment` is the entry point for an organization. `bia-workshop` is the entry
 point for a session with the business.
@@ -290,7 +304,7 @@ remedies.
 ## What is not here yet
 
 A start-to-finish walkthrough works for the business and the product owner and then stops.
-These are the pieces still to be ported:
+These are the pieces still to be written, listed in [`skills/it/`](skills/it/):
 
 | Missing | What it would do |
 |---|---|
