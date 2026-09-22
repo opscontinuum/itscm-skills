@@ -66,6 +66,22 @@ almost everybody skips it, and without it there is no route from "payroll matter
 "restore the database first". A plan missing that tab can look finished and still not say what
 to fix first.
 
+### You coordinate continuity across more than one system
+
+You are not producing a plan. You are answering whether the practice is in good order, usually
+for somebody who will not read a plan.
+
+[`itscm-coordinator-review`](skills/itscm-coordinator-review/) is yours. It asks for the whole
+documentation set in one request, records what did not arrive as evidence in its own right, and
+reports a capability level from 1 to 5 across eight dimensions against ITIL 4's Service
+Continuity Management practice.
+
+Two things about it worth knowing before you run it. It treats "it exists, we just cannot find
+it" as closer to absent than to present, because a document nobody can produce at review time
+is a document nobody will produce during an incident. And the overall level is the lowest
+dimension rather than an average, because a well designed and widely trained recovery
+capability that has never been tested is an unproven one, and averaging hides exactly that.
+
 ### You run the infrastructure
 
 Your part is to say what the system can actually do, and to keep that separate from what the
@@ -95,6 +111,7 @@ and want to know whether it can actually drive anything.
 |---|---|
 | [`itscm-program-assessment`](skills/itscm-program-assessment/) | Interview an organization to find out what its continuity program actually contains, then produce a one month, three month and one year roadmap. Assumes none of the opscontinuum tooling is installed. |
 | [`bia-workshop`](skills/bia-workshop/) | Facilitate the Business Impact Analysis that becomes ISCP Appendix L, in the order NIST states it. Keeps recovery objectives keyed to business processes rather than to systems or tiers. |
+| [`itscm-coordinator-review`](skills/itscm-coordinator-review/) | Assess a whole continuity documentation set rather than one plan. Requests every document it needs, records what did not arrive, and reports a capability level per dimension against ITIL 4 Service Continuity Management. |
 | [`iscp-completeness`](skills/iscp-completeness/) | Audit a plan against FedRAMP SSP Appendix G v5.0 and NIST SP 800-34 Rev. 1 Appendix B. Reports what is missing, what is present but unfilled, and what is present and answered. Also asks whether the plan carries a fact sheet for whoever meets an incident first. |
 | [`iscp-sufficiency`](skills/iscp-sufficiency/) | Decide whether a plan carries enough data to build a program from it. A field is required only when a named downstream artifact provably cannot be produced without it. |
 | [`iscp-from-worksheet`](skills/iscp-from-worksheet/) | Turn a filled data-collection workbook into a plan, after checking the data can support one. Validates the joins between tabs rather than the presence of cells. |
@@ -173,6 +190,19 @@ The assessment skill uses four states instead: `Established`, `Asserted`, `Unkno
 `Absent`. Those are four different facts with four different remedies, not four points on a
 scale, and nothing here averages them into a percentage. A program described as sixty percent
 mature tells nobody what to do on Monday.
+
+### The one place a number is allowed
+
+`itscm-coordinator-review` reports a capability level from 1 to 5, and that is not a
+contradiction of the rule above, because a level here is read off a checklist rather than
+calculated.
+
+Each level has explicit entry criteria and all of them must be met. Nine criteria out of ten is
+the lower level, not ninety percent of the higher one. Nothing is weighted, summed or blended,
+and every level is reported alongside the specific criterion blocking the next one. The number
+exists so a coordinator can compare forty systems or show movement across two years, which a
+gap list genuinely cannot do. The sentence naming the blocker is still the part anybody acts
+on.
 
 ## Provenance
 
