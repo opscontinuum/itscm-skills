@@ -121,11 +121,11 @@ Get the file. Read the first page.
 
 The distinction matters and people conflate it constantly:
 
-- An **ISCP** is an Information System Contingency Plan, a system-level artifact
-  under NIST SP 800-34 Rev. 1 and FedRAMP SSP Appendix G.
-- An **ITSCP** is an IT Service Continuity Plan, a service-level artifact under
-  ITIL. An ITSCP may *align to* the ISCP structure without being one.
-- A **BCP**, **COOP** or **DRP** is none of the above. FedRAMP's own Table 1.4
+- An **[ISCP](../../../GLOSSARY.md "Information System Contingency Plan")** is an Information System Contingency Plan, a system-level artifact
+  under NIST SP 800-34 Rev. 1 and FedRAMP [SSP](../../../GLOSSARY.md "System Security Plan") Appendix G.
+- An **[ITSCP](../../../GLOSSARY.md "IT Service Continuity Plan")** is an IT Service Continuity Plan, a service-level artifact under
+  [ITIL](../../../GLOSSARY.md "IT Infrastructure Library"). An ITSCP may *align to* the ISCP structure without being one.
+- A **[BCP](../../../GLOSSARY.md "Business Continuity Plan")**, **[COOP](../../../GLOSSARY.md "Continuity of Operations Plan")** or **[DRP](../../../GLOSSARY.md "Disaster Recovery Plan")** is none of the above. FedRAMP's own Table 1.4
   lists BCP, COOP, Occupant Emergency Plan and crisis communications as "Plans
   Outside of ISCP Scope", and neither FedRAMP nor NIST publishes a DRP template.
 
@@ -140,7 +140,7 @@ further. Its output is a large part of Part 2.
 
 Three sub-questions, and the third is the one that matters:
 
-- Where does it live? (A CMDB, a spreadsheet, a Terraform state, nobody's head)
+- Where does it live? (A [CMDB](../../../GLOSSARY.md "configuration management database"), a spreadsheet, a Terraform state, nobody's head)
 - Who maintains it, and when did they last touch it?
 - **Has anyone ever compared it to what is actually running?**
 
@@ -163,7 +163,7 @@ installing anything. For each, ask whether a read-only credential exists **now**
 | Controller | Is Argo CD, Flux or similar installed, and does it own what is running? | What is applied |
 | CMDB | Is there a ServiceNow or equivalent with CI records? | What is recorded |
 
-**The telemetry sub-question is the one people get wrong.** "Do you have APM?"
+**The telemetry sub-question is the one people get wrong.** "Do you have [APM](../../../GLOSSARY.md "application performance monitoring")?"
 almost always gets a yes. The question that matters is whether each reported
 service carries an environment or site label. Without it, telemetry cannot be
 attributed to a cluster, and the comparison between observed and running cannot
@@ -171,7 +171,7 @@ be made at all. Ask to see one service's tags.
 
 ### 5. What are the recovery objectives, and where did they come from?
 
-MTD, RTO and RPO. For each, ask the number and then ask **who set it and against
+[MTD](../../../GLOSSARY.md "Maximum Tolerable Downtime"), [RTO](../../../GLOSSARY.md "Recovery Time Objective") and [RPO](../../../GLOSSARY.md "Recovery Point Objective"). For each, ask the number and then ask **who set it and against
 what analysis.**
 
 An RTO that came from a Business Impact Analysis is a requirement. An RTO that
@@ -188,7 +188,7 @@ that cannot be rushed into a month.
 Two questions, and the second is the real one.
 
 - What mechanism? (Snapshots, volume backups, database dumps, object replication,
-  a managed DR service)
+  a managed [DR](../../../GLOSSARY.md "disaster recovery") service)
 - **When was the last restore, and who watched it?**
 
 "We take backups" and "we have restored from backup" are separated by the entire
@@ -264,7 +264,7 @@ reader who does not know what a horizon is for will read it as a backlog.
 something true, even if that something is "almost nothing is known".**
 
 This horizon contains only preconditions. It deliberately does not contain plan
-writing, BIA work or drills, because none of those gate installation.
+writing, [BIA](../../../GLOSSARY.md "Business Impact Analysis") work or drills, because none of those gate installation.
 
 Typical contents, ordered by what blocks what:
 
@@ -378,10 +378,24 @@ Do not produce a forty item roadmap for such a program. A roadmap longer than
 the organization can hold is a document that gets filed, and the assessment that
 produced it gets remembered as an expensive way to be told bad news.
 
+## Spell out every acronym in what you produce
+
+The report this skill produces is read by somebody who was not in the room: a director, a
+business owner, an auditor, somebody's replacement. Write the first use of every acronym in
+full, with the short form in brackets after it, and use the short form thereafter.
+
+> Maximum Tolerable Downtime (MTD) is four hours for payroll.
+
+This applies to the output, not to this document. Terms are defined here because a reader of
+the skill needs them; they are expanded in the output because a reader of the report was never
+given a glossary and cannot ask for one.
+
+An acronym nobody expands is a reader quietly deciding the document was not written for them.
+
 ## What this skill is not
 
 It is not an audit against a control framework. It does not grade against
-NIST SP 800-53 CP controls, FedRAMP baselines, CNSSI 1253 or any DoD
+NIST SP 800-53 [CP](../../../GLOSSARY.md "Contingency Planning") controls, FedRAMP baselines, [CNSSI](../../../GLOSSARY.md "Committee on National Security Systems Instruction") 1253 or any DoD
 instruction. Those are separate assessments with their own evidence rules, and
 conflating them with this produces a document that satisfies neither.
 

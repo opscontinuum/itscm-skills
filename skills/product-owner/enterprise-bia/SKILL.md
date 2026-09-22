@@ -16,11 +16,11 @@ description: For an ITSCM owner responsible for more than one program. Lays ever
 | **DR** | disaster recovery |
 
 
-Every program in an organization can have a correct, internally consistent BIA, and the
+Every program in an organization can have a correct, internally consistent [BIA](../../../GLOSSARY.md "Business Impact Analysis"), and the
 organization can still be unable to recover, because the plans were written as though each
 program were alone.
 
-This is the pass that lays them against each other. It is run by whoever owns ITSCM across
+This is the pass that lays them against each other. It is run by whoever owns [ITSCM](../../../GLOSSARY.md "IT Service Continuity Management") across
 programs, and it produces two things: a ranked recovery priority list, and a paper for the
 body that can actually decide the conflicts it finds.
 
@@ -44,7 +44,7 @@ Programs missing those cannot be included in the analysis. **Say which ones, and
 result is therefore partial.** A priority list built from six of eleven programs is a priority
 list for six programs, and presenting it as the organization's is worse than not running.
 
-Also collect, for each program: its DR target (which site, region or facility it fails over
+Also collect, for each program: its [DR](../../../GLOSSARY.md "disaster recovery") target (which site, region or facility it fails over
 to), and the named people in its recovery roles.
 
 ## The four kinds of contention
@@ -67,7 +67,7 @@ The same resource, with different RPOs behind it.
 This one is usually the cheapest to resolve, and resolving it toward the tightest is normally
 correct, because replication is configured per resource and protecting to the tighter objective
 costs money rather than costing another process anything. Say so rather than presenting it as a
-symmetrical trade. **Where it is not cheap, say why**, because an expensive RPO resolution is
+symmetrical trade. **Where it is not cheap, say why**, because an expensive [RPO](../../../GLOSSARY.md "Recovery Point Objective") resolution is
 a real budget line and belongs in the paper.
 
 ### 3. Capacity contention
@@ -166,7 +166,7 @@ Three rules for writing it:
 during an incident. Write it as such: "the database is recovered to whichever deadline the
 responding engineer knows about, which is currently unspecified."
 
-**Business terms, not minutes.** A director does not act on "RTO 15 minutes against RTO 4
+**Business terms, not minutes.** A director does not act on "[RTO](../../../GLOSSARY.md "Recovery Time Objective") 15 minutes against RTO 4
 hours". They act on "we can protect same-day settlement or overnight payroll on this shared
 system, and today we have promised both."
 
@@ -186,6 +186,20 @@ happened to be ready.
 Say what the missing input is, name the skill that produces it (`bia-workshop`, and the
 workbook), and say how long it takes per program. Then the board is deciding whether to fund
 the analysis rather than being asked to resolve conflicts nobody has found yet.
+
+## Spell out every acronym in what you produce
+
+The report this skill produces is read by somebody who was not in the room: a director, a
+business owner, an auditor, somebody's replacement. Write the first use of every acronym in
+full, with the short form in brackets after it, and use the short form thereafter.
+
+> Maximum Tolerable Downtime (MTD) is four hours for payroll.
+
+This applies to the output, not to this document. Terms are defined here because a reader of
+the skill needs them; they are expanded in the output because a reader of the report was never
+given a glossary and cannot ask for one.
+
+An acronym nobody expands is a reader quietly deciding the document was not written for them.
 
 ## What this does not do
 

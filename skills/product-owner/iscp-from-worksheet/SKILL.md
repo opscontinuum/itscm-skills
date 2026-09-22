@@ -79,7 +79,7 @@ workbook produces an unusable plan.
 
 ### The constraint check
 
-For every row on tab 5: **RTO must be shorter than MTD.** Work still has to be done after a
+For every row on tab 5: **[RTO](../../../GLOSSARY.md "Recovery Time Objective") must be shorter than [MTD](../../../GLOSSARY.md "Maximum Tolerable Downtime").** Work still has to be done after a
 system is technically available before the business is actually running, and that time comes
 out of the MTD.
 
@@ -146,6 +146,20 @@ What you derive rather than copy, and how:
 synchronous replication, you know the system's capability and you still do not know the
 business's requirement. Writing the capability into the requirement destroys the only
 comparison that makes the document worth having.
+
+## Spell out every acronym in what you produce
+
+The report this skill produces is read by somebody who was not in the room: a director, a
+business owner, an auditor, somebody's replacement. Write the first use of every acronym in
+full, with the short form in brackets after it, and use the short form thereafter.
+
+> Maximum Tolerable Downtime (MTD) is four hours for payroll.
+
+This applies to the output, not to this document. Terms are defined here because a reader of
+the skill needs them; they are expanded in the output because a reader of the report was never
+given a glossary and cannot ask for one.
+
+An acronym nobody expands is a reader quietly deciding the document was not written for them.
 
 ## Part 3: the report, before the plan
 

@@ -88,7 +88,7 @@ carefully argued. And they cannot answer the only question that matters at the
 moment of an outage, which is **whose work stops and for how long.**
 
 NIST asks for recovery objectives per mission or business process for exactly
-this reason. A tier is a property of infrastructure. An MTD is a statement about
+this reason. A tier is a property of infrastructure. An [MTD](../../../GLOSSARY.md "Maximum Tolerable Downtime") is a statement about
 what a business can survive, and only a business process has one.
 
 When you find this, do not report it as missing. Report it as present and keyed
@@ -210,7 +210,7 @@ cite from it rather than asserting.
      thought of?
    A join that covers half the rows is `PARTIAL` and you say which half.
 
-5. **Check the constraint NIST states.** "Because the RTO must ensure that the
+5. **Check the constraint NIST states.** "Because the [RTO](../../../GLOSSARY.md "Recovery Time Objective") must ensure that the
    MTD is not exceeded, the RTO must normally be shorter than the MTD"
    (NIST SP 800-34 Rev. 1, §3.2.1). Where an RTO equals or exceeds its MTD, one
    of the two numbers is wrong, and that is a finding regardless of everything
@@ -277,7 +277,7 @@ Produce it in this shape:
 > **What comes out:** the specific rows this audit found empty, named.
 > **What does not come out:** anything the architecture team can decide alone.
 
-Two rules to state in the agenda, both from the BIA method:
+Two rules to state in the agenda, both from the [BIA](../../../GLOSSARY.md "Business Impact Analysis") method:
 
 - **Recovery objectives are the business's numbers, not the architecture's.** Do
   not compute an MTD from what the system can currently do. The system is then
@@ -285,6 +285,20 @@ Two rules to state in the agenda, both from the BIA method:
 - **Do not carry a standard's sample figures into a real plan.** NIST prints
   example impact values to illustrate the shape of the table. A plan that ships
   them has recorded an illustration as a decision.
+
+## Spell out every acronym in what you produce
+
+The report this skill produces is read by somebody who was not in the room: a director, a
+business owner, an auditor, somebody's replacement. Write the first use of every acronym in
+full, with the short form in brackets after it, and use the short form thereafter.
+
+> Maximum Tolerable Downtime (MTD) is four hours for payroll.
+
+This applies to the output, not to this document. Terms are defined here because a reader of
+the skill needs them; they are expanded in the output because a reader of the report was never
+given a glossary and cannot ask for one.
+
+An acronym nobody expands is a reader quietly deciding the document was not written for them.
 
 ## What this skill does not do
 

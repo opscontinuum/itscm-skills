@@ -28,12 +28,12 @@ Half a day, if the processes are already named. Longer if they are not.
 
 ## Why the structure is not yours to choose
 
-FedRAMP's ISCP template carries one sentence at Appendix L: "Insert the Business Impact
+FedRAMP's [ISCP](../../../GLOSSARY.md "Information System Contingency Plan") template carries one sentence at Appendix L: "Insert the Business Impact
 Analysis here. Please see NIST SP 800-34, Revision 1 for more information on how to conduct a
 Business Impact Analysis."
 
 So the structure is not FedRAMP's. It comes from **NIST SP 800-34 Rev. 1, Appendix B, "Sample
-Business Impact Analysis (BIA) and BIA Template"**, and its headings and table columns are
+Business Impact Analysis ([BIA](../../../GLOSSARY.md "Business Impact Analysis")) and BIA Template"**, and its headings and table columns are
 reproduced verbatim. Tell the room this. It is what stops the session inventing a format that
 an assessor will not recognize, and it settles the first argument before it starts.
 
@@ -89,7 +89,7 @@ is precisely how a plan ends up keyed to systems.
 Ask what *business* processes stop if this system stops. One row per process, with a
 description a non-engineer would recognize.
 
-If the only people available are from IT, stop and say so rather than proceeding. An MTD set
+If the only people available are from IT, stop and say so rather than proceeding. An [MTD](../../../GLOSSARY.md "Maximum Tolerable Downtime") set
 by IT is IT telling itself what it is allowed to fail at.
 
 NIST's own example, "Pay vendor invoice", is an illustration. Do not borrow it.
@@ -125,7 +125,7 @@ business does not average a missed payroll.
 ## Step 3: MTD, then RTO, then RPO, in that order
 
 Ask in that order. The order is the second anti-mis-keying control: MTD is elicited first and
-is a business number, RTO is then derived to satisfy it, RPO last.
+is a business number, [RTO](../../../GLOSSARY.md "Recovery Time Objective") is then derived to satisfy it, [RPO](../../../GLOSSARY.md "Recovery Point Objective") last.
 
 Use NIST's definitions verbatim, because paraphrase is where the meaning slips:
 
@@ -157,7 +157,7 @@ a period that was half closed when it stopped.
 
 **That interval has no name in NIST.** The standard says only that "additional processing time
 must be added to the RTO to stay within the time limit established by the MTD". Much of the
-continuity industry calls it **Work Recovery Time, WRT**, and many plans decompose the
+continuity industry calls it **Work Recovery Time, [WRT](../../../GLOSSARY.md "Work Recovery Time")**, and many plans decompose the
 relationship as MTD = RTO + WRT. If the organization already uses that vocabulary, use it with
 them. If it does not, do not introduce it as though a standard required it, and do not write
 MTD = RTO + WRT into a plan as if NIST said so.
@@ -210,7 +210,7 @@ should be identified individually or as a logical group." Grouping is allowed an
 clearer: "application tier nodes" beats eleven hostnames. The test is whether you would
 recover them together.
 
-If an inventory already exists, from infrastructure-as-code, a CMDB or a discovery tool, it
+If an inventory already exists, from infrastructure-as-code, a [CMDB](../../../GLOSSARY.md "configuration management database") or a discovery tool, it
 can populate the identity columns: resource, platform, version, region. **It cannot populate
 the judgment columns.** Recovery priority and recovery time are left empty on purpose for a
 human to fill, and an inventory that arrives with them pre-filled has had somebody's guess
@@ -296,6 +296,20 @@ Then hand it to `iscp-from-worksheet`.
 **Unsigned objectives are proposals.** Tab 12 is what converts them into commitments, and an
 objective nobody signed cannot be missed, because nobody promised it. Get the signatures in
 the room while the reasoning is fresh. Chasing them afterwards takes months and usually fails.
+
+## Spell out every acronym in what you produce
+
+The report this skill produces is read by somebody who was not in the room: a director, a
+business owner, an auditor, somebody's replacement. Write the first use of every acronym in
+full, with the short form in brackets after it, and use the short form thereafter.
+
+> Maximum Tolerable Downtime (MTD) is four hours for payroll.
+
+This applies to the output, not to this document. Terms are defined here because a reader of
+the skill needs them; they are expanded in the output because a reader of the report was never
+given a glossary and cannot ask for one.
+
+An acronym nobody expands is a reader quietly deciding the document was not written for them.
 
 ## Checking your own output
 

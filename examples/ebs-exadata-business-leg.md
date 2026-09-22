@@ -50,15 +50,15 @@ mechanism for both.
 **Recovery is two numbers, not one.** The plan separates the time to make the system
 technically available from the time to make it usable by the business:
 
-- **RTO**, incident to technically available.
-- **WRT, Work Recovery Time**, technically available to business-usable: re-submitting
+- **[RTO](../GLOSSARY.md "Recovery Time Objective")**, incident to technically available.
+- **[WRT](../GLOSSARY.md "Work Recovery Time"), Work Recovery Time**, technically available to business-usable: re-submitting
   in-flight batch work, replaying interfaces, reconciling, validating a period close. For an
-  ERP it is frequently larger than the RTO, and it is the part no infrastructure spending
+  [ERP](../GLOSSARY.md "enterprise resource planning") it is frequently larger than the RTO, and it is the part no infrastructure spending
   shortens. It comes down through interface design and rehearsal.
-- **MTD = RTO + WRT.** This decomposition is the plan's own. NIST names the second interval only
+- **[MTD](../GLOSSARY.md "Maximum Tolerable Downtime") = RTO + WRT.** This decomposition is the plan's own. NIST names the second interval only
   as "additional processing time" and gives it no name.
 
-**RPO and data loss are not the same word twice.** The RPO is the objective, which the business
+**[RPO](../GLOSSARY.md "Recovery Point Objective") and data loss are not the same word twice.** The RPO is the objective, which the business
 states: how much committed work it can afford to lose. Data loss is the outcome, which a
 mechanism produces: how much would actually be gone if it failed over right now. The tables
 below headed *Data loss* describe what each replication leg costs, and the RPO column in §3
@@ -133,12 +133,12 @@ than leaving a zero in a document that the architecture cannot honor in a region
 The first pass set RPO 0 for the revenue processes and 5 minutes for procurement, on the
 reasoning that procurement matters less.
 
-**That is not purchasable.** Procurement runs on the same EBS database as order entry, and a
+**That is not purchasable.** Procurement runs on the same [EBS](../GLOSSARY.md "E-Business Suite") database as order entry, and a
 single synchronous standby protects all of it at once. There is no configuration in which one
 schema on one database has a different recovery point from another.
 
 So RPO is stated **per replication boundary**, and every process on the EBS database inherits
-the same number. Reporting and BI differs only because it reads the Active Data Guard standby
+the same number. Reporting and [BI](../GLOSSARY.md "business intelligence") differs only because it reads the Active Data Guard standby
 rather than the primary.
 
 This is the kind of thing that surfaces only when the objectives are written down together.
@@ -191,7 +191,7 @@ a missed payroll:
 | Procurement | Moderate | Minimal | Moderate | Minimal | Minimal | **Moderate** |
 | Reporting and BI | Minimal | Minimal | Minimal | Minimal | Minimal | **Minimal** |
 
-**Partner and EDI moved up from the earlier draft**, and the realtime framing is why. When
+**Partner and [EDI](../GLOSSARY.md "electronic data interchange") moved up from the earlier draft**, and the realtime framing is why. When
 exchanges were nightly batches, a four hour outage was absorbed by the next run. Operated as
 realtime they are continuous, customers see failures directly, and there is no catch-up window,
 so the customer and reputational ratings both rise to Severe.

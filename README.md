@@ -227,7 +227,7 @@ for somebody who will not read a plan.
 
 [`itscm-coordinator-review`](skills/product-owner/itscm-coordinator-review/) is yours. It asks for the whole
 documentation set in one request, records what did not arrive as evidence in its own right, and
-reports a capability level from 1 to 5 across eight dimensions, using the ITIL Maturity Model's
+reports a capability level from 1 to 5 across eight dimensions, using the [ITIL](GLOSSARY.md "IT Infrastructure Library") Maturity Model's
 practice capability scale applied to ITIL 4's Service Continuity Management practice. The scale
 and vocabulary are ITIL's so the result translates; the criteria are the skill's own, derived
 from failure modes seen in real documentation, because the practice success factors that real
@@ -248,7 +248,7 @@ organization still cannot recover, because each was written as though its progra
 [`enterprise-bia`](skills/product-owner/enterprise-bia/) lays them against each other. It finds four kinds of
 contention, and most reviews only look for the first: two processes sharing a resource with
 different deadlines, the same with different recovery point objectives, two programs planning to
-fail over into the same DR capacity that was sized for one of them, and the same named engineer
+fail over into the same [DR](GLOSSARY.md "disaster recovery") capacity that was sized for one of them, and the same named engineer
 appearing in six recovery rosters that would all activate in the same regional event.
 
 It produces a ranked recovery priority list and a board paper, because the conflicts it finds
@@ -342,7 +342,7 @@ regions, with the product owner asking for realtime operation, 99.9% availabilit
 recovery point objective of zero or near zero. The architecture it needs is reproduced inside it, so it stands alone.
 
 It is here because it shows what a finished business leg actually contains, and because running
-it surfaced things the method alone does not. The most useful: **an RPO cannot vary by process
+it surfaced things the method alone does not. The most useful: **an [RPO](GLOSSARY.md "Recovery Point Objective") cannot vary by process
 when the processes share a database.** One synchronous standby protects one database, so a
 first pass setting zero for revenue and five minutes for procurement was asking for something
 not purchasable. RPO is stated per replication boundary.
@@ -364,7 +364,7 @@ that does not exist. The spreadsheet enforces that, rather than a reviewer notic
 months later.
 
 Tab 7 records which resources each process depends on. No standard template prompts for it and
-none forbids it, and NIST's third BIA step, identifying recovery priorities for system
+none forbids it, and NIST's third [BIA](GLOSSARY.md "Business Impact Analysis") step, identifying recovery priorities for system
 resources, cannot be performed without it. The mapping is a prerequisite of a required step
 rather than an addition to the method.
 
@@ -431,6 +431,12 @@ exists so a coordinator can compare forty systems or show movement across two ye
 gap list genuinely cannot do. The sentence naming the blocker is still the part anybody acts
 on.
 
+## Conventions
+
+[`CONVENTIONS.md`](CONVENTIONS.md) holds the binding rules for anything written here, each with
+the cost of having broken it once. The two that shape every page: every acronym is expanded on
+first use and linked with hover text, and this repository cites nothing outside itself.
+
 ## Acronyms are defined where they are used
 
 Every acronym is expanded the first time a document uses it, and each document carries a short
@@ -438,7 +444,7 @@ table of just the terms it uses. [`GLOSSARY.md`](GLOSSARY.md) holds all of them 
 
 The per-document tables are not redundancy for its own sake. A skill is read on its own, often
 by a model with no filesystem working from a pasted document, and a reader who has to leave the
-page to find out what MTD stands for has been sent somewhere they may not be able to go. The
+page to find out what [MTD](GLOSSARY.md "Maximum Tolerable Downtime") stands for has been sent somewhere they may not be able to go. The
 same reasoning governs citations below.
 
 ## This repository cites nothing outside itself
@@ -458,7 +464,7 @@ document somebody pasted into a chat window. Anything worth citing is worth rest
 
 Reference data in `iscp-completeness` was transcribed from:
 
-- FedRAMP SSP Appendix G: Information System Contingency Plan (ISCP) Template, version 5.0,
+- FedRAMP [SSP](GLOSSARY.md "System Security Plan") Appendix G: Information System Contingency Plan ([ISCP](GLOSSARY.md "Information System Contingency Plan")) Template, version 5.0,
   dated 12/06/2024. Downloaded 2026-09-02 from
   `https://www.fedramp.gov/resources/templates/SSP-Appendix-G-Information-System-Contingency-Plan-(ISCP)-Template.docx`,
   HTTP 200, 153865 bytes, md5 `298f6b1392ee21b1cded5164c2523b86`.

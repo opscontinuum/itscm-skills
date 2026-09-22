@@ -82,7 +82,7 @@ version of this document." If you find surviving `Instructions:` blocks, report
 them as a finding in their own right, separate from the completeness counts.
 
 **NIST's worked examples should not be there either.** NIST SP 800-34 Rev. 1
-Appendix B illustrates its BIA tables with a sample organization. If you find
+Appendix B illustrates its [BIA](../../../GLOSSARY.md "Business Impact Analysis") tables with a sample organization. If you find
 `Pay vendor invoice`, `Web Server 1`, `Optiplex GX280`, or `24 hours to rebuild
 or replace`, the author has shipped NIST's illustration as if it were their own
 business process. Report it. This is worse than an empty table.
@@ -154,7 +154,7 @@ deleted a requirement, not a comment.
 4.3 Recovery Escalation Notices/Awareness
 ```
 
-**Check 4.2 for a cross-reference.** ISCP section 4.2 says keystroke-level
+**Check 4.2 for a cross-reference.** [ISCP](../../../GLOSSARY.md "Information System Contingency Plan") section 4.2 says keystroke-level
 procedures may live in an appendix, and that "if specific procedures are
 provided in an appendix, a reference to that appendix must be included in this
 section." If 4.2 defers to an appendix without naming it, that is a finding.
@@ -343,14 +343,14 @@ misses for one missing appendix inflates the count and buries everything else.
 Report each as its own finding:
 
 - **A Disaster Recovery Plan.** FedRAMP asks a cloud service provider for
-  exactly one contingency-planning document, the ISCP, and publishes no DRP
+  exactly one contingency-planning document, the ISCP, and publishes no [DRP](../../../GLOSSARY.md "Disaster Recovery Plan")
   template. NIST SP 800-34 Rev. 1 §2.2 defines a DRP as a plan *type* and also
   publishes no template. A section titled "Disaster Recovery Plan" with a
   structure of its own invention will fail assessor review.
 - **A Business Continuity Plan, Continuity of Operations Plan, Occupant
   Emergency Plan, or crisis communications plan.** Table 1.4 lists these as
   "Plans Outside of ISCP Scope". They are named in Table 1.4 and not reproduced.
-- **A System Security Plan.** The ISCP is Appendix G *of* the SSP. It does not
+- **A System Security Plan.** The ISCP is Appendix G *of* the [SSP](../../../GLOSSARY.md "System Security Plan"). It does not
   contain one.
 - **Surviving instructional text**, per the placeholder section above.
 - **NIST's worked examples**, per the placeholder section above.
@@ -359,7 +359,7 @@ Report each as its own finding:
 
 A plan can pass every check in Parts 1 through 5 and still be unopenable by the
 person who meets it first. The usual first reader is not the system owner. It is
-a watch function: a virtual NOC, a duty operator, an on-call who covers many
+a watch function: a virtual [NOC](../../../GLOSSARY.md "network operations center"), a duty operator, an on-call who covers many
 systems and wrote none of them. That reader needs about eight facts in the first
 minute, and every one of those facts is already somewhere in the plan you just
 audited. What is missing is a page at the front that carries them.
@@ -530,13 +530,27 @@ because 90 percent of its headings carry text; it is complete when a person who
 has to recover the system at three in the morning can follow it. Report what is
 there and what is not, and let a human judge.
 
+## Spell out every acronym in what you produce
+
+The report this skill produces is read by somebody who was not in the room: a director, a
+business owner, an auditor, somebody's replacement. Write the first use of every acronym in
+full, with the short form in brackets after it, and use the short form thereafter.
+
+> Maximum Tolerable Downtime (MTD) is four hours for payroll.
+
+This applies to the output, not to this document. Terms are defined here because a reader of
+the skill needs them; they are expanded in the output because a reader of the report was never
+given a glossary and cannot ask for one.
+
+An acronym nobody expands is a reader quietly deciding the document was not written for them.
+
 ## Sources
 
 Transcribed from the primary sources, not from memory:
 
 - **FedRAMP SSP Appendix G: Information System Contingency Plan (ISCP) Template,
   version 5.0, dated 12/06/2024**, whose own revision history describes v5.0 as
-  "Updated to align with OMB Memo M-24-15 and remove PMO references". Retrieved
+  "Updated to align with [OMB](../../../GLOSSARY.md "Office of Management and Budget") Memo M-24-15 and remove PMO references". Retrieved
   2026-09-02 from `fedramp.gov`, 153865 bytes,
   md5 `298f6b1392ee21b1cded5164c2523b86`.
 - **NIST SP 800-34 Rev. 1, Appendix B**, "Sample Business Impact Analysis (BIA)

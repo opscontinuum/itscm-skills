@@ -54,7 +54,7 @@ checklist, not calculated.
 Be precise about this, because a number carries more authority than it earns and somebody will
 eventually ask where it came from.
 
-**Scope: ITIL 4's Service Continuity Management practice.** One of ITIL 4's management
+**Scope: [ITIL](../../../GLOSSARY.md "IT Infrastructure Library") 4's Service Continuity Management practice.** One of ITIL 4's management
 practices, assessed on its own.
 
 **Scale: the ITIL Maturity Model's practice capability levels**, which PeopleCert publishes
@@ -77,7 +77,7 @@ the same documents.
 
 ### Do not confuse this with the two things it resembles
 
-**Capability levels are not maturity levels.** ITIL MM keeps them separate and they have
+**Capability levels are not maturity levels.** ITIL [MM](../../../GLOSSARY.md "Maturity Model") keeps them separate and they have
 different definitions. Maturity levels (Initial, Managed, Defined, Quantitative, Optimizing)
 describe an organization's whole Service Value System. Capability levels describe one practice.
 This assesses one practice, so it reports capability. Using the maturity names here would be
@@ -130,7 +130,7 @@ assessing a document written the night before.
 | Crisis communications plan | Who tells whom | Often inside the BCP |
 
 Ask which of these the organization believes it has, and get the file. Titles are unreliable.
-A document called a Disaster Recovery Plan is frequently an ISCP, and occasionally a runbook.
+A document called a Disaster Recovery Plan is frequently an [ISCP](../../../GLOSSARY.md "Information System Contingency Plan"), and occasionally a runbook.
 
 ### The analysis behind the plans
 
@@ -408,7 +408,21 @@ One per dimension, and this is what people act on. It names a criterion, not a t
 > infrastructure tiers rather than to business processes, so nothing can say whose work stops.
 > Level 3 needs the objectives re-derived per process, which is the workshop in `bia-workshop`.
 
-Not: *"the BIA needs strengthening."*
+Not: *"the [BIA](../../../GLOSSARY.md "Business Impact Analysis") needs strengthening."*
+
+## Spell out every acronym in what you produce
+
+The report this skill produces is read by somebody who was not in the room: a director, a
+business owner, an auditor, somebody's replacement. Write the first use of every acronym in
+full, with the short form in brackets after it, and use the short form thereafter.
+
+> Maximum Tolerable Downtime (MTD) is four hours for payroll.
+
+This applies to the output, not to this document. Terms are defined here because a reader of
+the skill needs them; they are expanded in the output because a reader of the report was never
+given a glossary and cannot ask for one.
+
+An acronym nobody expands is a reader quietly deciding the document was not written for them.
 
 ## What this skill does not do
 
@@ -436,7 +450,7 @@ comparison would be the most damaging thing a number like this could do.
   practice success factors (PSFs)" and "have been mapped to one of the four dimensions of
   service management"; the separation of practice capability levels from Service Value System
   maturity levels; that certification is available only from a comprehensive assessment
-  covering the SVS and seven or more practices; and that the model "is NOT designed to assess
+  covering the [SVS](../../../GLOSSARY.md "Service Value System") and seven or more practices; and that the model "is NOT designed to assess
   the extent or success of the implementation of ITIL guidance".
 - ITIL 4 practice guides, including Service Continuity Management and its practice success
   factors, are available through PeopleCert+ membership. **Not consulted.** The criteria in this
