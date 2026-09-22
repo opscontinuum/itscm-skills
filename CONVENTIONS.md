@@ -51,9 +51,27 @@ is recorded as reported, never as measured.
 
 ## 4. Nothing is averaged into a score
 
+**Scope: what a skill reports about somebody else's program.** That is where the damage is done,
+and the rule is absolute there.
+
 Report states, not scales. Where a number is genuinely useful, it is read off all-or-nothing
 criteria rather than calculated, and it ships with the specific criterion blocking the next
 level. Nine criteria of ten met is the lower level, not ninety percent of the higher one.
+
+The pathology is a number that **substitutes** for knowing which specific thing is missing. A
+program described as sixty percent mature tells nobody what to do on Monday, and the person who
+wrote the sixty percent has been spared naming the gap.
+
+### What the rule does not govern
+
+Our own build status is not an assessment of anybody's program, and reporting how much of this
+repository exists is not the thing the rule was written against. A proportion is acceptable
+there under one condition: **it appears beside the full itemization rather than in place of it.**
+The completeness diagram in the README qualifies, because every node and its state is visible in
+the same view, so the figure adds orientation without hiding anything.
+
+A figure quoted away from that itemization has lost the condition that made it acceptable. If
+you find yourself writing a percentage with nothing beside it, you are back inside the rule.
 
 ## 5. Recovery objectives are keyed to business processes
 

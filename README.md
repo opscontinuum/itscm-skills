@@ -27,6 +27,8 @@ spreadsheet and the right people in a room will do.
 
 Business states the requirement, the product owner assembles one program's plan, the ITSCM
 owner answers for the practice across programs, and IT states what can actually be delivered.
+The fifth section is not a person: it is what a product would have to hold for any of this to
+run in software.
 Color is completeness: green is done, red is nothing exists yet.
 
 ```mermaid
@@ -149,24 +151,41 @@ flowchart TD
 **A box you can click is a box that exists.** Every green and amber node links to the skill or
 worksheet that performs it. The red ones link nowhere, because there is nothing to open.
 
-**Section 1 is done.** A business impact session can be run today, start to finish.
+Sixteen of the thirty six nodes are green, three are amber, two are orange and fifteen are red.
+Where they fall matters more than the count.
+
+**Section 1 is done.** A business impact session can be run today, start to finish, and the
+business leg has been performed end to end against a real architecture in
+[`examples/ebs-exadata-business-leg.md`](examples/ebs-exadata-business-leg.md). Five of its six
+nodes are green. The sixth is amber because nothing refuses an unsigned objective.
 
 **Section 2 works apart from two things.** The resource inventory and the process-to-resource
 map are amber because the workbook has tabs for them and nothing walks anybody through filling
-them, and both need input from section 3. Onboarding a program rather than a single system is
-red everywhere it appears.
+them, and both need input from section 4, which does not exist. Onboarding a program rather
+than a single system is red everywhere it appears, in the skills and in the product alike.
 
-**Section 3 is the wall.** Every interview that produces IT's half of the comparison is
-unported, so the walkthrough stops after the product owner. This is the shortest path to an
-end-to-end process and it is four skills.
+**Section 3 is the only complete one, and that is worth less than it sounds.** All three nodes
+are green. The three skills assess and coordinate: they read what other people produced and
+report on it. Nothing in the section produces a plan, so it is complete the way a reviewer's
+checklist is complete.
 
-**Section 4 is three green boxes and seven red ones.** What exists is reconciliation, the
-approval control and the execution record, and all three are real. What does not exist is
-anywhere to put a program, an objective, a signature, or a countdown.
+**Section 4 is the wall.** Every interview that produces IT's half of the comparison is
+unwritten, so a walkthrough stops after the product owner. Eight of the nine nodes are red. The
+ninth is orange, a drill runbook that exists as a worked example rather than as a procedure. The
+four interviews are the shortest path back to an end-to-end process.
 
-The two dotted lines into section 3 are the point of the whole arrangement. The business states
-what it needs, IT states what it can do, and the gap between them is either a funded project or
-an accepted risk. Collapse the two legs into one conversation and that gap stops being visible.
+**Section 5 holds the remediation loop and not the program.** Reconciliation, the approval
+control and the execution record are real, and those three nodes are green. A fourth, the
+onboarding surface, is a fragment. There is nowhere to put a program, an objective, a signature
+or a countdown.
+
+The dotted lines into and out of section 4 are the point of the whole arrangement. The business
+states what it needs, IT states what it can do, and the gap between them is either a funded
+project or an accepted risk. Collapse the two legs into one conversation and that gap stops
+being visible.
+
+Two further dotted lines belong to the ITSCM owner: the assessment decides where a program
+starts, and every finished plan feeds the contention analysis that reads across programs.
 
 ## Find your way in
 
