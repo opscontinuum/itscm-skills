@@ -128,10 +128,27 @@ Use NIST's definitions verbatim, because paraphrase is where the meaning slips:
 than the MTD" (NIST SP 800-34 Rev. 1, §3.2.1, p. 16).
 
 Work still has to happen after a system is technically available and before the business is
-actually running: re-submitting what was in flight, replaying interfaces, reconciling.
+actually running: re-submitting what was in flight, replaying interfaces, reconciling, closing
+a period that was half closed when it stopped.
 
-**If the answers violate that, say so and ask which number is wrong.** Do not fix it yourself.
-The room decides which of the two was wrong, because both are their numbers.
+**That interval has no name in NIST.** The standard says only that "additional processing time
+must be added to the RTO to stay within the time limit established by the MTD". Much of the
+continuity industry calls it **Work Recovery Time, WRT**, and many plans decompose the
+relationship as MTD = RTO + WRT. If the organization already uses that vocabulary, use it with
+them. If it does not, do not introduce it as though a standard required it, and do not write
+MTD = RTO + WRT into a plan as if NIST said so.
+
+Name it in the room whatever it is called locally, because the constraint is unintuitive until
+somebody sees what fills the gap. An owner who thinks RTO means "back in business" will set an
+MTD equal to it and be wrong by hours.
+
+**Two things worth telling the room about that interval.** For a transactional system it is
+frequently *larger* than the RTO. And it is the part no infrastructure spending shortens: it
+comes down through interface design, idempotent batch jobs and rehearsal, which are decisions
+that belong to the application and the business rather than to the platform.
+
+**If the answers violate the constraint, say so and ask which number is wrong.** Do not fix it
+yourself. The room decides which of the two was wrong, because both are their numbers.
 
 ### When the architecture cannot meet the number
 

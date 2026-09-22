@@ -31,8 +31,10 @@ mechanism for both.
 technically available from the time to make it usable by the business:
 
 - **RTO**, incident to technically available.
-- **WRT**, technically available to business-usable: re-submitting in-flight batch work,
-  replaying interfaces, reconciling, validating a period close.
+- **WRT, Work Recovery Time**, technically available to business-usable: re-submitting
+  in-flight batch work, replaying interfaces, reconciling, validating a period close. For an
+  ERP it is frequently larger than the RTO, and it is the part no infrastructure spending
+  shortens. It comes down through interface design and rehearsal.
 - **MTD = RTO + WRT.** This decomposition is the plan's own. NIST names the second interval only
   as "additional processing time" and gives it no name.
 
