@@ -6,6 +6,124 @@ These are instruction documents for working out what happens when a system stops
 business can stand it, and what to recover first. They need no software. A word processor, a
 spreadsheet and the right people in a room will do.
 
+## The whole process, and how much of it exists
+
+Business sets the requirement, the product owner assembles it, IT states what can actually be
+delivered. Color is completeness: green is done, red is nothing exists yet.
+
+```mermaid
+flowchart TD
+    classDef full fill:#1b7f3b,stroke:#0d4d22,color:#ffffff,font-weight:bold
+    classDef half fill:#f2b705,stroke:#a87e00,color:#1a1a1a,font-weight:bold
+    classDef some fill:#e8710a,stroke:#9c4a00,color:#ffffff
+    classDef none fill:#c62828,stroke:#7f1d1d,color:#ffffff,font-weight:bold
+
+    subgraph BUS["1 . BUSINESS  ·  states the requirement"]
+        direction TB
+        B1[Name the business processes]
+        B2[Define the impact scale<br/>severe / moderate / minimal]
+        B3[Rate impact per process]
+        B4[Set MTD, RTO and RPO<br/>per process]
+        B5[Record alternate ways of working]
+        B6[Sign the objectives]
+        B1 --> B2 --> B3 --> B4 --> B5 --> B6
+    end
+
+    subgraph PO["2 . PRODUCT OWNER  ·  assembles the program"]
+        direction TB
+        P1[Assess what exists today]
+        P2[Audit a plan for structure]
+        P3[Audit a plan for derivability]
+        P4[Collect into the workbook]
+        P5[Build the resource inventory]
+        P6[Map each process to its resources]
+        P7[Derive the recovery priority order]
+        P8[Write the plan]
+        P9[Onboard a PROGRAM<br/>not a single system]
+        P10[Find contention across programs]
+        P11[Review capability against ITIL]
+        P1 --> P2 --> P3 --> P4 --> P5 --> P6 --> P7 --> P8
+        P8 --> P9 --> P10 --> P11
+    end
+
+    subgraph IT["3 . IT  ·  states the capability"]
+        direction TB
+        I1[Infrastructure interview]
+        I2[Application interview]
+        I3[Governance interview]
+        I4[Continuity interview]
+        I5[State the achievable RTO and RPO]
+        I6[Author the DR runbooks]
+        I7[Capture the freeze windows]
+        I8[Run the drill and record it]
+        I9[Measure replication lag<br/>against the signed RPO]
+        I1 --> I2 --> I3 --> I4 --> I5 --> I6 --> I7 --> I8 --> I9
+    end
+
+    subgraph APP["4 . THE PRODUCT  ·  what it must hold"]
+        direction TB
+        X1[Reconciliation across<br/>four truth claims]
+        X2[Approval control<br/>two principals]
+        X3[Execution and audit record]
+        X4[Domain model for<br/>programs and objectives]
+        X5[Storage for program content<br/>versioned and signed]
+        X6[Onboarding surface]
+        X7[Sign-off surface<br/>routed to the right signer]
+        X8[Capability picture<br/>claimed vs evidenced]
+        X9[Failover and DR actions]
+        X10[MTD countdown and hold-down]
+        X1 --> X2 --> X3
+        X4 --> X5 --> X6 --> X7 --> X8
+        X9 --> X10
+    end
+
+    B6 -.->|"the signed requirement"| P4
+    I5 -.->|"the real capability"| P6
+    P6 -.->|"what IT must deliver"| I6
+    P9 -.->|"needs all of section 4"| X4
+    I9 -.->|"breach raises an incident"| X10
+
+    class B1,B2,B3,B4,B5 full
+    class B6 half
+    class P1,P2,P3,P4,P7,P8,P10,P11 full
+    class P5,P6 half
+    class P9 none
+    class I8 some
+    class I1,I2,I3,I4,I5,I6,I7,I9 none
+    class X1,X2,X3 full
+    class X6 some
+    class X4,X5,X7,X8,X9,X10 none
+```
+
+### Reading it
+
+| | |
+|---|---|
+| **Green** | Exists and is usable today |
+| **Amber** | The method exists, the mechanism that enforces it does not |
+| **Orange** | A fragment exists, mostly as an example rather than a procedure |
+| **Red** | Nothing exists |
+
+**Section 1 is done.** A business impact session can be run today, start to finish.
+
+**Section 2 works apart from two things.** The resource inventory and the process-to-resource
+map are amber because the workbook has tabs for them and nothing walks anybody through filling
+them, and both need input from section 3. Onboarding a program rather than a single system is
+red everywhere it appears.
+
+**Section 3 is the wall.** Every interview that produces IT's half of the comparison is
+unported, so the walkthrough stops after the product owner. This is the shortest path to an
+end-to-end process and it is four skills.
+
+**Section 4 is three green boxes and seven red ones.** What exists is reconciliation, the
+approval control and the execution record, and all three are real. What does not exist is
+anywhere to put a program, an objective, a signature, or a countdown. The full analysis is
+`devsecops-planning/docs/specs/ITSCM-PROGRAM-CAPTURE.md`.
+
+The two dotted lines into section 3 are the point of the whole arrangement. The business states
+what it needs, IT states what it can do, and the gap between them is either a funded project or
+an accepted risk. Collapse the two legs into one conversation and that gap stops being visible.
+
 ## Find your way in
 
 Three people have to do different things here, and doing somebody else's part is the most
