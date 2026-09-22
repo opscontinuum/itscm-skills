@@ -54,6 +54,7 @@ other.
 | Skill | What it does |
 |---|---|
 | [`itscm-program-assessment`](skills/itscm-program-assessment/) | Interview an organization to find out what its continuity program actually contains, then produce a one month, three month and one year roadmap. Assumes none of the opscontinuum tooling is installed in the environment being assessed. |
+| [`iscp-from-worksheet`](skills/iscp-from-worksheet/) | Take a filled data-collection workbook and turn it into a plan, after checking that the data can support one. Validates the joins between tabs rather than the presence of cells, and writes nothing it was not given. |
 | [`iscp-sufficiency`](skills/iscp-sufficiency/) | Decide whether a plan carries enough data to actually build a program from it. Judges by derivability: a field is required only when a named downstream artifact provably cannot be produced without it. Distinguishes absent, blank template, keyed to the wrong unit, and agreed by nobody, because those need four different remedies. |
 | [`iscp-completeness`](skills/iscp-completeness/) | Audit an Information System Contingency Plan against FedRAMP SSP Appendix G ISCP Template v5.0 and NIST SP 800-34 Rev. 1 Appendix B. Reports what is missing, what is present but unfilled, and what is present and answered. Also asks whether the plan carries a fact sheet for whoever meets an incident first, and traces each field back to the section that already holds it. |
 
@@ -66,6 +67,29 @@ intact against the authority that governs it. `iscp-sufficiency` asks whether a
 program can be derived from its content. `itscm-program-assessment` asks what the
 organization has, which is a question about people and cadence rather than about
 any document. A plan can pass any one of these and fail the others.
+
+## The workbook
+
+[`worksheets/iscp-data-collection.xlsx`](worksheets/) collects everything a plan needs, across
+thirteen tabs, in the order each one feeds the next. `worksheets/build_workbook.py` regenerates
+it; the build tool runs here, never at the reader.
+
+Two things in it are doing real work.
+
+**The dropdowns are fed by the tabs the reader already filled.** Processes entered on tab 2 and
+resources on tab 6 become the only permitted values on the tabs that reference them. An
+objective cannot be recorded against a process nobody named, and a dependency cannot point at a
+component that does not exist. Referential integrity, enforced by the spreadsheet rather than by
+a reviewer noticing later.
+
+**Tab 7 exists because no standard template asks for it.** It records which resources each
+process depends on. Without that link, per-process recovery objectives and a resource inventory
+sit on either side of a gap, and no recovery order can be derived from either one: there is no
+way to get from "payroll matters most" to "therefore restore the database first". It is the most
+common reason a complete-looking plan cannot answer what to fix first, and the workbook puts it
+on its own tab with a warning rather than leaving it to be inferred.
+
+Fill it, then hand it to `iscp-from-worksheet`.
 
 ## The rule these skills follow
 
