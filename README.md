@@ -73,8 +73,12 @@ for somebody who will not read a plan.
 
 [`itscm-coordinator-review`](skills/itscm-coordinator-review/) is yours. It asks for the whole
 documentation set in one request, records what did not arrive as evidence in its own right, and
-reports a capability level from 1 to 5 across eight dimensions against ITIL 4's Service
-Continuity Management practice.
+reports a capability level from 1 to 5 across eight dimensions, using the ITIL Maturity Model's
+practice capability scale applied to ITIL 4's Service Continuity Management practice. The scale
+and vocabulary are ITIL's so the result translates; the criteria are the skill's own, derived
+from failure modes seen in real documentation, because the practice success factors that real
+ITIL criteria come from sit behind a PeopleCert membership. The skill says so in its own words
+rather than letting a number imply a badge it cannot issue.
 
 Two things about it worth knowing before you run it. It treats "it exists, we just cannot find
 it" as closer to absent than to present, because a document nobody can produce at review time

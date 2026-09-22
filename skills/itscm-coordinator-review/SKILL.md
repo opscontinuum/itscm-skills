@@ -30,19 +30,62 @@ A capability level here is not that, and the difference is mechanical:
 If you find yourself computing anything, you have left the method. Levels are read off a
 checklist, not calculated.
 
-## What this assesses against
+## What this assesses against, exactly
 
-**ITIL 4, the Service Continuity Management practice.** ITIL 4 organizes capability on a five
-level scale in the ISO/IEC 15504 and CMMI lineage, which is the structure used below.
+Be precise about this, because a number carries more authority than it earns and somebody will
+eventually ask where it came from.
 
-**Be honest about what the criteria below are.** They are this skill's operationalization of
-that structure for continuity documentation. They are not a transcription of PeopleCert's
-ITIL Maturity Model, which is a licensed assessment instrument this skill does not reproduce
-and does not claim to substitute for. If the organization needs a certified ITIL maturity
-assessment, this is not one, and say so rather than letting a number be mistaken for a badge.
+**Scope: ITIL 4's Service Continuity Management practice.** One of ITIL 4's management
+practices, assessed on its own.
 
-What it is: a defensible, repeatable reading of a documentation set, with every judgment
-traceable to a document somebody handed you.
+**Scale: the ITIL Maturity Model's practice capability levels**, which PeopleCert publishes
+in its free introduction to the model. Their definitions are reproduced verbatim below.
+
+**Criteria: this skill's own.** They are derived from failure modes observed in real continuity
+documentation, not from ITIL. This is the part to be careful about, and here is why.
+
+In the real ITIL Maturity Model, capability criteria "are based on the practice success
+factors (PSFs)" defined for each practice and "have been mapped to one of the four dimensions
+of service management". The PSFs live in the ITIL 4 practice guides, which are available
+through PeopleCert+ membership. **This skill does not have the Service Continuity Management
+PSFs and does not invent them.** Its criteria are its own, and the dimensions in Part 2 are its
+own eight rather than ITIL's four.
+
+So what you are running is an ITIL-aligned capability assessment, not an ITIL Maturity Model
+assessment. The level structure and vocabulary are ITIL's so the result is translatable. The
+criteria behind each level are this skill's, so the result is reproducible by anyone reading
+the same documents.
+
+### Do not confuse this with the two things it resembles
+
+**Capability levels are not maturity levels.** ITIL MM keeps them separate and they have
+different definitions. Maturity levels (Initial, Managed, Defined, Quantitative, Optimizing)
+describe an organization's whole Service Value System. Capability levels describe one practice.
+This assesses one practice, so it reports capability. Using the maturity names here would be
+wrong, and it is an easy mistake because the maturity names are the more familiar ones.
+
+**This cannot produce a certification.** In ITIL MM, certification is available only from a
+comprehensive assessment covering the Service Value System plus seven or more practices,
+performed by a licensed assessor. A capability assessment of a single practice is explicitly
+not certifiable even when PeopleCert runs it. If the organization wants a badge, this is not
+the route and saying so early costs nothing.
+
+**It also does not measure ITIL adoption.** PeopleCert is explicit that the model "is NOT
+designed to assess the extent or success of the implementation of ITIL guidance". Neither is
+this. An organization that has never used the word ITIL can score well here.
+
+### Mapping to ITIL's four dimensions
+
+Report this alongside the levels, so the output is usable by anyone who later runs a real
+assessment. The four dimensions of service management, and which of Part 2's dimensions feed
+each:
+
+| ITIL dimension | Fed by |
+|---|---|
+| Organizations and people | Training and awareness; Governance, review and change |
+| Information and technology | Continuity strategy and design; Scope and inventory |
+| Value streams and processes | Business impact analysis; Plans and procedures; Testing and exercises |
+| Partners and suppliers | Supplier and dependency continuity |
 
 ---
 
@@ -141,16 +184,21 @@ Assess each independently. Each gets its own level.
 
 Generic meanings first, then the per-dimension criteria.
 
-| Level | Name | What is true |
-|---|---|---|
-| 1 | Initial | Something exists. It is unowned, unverified, or both |
-| 2 | Managed | Owned, current, and covering the scope it claims |
-| 3 | Defined | Derived from analysis, consistent across documents, and followed |
-| 4 | Measured | Tested, with results recorded and objectives verified against reality |
-| 5 | Optimizing | Findings change the practice, and the loop is evidenced over time |
+PeopleCert's definitions of the practice capability levels, verbatim, followed by what each one
+means for continuity documentation specifically.
 
-**Level 1 is the floor and is never charitable.** A dimension with nothing at all is level 1
-with "nothing exists" stated, not level 0 and not unrated.
+| Level | The practice, verbatim | For a continuity documentation set |
+|---|---|---|
+| 1 | "not well organised; it is performed as initial/intuitive. It may occasionally or partially achieve its purpose through an incomplete set of activities" | Something exists. It is unowned, unverified, or both |
+| 2 | "systematically achieves its purpose through a basic set of activities supported by specialised resources" | Owned, current, and covering the scope it claims |
+| 3 | "well defined and achieves its purpose in an organised way, using dedicated resources and relying on inputs from other practices that are integrated into a service management system" | Derived from analysis, consistent across documents, and connected to the practices it depends on |
+| 4 | "achieves its purpose in a highly organised way, and its performance is continually measured and assessed in the context of the service management system" | Tested, with results recorded and objectives verified against measured reality |
+| 5 | "continually improving organisational capabilities associated with its purpose" | Findings change the practice, evidenced over time |
+
+**Level 1 is the floor, and there is no level 0.** ITIL MM defines capability criteria only from
+level 2 upward: level 1 is where a practice sits when it does not yet meet level 2's criteria.
+A dimension with nothing at all is level 1 with "nothing exists" stated, not level 0 and not
+unrated. The criteria below follow that, starting at 2.
 
 ### Entry criteria
 
@@ -249,8 +297,12 @@ ITSCM CAPABILITY REVIEW
 Organization / service: <name>            Reviewed: <date>          Reviewer: <name>
 
 ASSESSED AGAINST
-  ITIL 4 Service Continuity Management practice, five level capability structure.
-  This is not a certified ITIL Maturity Model assessment.
+  Scope:    ITIL 4 Service Continuity Management practice
+  Scale:    ITIL Maturity Model practice capability levels 1 to 5
+  Criteria: this skill's own, derived from observed failure modes, NOT from the
+            practice success factors in the licensed ITIL 4 practice guide
+  Not a certified assessment. ITIL MM certification requires a comprehensive
+  assessment of the Service Value System plus seven or more practices.
 
 DOCUMENTS
   Provided              <n>   <list>
@@ -310,6 +362,23 @@ It does not assess the organization's people and cadence from interview, which i
 disagree, the documents are what an auditor will see and the interview is what is actually
 happening, and the gap between them is worth reporting on its own.
 
-It does not issue a certification, a badge or a benchmark against other organizations. It has
-no dataset to benchmark against and inventing a comparison would be the most damaging thing a
-number like this could do.
+It does not issue a certification or a badge, for the reasons in the scope section above.
+
+It does not benchmark against other organizations. ITIL MM offers benchmarking because
+PeopleCert holds assessment data across its clients. This skill holds none, and inventing a
+comparison would be the most damaging thing a number like this could do.
+
+## Sources
+
+- **Introduction to the ITIL Maturity Model**, PeopleCert, June 2025. Retrieved 2026-09-22 from
+  `https://www.peoplecert.org/-/media/folders-reorganized/pdfs/itil-maturity-model/services-page/introduction-to-the-itil-mm.pdf`.
+  Supports: the practice capability level definitions quoted verbatim in Part 3; that capability
+  criteria "are defined for each capability level, from level 2 to level 5", "are based on the
+  practice success factors (PSFs)" and "have been mapped to one of the four dimensions of
+  service management"; the separation of practice capability levels from Service Value System
+  maturity levels; that certification is available only from a comprehensive assessment
+  covering the SVS and seven or more practices; and that the model "is NOT designed to assess
+  the extent or success of the implementation of ITIL guidance".
+- ITIL 4 practice guides, including Service Continuity Management and its practice success
+  factors, are available through PeopleCert+ membership. **Not consulted.** The criteria in this
+  skill are not derived from them and do not reproduce them.
