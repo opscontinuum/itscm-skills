@@ -131,6 +131,7 @@ A document called a Disaster Recovery Plan is frequently an ISCP, and occasional
 | Post-incident reviews for real outages | Worth more than any test |
 | Training records for recovery roles | Who knows their part |
 | Backup and restore verification records | A restore actually performed, with a date |
+| Replication lag or RPO compliance records | Whether the data loss objective has been held, continuously, or only asserted |
 
 ### The governance around the plans
 
@@ -234,8 +235,8 @@ answer whose work stopped. This is the single most common cap on the whole asses
 |---|---|
 | 2 | A recovery approach is documented for each system in scope |
 | 3 | The approach is traceable to the objectives in dimension 2; where it cannot meet them, the shortfall is documented as a tracked gap rather than a relaxed objective |
-| 4 | The achievable recovery time and data loss are **measured**, not estimated, and compared to the objectives |
-| 5 | Measured shortfalls drive design change, with at least one change evidenced |
+| 4 | The achievable recovery time and data loss are **measured**, not estimated, and compared to the objectives. Data loss specifically is measured **continuously**, not at test time: replication lag is compared against the RPO on an ongoing basis and a breach raises an incident while there is still time to act |
+| 5 | Measured shortfalls drive design change, with at least one change evidenced; time spent outside RPO is reported as a number over a period |
 
 #### 4. Plans and procedures
 
@@ -256,6 +257,13 @@ answer whose work stopped. This is the single most common cap on the whole asses
 | 5 | Findings are closed, closure is evidenced, and the test scope has widened over time |
 
 **A test that found nothing is a finding about the test.** Note it rather than crediting it.
+
+**Ask specifically how a breach of the data loss objective would be noticed.** If the answer is
+that somebody would see it during a failover, the objective is checked once, under pressure,
+at the moment it is too late to fix. Replication outside its window is a continuity incident
+with nothing down and nothing on an availability dashboard: the commitment has quietly stopped
+being met. A program that would not notice until it failed over is at level 2 on dimension 3
+however good its replication design is, because the design is unverified between tests.
 
 #### 6. Training and awareness
 
