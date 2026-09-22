@@ -1,5 +1,25 @@
 # Worked example: the business leg, run end to end
 
+**Terms used here.** The full list is [`GLOSSARY.md`](../GLOSSARY.md).
+
+| | |
+|---|---|
+| **MTD** | Maximum Tolerable Downtime |
+| **RTO** | Recovery Time Objective |
+| **RPO** | Recovery Point Objective |
+| **WRT** | Work Recovery Time |
+| **NIST** | National Institute of Standards and Technology |
+| **SP** | Special Publication |
+| **ERP** | enterprise resource planning |
+| **EBS** | E-Business Suite |
+| **EDI** | electronic data interchange |
+| **GL** | general ledger |
+| **AP** | accounts payable |
+| **AR** | accounts receivable |
+| **BI** | business intelligence |
+| **AD** | availability domain |
+
+
 **System:** Oracle E-Business Suite 12.2 on Exadata Database Service, in a primary cloud region
 with regional disaster recovery to a second region roughly 3,000 km away. A hypothetical
 enterprise; every figure below is theirs, not a default.

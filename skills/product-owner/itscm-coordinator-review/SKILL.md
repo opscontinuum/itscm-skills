@@ -5,6 +5,25 @@ description: For an ITSCM coordinator assessing a whole continuity documentation
 
 # Reviewing a continuity documentation set
 
+**Terms used here.** The full list is [`GLOSSARY.md`](../../../GLOSSARY.md).
+
+| | |
+|---|---|
+| **MTD** | Maximum Tolerable Downtime |
+| **RTO** | Recovery Time Objective |
+| **RPO** | Recovery Point Objective |
+| **BIA** | Business Impact Analysis |
+| **ISCP** | Information System Contingency Plan |
+| **ITSCP** | IT Service Continuity Plan |
+| **ITSCM** | IT Service Continuity Management |
+| **BCP** | Business Continuity Plan |
+| **CI** | configuration item |
+| **NIST** | National Institute of Standards and Technology |
+| **ITIL** | IT Infrastructure Library |
+| **MM** | Maturity Model |
+| **SVS** | Service Value System |
+
+
 You are assessing a **practice**, not a document. The other skills here each read one file.
 This one reads everything the organization has, finds what it does not have, and says where
 the practice stands.

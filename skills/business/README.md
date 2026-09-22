@@ -1,5 +1,14 @@
 # Business
 
+**Terms used here.** The full list is [`GLOSSARY.md`](../../GLOSSARY.md).
+
+| | |
+|---|---|
+| **MTD** | Maximum Tolerable Downtime |
+| **RTO** | Recovery Time Objective |
+| **RPO** | Recovery Point Objective |
+
+
 For the people whose work stops when the system stops. Process owners, finance, whoever is
 accountable for the work itself rather than for the machinery under it.
 

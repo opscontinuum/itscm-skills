@@ -5,6 +5,18 @@ description: Decide whether a contingency plan carries enough data to actually b
 
 # Can you build a program from this plan
 
+**Terms used here.** The full list is [`GLOSSARY.md`](../../../GLOSSARY.md).
+
+| | |
+|---|---|
+| **MTD** | Maximum Tolerable Downtime |
+| **RTO** | Recovery Time Objective |
+| **RPO** | Recovery Point Objective |
+| **BIA** | Business Impact Analysis |
+| **NIST** | National Institute of Standards and Technology |
+| **SP** | Special Publication |
+
+
 A plan can be complete and useless. Every heading present, every table filled,
 an assessor satisfied, and still nothing downstream can be produced from it.
 

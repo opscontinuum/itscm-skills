@@ -5,6 +5,17 @@ description: Take a filled ISCP data-collection workbook and turn it into a cont
 
 # From a filled workbook to a plan
 
+**Terms used here.** The full list is [`GLOSSARY.md`](../../../GLOSSARY.md).
+
+| | |
+|---|---|
+| **MTD** | Maximum Tolerable Downtime |
+| **RTO** | Recovery Time Objective |
+| **RPO** | Recovery Point Objective |
+| **BIA** | Business Impact Analysis |
+| **ISCP** | Information System Contingency Plan |
+
+
 Somebody has filled in the data-collection workbook (`worksheets/iscp-data-collection.xlsx`)
 and handed it to you. Your job is to check it, say what it cannot support, and write what it
 can.

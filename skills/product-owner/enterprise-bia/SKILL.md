@@ -5,6 +5,17 @@ description: For an ITSCM owner responsible for more than one program. Lays ever
 
 # The organization-wide business impact analysis
 
+**Terms used here.** The full list is [`GLOSSARY.md`](../../../GLOSSARY.md).
+
+| | |
+|---|---|
+| **RTO** | Recovery Time Objective |
+| **RPO** | Recovery Point Objective |
+| **BIA** | Business Impact Analysis |
+| **ITSCM** | IT Service Continuity Management |
+| **DR** | disaster recovery |
+
+
 Every program in an organization can have a correct, internally consistent BIA, and the
 organization can still be unable to recover, because the plans were written as though each
 program were alone.

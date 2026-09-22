@@ -5,6 +5,31 @@ description: Interview an organization to determine the current state of its IT 
 
 # Assessing an ITSCM program, and routing it to a roadmap
 
+**Terms used here.** The full list is [`GLOSSARY.md`](../../../GLOSSARY.md).
+
+| | |
+|---|---|
+| **MTD** | Maximum Tolerable Downtime |
+| **RTO** | Recovery Time Objective |
+| **RPO** | Recovery Point Objective |
+| **BIA** | Business Impact Analysis |
+| **ISCP** | Information System Contingency Plan |
+| **ITSCP** | IT Service Continuity Plan |
+| **ITSCM** | IT Service Continuity Management |
+| **DRP** | Disaster Recovery Plan |
+| **BCP** | Business Continuity Plan |
+| **COOP** | Continuity of Operations Plan |
+| **SSP** | System Security Plan |
+| **CI** | configuration item |
+| **CMDB** | configuration management database |
+| **APM** | application performance monitoring |
+| **NIST** | National Institute of Standards and Technology |
+| **SP** | Special Publication |
+| **ITIL** | IT Infrastructure Library |
+| **CP** | Contingency Planning |
+| **CNSSI** | Committee on National Security Systems Instruction |
+
+
 You are in front of people who run an IT service continuity program, or who
 have been told they have one. Find out what is actually there, then say what
 the next month, quarter and year should contain.

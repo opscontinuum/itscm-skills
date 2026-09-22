@@ -5,6 +5,26 @@ description: Audit an Information System Contingency Plan against FedRAMP SSP Ap
 
 # Auditing an ISCP for completeness
 
+**Terms used here.** The full list is [`GLOSSARY.md`](../../../GLOSSARY.md).
+
+| | |
+|---|---|
+| **MTD** | Maximum Tolerable Downtime |
+| **RTO** | Recovery Time Objective |
+| **RPO** | Recovery Point Objective |
+| **BIA** | Business Impact Analysis |
+| **ISCP** | Information System Contingency Plan |
+| **DRP** | Disaster Recovery Plan |
+| **SSP** | System Security Plan |
+| **SLA** | service level agreement |
+| **NIST** | National Institute of Standards and Technology |
+| **SP** | Special Publication |
+| **OMB** | Office of Management and Budget |
+| **CSO** | Cloud Service Offering |
+| **NOC** | network operations center |
+| **OS** | operating system |
+
+
 You have been given a document that claims to be an Information System
 Contingency Plan. Decide what it is missing.
 

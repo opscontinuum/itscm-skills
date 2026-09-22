@@ -5,6 +5,22 @@ description: Facilitate the Business Impact Analysis that becomes ISCP Appendix 
 
 # Running the Business Impact Analysis
 
+**Terms used here.** The full list is [`GLOSSARY.md`](../../../GLOSSARY.md).
+
+| | |
+|---|---|
+| **MTD** | Maximum Tolerable Downtime |
+| **RTO** | Recovery Time Objective |
+| **RPO** | Recovery Point Objective |
+| **WRT** | Work Recovery Time |
+| **BIA** | Business Impact Analysis |
+| **ISCP** | Information System Contingency Plan |
+| **CMDB** | configuration management database |
+| **NIST** | National Institute of Standards and Technology |
+| **SP** | Special Publication |
+| **OS** | operating system |
+
+
 This is a facilitation procedure, not an audit. You are in a room with people, getting numbers
 out of them that they will later be held to.
 

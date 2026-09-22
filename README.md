@@ -1,5 +1,22 @@
 # itscm-skills
 
+**Terms used here.** The full list is [`GLOSSARY.md`](GLOSSARY.md).
+
+| | |
+|---|---|
+| **MTD** | Maximum Tolerable Downtime |
+| **RTO** | Recovery Time Objective |
+| **RPO** | Recovery Point Objective |
+| **BIA** | Business Impact Analysis |
+| **ISCP** | Information System Contingency Plan |
+| **ITSCM** | IT Service Continuity Management |
+| **SSP** | System Security Plan |
+| **NIST** | National Institute of Standards and Technology |
+| **SP** | Special Publication |
+| **ITIL** | IT Infrastructure Library |
+| **DR** | disaster recovery |
+
+
 A continuity program you can run by hand.
 
 These are instruction documents for working out what happens when a system stops, how long the
@@ -413,6 +430,16 @@ and every level is reported alongside the specific criterion blocking the next o
 exists so a coordinator can compare forty systems or show movement across two years, which a
 gap list genuinely cannot do. The sentence naming the blocker is still the part anybody acts
 on.
+
+## Acronyms are defined where they are used
+
+Every acronym is expanded the first time a document uses it, and each document carries a short
+table of just the terms it uses. [`GLOSSARY.md`](GLOSSARY.md) holds all of them in one place.
+
+The per-document tables are not redundancy for its own sake. A skill is read on its own, often
+by a model with no filesystem working from a pasted document, and a reader who has to leave the
+page to find out what MTD stands for has been sent somewhere they may not be able to go. The
+same reasoning governs citations below.
 
 ## This repository cites nothing outside itself
 
