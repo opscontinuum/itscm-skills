@@ -243,8 +243,8 @@ report look finished while quietly committing money nobody approved.
 
 > **There is no skill for your part yet.** This section tells you what you own and what to
 > refuse. It does not walk you through a session. The infrastructure and application interviews
-> exist in `itscm-onboarding` and have not been ported here, so a start-to-finish walkthrough
-> currently stops after the product owner.
+> have not been written yet, so a start-to-finish walkthrough currently stops after the
+> product owner.
 
 Your part is to say what the system can actually do, and to keep that separate from what the
 business needs it to do.
@@ -271,7 +271,7 @@ and want to know whether it can actually drive anything.
 
 | Skill | What it does |
 |---|---|
-| [`itscm-program-assessment`](skills/itscm-program-assessment/) | Interview an organization to find out what its continuity program actually contains, then produce a one month, three month and one year roadmap. Assumes none of the opscontinuum tooling is installed. |
+| [`itscm-program-assessment`](skills/itscm-program-assessment/) | Interview an organization to find out what its continuity program actually contains, then produce a one month, three month and one year roadmap. Assumes no continuity tooling is installed. |
 | [`enterprise-bia`](skills/enterprise-bia/) | Lay every program's BIA against the others, find where they contend for the same resource, DR capacity or people, and produce a ranked recovery priority list plus a board paper. Never defaults a contention to the tightest deadline. |
 | [`bia-workshop`](skills/bia-workshop/) | Facilitate the Business Impact Analysis that becomes ISCP Appendix L, in the order NIST states it. Keeps recovery objectives keyed to business processes rather than to systems or tiers. |
 | [`itscm-coordinator-review`](skills/itscm-coordinator-review/) | Assess a whole continuity documentation set rather than one plan. Requests every document it needs, records what did not arrive, and reports a capability level per dimension against ITIL 4 Service Continuity Management. |
@@ -305,10 +305,10 @@ them would put IT in the room when the recovery objectives are set.
 
 ## A worked example
 
-[`examples/oci-itscp-business-leg.md`](examples/oci-itscp-business-leg.md) is the business leg
-run end to end against a real architecture: Oracle E-Business Suite on Exadata, with the
-product owner asking for realtime operation, 99.9% availability and zero or near-zero data
-loss.
+[`examples/ebs-exadata-business-leg.md`](examples/ebs-exadata-business-leg.md) is the business
+leg run end to end against a real architecture: Oracle E-Business Suite on Exadata across two
+regions, with the product owner asking for realtime operation, 99.9% availability and zero or
+near-zero data loss. The architecture it needs is reproduced inside it, so it stands alone.
 
 It is here because it shows what a finished business leg actually contains, and because running
 it surfaced things the method alone does not. The most useful: **an RPO cannot vary by process
@@ -367,14 +367,14 @@ what you will do with the output first, and still work when the answer is "I can
 That last rule is the one that matters. What somebody tells you is not what you measured, and
 the report says which it was.
 
-## This does not replace the plugin path
+## The manual path is one of two
 
-Anything picoagent does is a plugin. That architecture is unchanged.
+The same method can be carried by tooling: a collector reading the running systems, a generator
+writing into the document, a plug-in per source. These skills are what an organization uses when
+it cannot run any of that, which is most organizations most of the time.
 
-The two paths carry the same method to different places. A plugin runs inside the tooling,
-reads real systems and writes into a generated document. These skills are what an organization
-uses when it cannot run any of that. Where both exist for one job, the plugin is authoritative
-about mechanics and the skill is authoritative about judgment. Neither is a degraded copy.
+Where both exist for one job, the tooling is authoritative about mechanics and the skill is
+authoritative about judgment. Neither is a degraded copy of the other.
 
 ## Every requirement starts unmet
 
@@ -400,20 +400,18 @@ exists so a coordinator can compare forty systems or show movement across two ye
 gap list genuinely cannot do. The sentence naming the blocker is still the part anybody acts
 on.
 
-## Citing anything outside this repository
+## This repository cites nothing outside itself
 
-A path in these documents either resolves inside this repository or is a full URL. Nothing in
-between.
+Every path in these documents resolves inside this repository, and every fact a reader needs is
+written here.
 
-The rule is here because it was broken. The worked example cited `docs/02-mtd-tiers.md` and
-`checklists/tier-assignment-workshop.md`, which are files in
-[`opscontinuum/oci-itscp`](https://github.com/opscontinuum/oci-itscp). They read as local paths,
-and anyone following them found nothing.
+The rule exists because it was broken once. The worked example cited an architecture by file
+path, those files lived in a different repository, and anyone following them found nothing.
+Rather than linking out, the architecture the example depends on is now reproduced inside it.
 
-Two related repositories are **private**, so they are not cited here at all rather than cited as
-links that dead-end: `devsecops-planning` holds the program goals and the gap analysis, and
-`ci-observe` is the implementation. Where something tracked in either matters to a reader here,
-it is stated in full rather than pointed at.
+Duplication is the deliberate choice. A skill that sends its reader somewhere else has assumed
+the reader can get there, and the reader is frequently a model with no filesystem working from a
+document somebody pasted into a chat window. Anything worth citing is worth restating.
 
 ## Provenance
 

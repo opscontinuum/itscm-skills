@@ -1,33 +1,64 @@
 # Worked example: the business leg, run end to end
 
-**System:** Oracle E-Business Suite on Exadata, OCI `us-ashburn-1` with regional DR to
-`us-phoenix-1`.
+**System:** Oracle E-Business Suite 12.2 on Exadata Database Service, in a primary cloud region
+with regional disaster recovery to a second region roughly 3,000 km away. A hypothetical
+enterprise; every figure below is theirs, not a default.
 
-**The architecture is not described here.** It lives in
-[`opscontinuum/oci-itscp`](https://github.com/opscontinuum/oci-itscp), a separate public
-repository, and every file path cited below names a file in *that* repository, not this one.
-The three cited most:
-
-- [`docs/01-architecture.md`](https://github.com/opscontinuum/oci-itscp/blob/main/docs/01-architecture.md) the two-region, two-availability-domain design
-- [`docs/02-mtd-tiers.md`](https://github.com/opscontinuum/oci-itscp/blob/main/docs/02-mtd-tiers.md) the recovery tiers and what each one's replication achieves
-- [`checklists/tier-assignment-workshop.md`](https://github.com/opscontinuum/oci-itscp/blob/main/checklists/tier-assignment-workshop.md) the session this example performs
-
-**Role played:** product owner for the program, who came in with three requirements: the system
+**Role played:** product owner for the program, who came in with three requirements. The system
 is operated as realtime, availability is committed at **99.9%**, and data loss is to be **zero
 or near zero**.
 
 **Session:** `bia-workshop`, steps 1 through 4. Signatures are assumed for this exercise; the
-mechanism that makes a signature bind to content is not yet designed.
+mechanism that binds a signature to the content signed is not yet designed.
 
-This is what a completed business leg looks like. Every number below is the hypothetical
-business's, not a default, and a real program replaces all of them.
+This is what a completed business leg looks like.
+
+## The architecture, as far as the business leg needs it
+
+Reproduced here so this example stands on its own. The business does not need the design, only
+the four facts its requirements will be tested against.
+
+**Two replication legs, with different properties.** This is the central design choice, and it
+separates the likely failure from the catastrophic one rather than compromising on one
+mechanism for both.
+
+| Failure | Mechanism | Data loss |
+|---|---|---|
+| One availability domain lost in the primary region | Synchronous database replication to a standby in a second availability domain, under a maximum-availability protection mode | **Zero**, while the standby is synchronized |
+| The whole primary region lost | Asynchronous replication to the second region | **Under 30 seconds**, measured transport lag |
+
+**Recovery is two numbers, not one.** The plan separates the time to make the system
+technically available from the time to make it usable by the business:
+
+- **RTO**, incident to technically available.
+- **WRT**, technically available to business-usable: re-submitting in-flight batch work,
+  replaying interfaces, reconciling, validating a period close.
+- **MTD = RTO + WRT.** This decomposition is the plan's own. NIST names the second interval only
+  as "additional processing time" and gives it no name.
+
+**Four service tiers**, of which two matter below:
+
+| Tier | RPO | RTO | WRT | MTD |
+|---|---|---|---|---|
+| **0** | 0 in-region while synchronized; under 30 s cross-region | 15 min in-region; **60 min cross-region** | ~30 min | 2 hr |
+| **1** | 5 min | 4 hr | ~2 hr | 6 hr |
+
+**Two conditions the business will need to know about.** The 60 minute cross-region RTO holds
+only if the application's logical host names are preserved through failover; without that, add
+roughly three to five hours for a configuration cleanup and rebuild across all tiers. And every
+WRT figure above is engineering judgment rather than measurement, pending a first full drill, so
+the MTD column is a design target rather than a commitment until that drill happens.
+
+**Freeze rules already agreed by operations:** no cross-region failover during period close
+without CFO sign-off, none mid-patching-cycle, and if the recovery point is breached the batch
+processing tier stays down pending Finance clearance.
 
 ---
 
 ## Step 0: what the product owner asked for, checked against the architecture
 
-Before any process was named, three stated requirements were tested against what
-[`docs/02-mtd-tiers.md`](https://github.com/opscontinuum/oci-itscp/blob/main/docs/02-mtd-tiers.md) says the system can do. Two hold. One needed a correction the product
+Before any process was named, three stated requirements were tested against what the
+architecture above says the system can do. Two hold. One needed a correction the product
 owner accepted.
 
 ### 99.9% and a fifteen minute recovery are compatible. 99.99% would not have been
@@ -50,8 +81,7 @@ more rigorous one.
 
 ### Zero RPO is available, and it is available in one direction only
 
-[`docs/02-mtd-tiers.md`](https://github.com/opscontinuum/oci-itscp/blob/main/docs/02-mtd-tiers.md) and [`docs/01-architecture.md`](https://github.com/opscontinuum/oci-itscp/blob/main/docs/01-architecture.md) give two replication legs with different
-properties:
+The architecture gives two replication legs with different properties:
 
 | Failure | Mechanism | Data loss |
 |---|---|---|
@@ -87,8 +117,7 @@ This is the kind of thing that surfaces only when the objectives are written dow
 
 ## Step 1: the business processes
 
-Nine, taken from [`checklists/tier-assignment-workshop.md`](https://github.com/opscontinuum/oci-itscp/blob/main/checklists/tier-assignment-workshop.md) §2 and described in the business's
-own words.
+Nine, described in the business's own words.
 
 | Mission/Business process | Description | Owner |
 |---|---|---|
@@ -159,12 +188,12 @@ from the replication boundary.
 | Procurement | | 12 hr | 4 hr | 0 | Requisitions queue rather than being lost |
 | Reporting and BI | | 24 hr | 12 hr | ≤ 1 hr | Internal convenience |
 
-Every RTO is shorter than its MTD, as NIST SP 800-34 Rev. 1 §3.2.1 requires, with the WRT from
-[`docs/02`](https://github.com/opscontinuum/oci-itscp/blob/main/docs/02-mtd-tiers.md) §2 accounting for the difference.
+Every RTO is shorter than its MTD, as NIST SP 800-34 Rev. 1 §3.2.1 requires, with the WRT above
+accounting for the difference.
 
 **Three processes carry two rows.** Their tolerance changes with the calendar, and one averaged
 number would be far too loose inside the window and needlessly expensive for the other eleven
-months. The freeze rules in [`checklists/tier-assignment-workshop.md`](https://github.com/opscontinuum/oci-itscp/blob/main/checklists/tier-assignment-workshop.md) §5 are the operational
+months. The freeze rules recorded above are the operational
 expression of these rows.
 
 ### Where the margin actually is
@@ -177,8 +206,8 @@ Checked against the architecture rather than assumed, and one result is uncomfor
 | **Region** | **60 min** | **30 min** | **90 min** | **30 min of margin** |
 
 The 60 minute cross-region figure is itself conditional on EBS logical host names being
-preserved, per [`docs/01-architecture.md`](https://github.com/opscontinuum/oci-itscp/blob/main/docs/01-architecture.md) §5.1. Without that, [`docs/02`](https://github.com/opscontinuum/oci-itscp/blob/main/docs/02-mtd-tiers.md) §5 adds three to five
-hours for `FND_CONC_CLONE.SETUP_CLEAN` and AutoConfig, and **order entry breaches its MTD in a
+preserved. Without that, the configuration cleanup adds three to five
+hours across all tiers, and **order entry breaches its MTD in a
 regional event.**
 
 Recorded as a business-visible dependency on a technical decision, which is the correct place

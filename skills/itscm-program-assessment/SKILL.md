@@ -1,6 +1,6 @@
 ---
 name: itscm-program-assessment
-description: Interview an organization to determine the current state of its IT service continuity management program, then produce a one month, three month and one year roadmap to the point where the opscontinuum tooling can be installed, tell the truth, and be acted on. Assumes none of that tooling is present in the environment being assessed.
+description: Interview an organization to determine the current state of its IT service continuity management program, then produce a one month, three month and one year roadmap to the point where continuity tooling can be installed, tell the truth, and be acted on. Assumes no such tooling is present in the environment being assessed.
 ---
 
 # Assessing an ITSCM program, and routing it to a roadmap
@@ -9,11 +9,11 @@ You are in front of people who run an IT service continuity program, or who
 have been told they have one. Find out what is actually there, then say what
 the next month, quarter and year should contain.
 
-**Assume none of our tooling is installed.** No `ci-observe`, no `iscp-author`,
-no `itscm-onboarding`, no plug-in, no collector. Every question below is
-answerable by a person in the room or by a read-only command they run
-themselves on their own laptop. If you find yourself wanting to run our
-software to answer a question, the question is wrong for this skill.
+**Assume no continuity tooling is installed.** No collector reading the running
+systems, no generator producing the plan, no plug-in, no agent. Every question
+below is answerable by a person in the room or by a read-only command they run
+themselves on their own laptop. If you find yourself wanting to run software to
+answer a question, the question is wrong for this skill.
 
 ## What this produces, and what it refuses to produce
 
