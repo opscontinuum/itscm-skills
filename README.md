@@ -32,109 +32,79 @@ run in software.
 Color is completeness: green is done, red is nothing exists yet.
 
 ```mermaid
-flowchart TD
-    classDef full fill:#1b7f3b,stroke:#0d4d22,color:#ffffff,font-weight:bold
-    classDef half fill:#f2b705,stroke:#a87e00,color:#1a1a1a,font-weight:bold
-    classDef some fill:#e8710a,stroke:#9c4a00,color:#ffffff
-    classDef none fill:#c62828,stroke:#7f1d1d,color:#ffffff,font-weight:bold
+flowchart LR
+    classDef full fill:#e4f2e9,stroke:#1b7f3b,stroke-width:2px,color:#123
+    classDef half fill:#fdf3d6,stroke:#b58600,stroke-width:2px,color:#321
+    classDef some fill:#fdeadb,stroke:#d2650a,stroke-width:2px,color:#321
+    classDef none fill:#f7dede,stroke:#c62828,stroke-width:2px,color:#411
 
-    subgraph BUS["1 . BUSINESS  ·  states the requirement"]
+    subgraph BUS["1 · BUSINESS"]
         direction TB
-        B1[Name the business processes]
-        B2[Define the impact scale<br/>severe / moderate / minimal]
-        B3[Rate impact per process]
-        B4[Set MTD, RTO and RPO<br/>per process]
-        B5[Record alternate ways of working]
-        B6[Sign the objectives]
-        B1 --> B2 --> B3 --> B4 --> B5 --> B6
+        B1(["Name the processes"]) --> B2(["Define the impact scale"]) --> B3(["Rate impact per process"])
+        B3 --> B4(["Set MTD, RTO, RPO"]) --> B5(["Alternate ways of working"]) --> B6(["Sign the objectives"])
     end
 
-    subgraph PO["2 . PRODUCT OWNER  ·  assembles one program's plan"]
+    subgraph PO["2 · PRODUCT OWNER"]
         direction TB
-        P2[Audit a plan for structure]
-        P3[Audit a plan for derivability]
-        P4[Collect into the workbook]
-        P5[Build the resource inventory]
-        P6[Map each process to its resources]
-        P7[Derive the recovery priority order]
-        P8[Write the plan]
-        P9[Onboard a PROGRAM<br/>not a single system]
-        P2 --> P3 --> P4 --> P5 --> P6 --> P7 --> P8 --> P9
+        P2(["Audit plan: structure"]) --> P3(["Audit plan: derivability"]) --> P4(["Collect into the workbook"])
+        P4 --> P5(["Resource inventory"]) --> P6(["Map process to resources"]) --> P7(["Derive recovery priority"])
+        P7 --> P8(["Write the plan"]) --> P9(["Onboard a program"])
     end
 
-    subgraph OWN["3 . ITSCM OWNER  ·  owns the practice across programs"]
+    subgraph OWN["3 · ITSCM OWNER"]
         direction TB
-        P1[Assess what the organization has]
-        P10[Find contention across programs]
-        P11[Review capability against ITIL]
-        P1 --> P10 --> P11
+        P1(["Assess the organization"]) --> P10(["Contention across programs"]) --> P11(["Capability against ITIL"])
     end
 
-    subgraph IT["4 . IT  ·  states the capability"]
+    subgraph IT["4 · IT"]
         direction TB
-        I1[Infrastructure interview]
-        I2[Application interview]
-        I3[Governance interview]
-        I4[Continuity interview]
-        I5[State the achievable RTO and RPO]
-        I6[Author the DR runbooks]
-        I7[Capture the freeze windows]
-        I8[Run the drill and record it]
-        I9[Measure replication lag<br/>against the signed RPO]
-        I1 --> I2 --> I3 --> I4 --> I5 --> I6 --> I7 --> I8 --> I9
+        I1(["Infrastructure interview"]) --> I2(["Application interview"]) --> I3(["Governance interview"])
+        I3 --> I4(["Continuity interview"]) --> I5(["Achievable RTO and RPO"]) --> I6(["Author DR runbooks"])
+        I6 --> I7(["Capture freeze windows"]) --> I8(["Run the drill"]) --> I9(["Measure replication lag"])
     end
 
-    subgraph APP["5 . THE PRODUCT  ·  what it must hold"]
+    subgraph APP["5 · THE PRODUCT"]
         direction TB
-        X1[Reconciliation across<br/>four truth claims]
-        X2[Approval control<br/>two principals]
-        X3[Execution and audit record]
-        X4[Domain model for<br/>programs and objectives]
-        X5[Storage for program content<br/>versioned and signed]
-        X6[Onboarding surface]
-        X7[Sign-off surface<br/>routed to the right signer]
-        X8[Capability picture<br/>claimed vs evidenced]
-        X9[Failover and DR actions]
-        X10[MTD countdown and hold-down]
-        X1 --> X2 --> X3
-        X4 --> X5 --> X6 --> X7 --> X8
-        X9 --> X10
+        X1(["Reconciliation"]) --> X2(["Approval control"]) --> X3(["Execution record"])
+        X4(["Domain model"]) --> X5(["Storage, signed"]) --> X6(["Onboarding surface"])
+        X6 --> X7(["Sign-off routing"]) --> X8(["Capability picture"])
+        X9(["Failover and DR"]) --> X10(["MTD countdown"])
     end
 
-    P1 -.->|"where to start"| P2
-    B6 -.->|"the signed requirement"| P4
-    I5 -.->|"the real capability"| P6
-    P6 -.->|"what IT must deliver"| I6
-    P8 -.->|"one program's plan, per program"| P10
-    P9 -.->|"needs all of section 5"| X4
-    I9 -.->|"breach raises an incident"| X10
+    P1 -.-> P2
+    B6 == "the requirement" ==> P4
+    I5 == "the capability" ==> P6
+    P6 -.-> I6
+    P8 -.-> P10
+    P9 -.-> X4
+    I9 -.-> X10
 
     class B1,B2,B3,B4,B5 full
     class B6 half
     class P2,P3,P4,P7,P8 full
-    class P1,P10,P11 full
     class P5,P6 half
     class P9 none
+    class P1,P10,P11 full
     class I8 some
     class I1,I2,I3,I4,I5,I6,I7,I9 none
     class X1,X2,X3 full
     class X6 some
     class X4,X5,X7,X8,X9,X10 none
 
-    click B1 href "skills/business/bia-workshop/" "bia-workshop, step 1: name the processes"
-    click B2 href "skills/business/bia-workshop/" "bia-workshop, step 2: build the impact scale"
-    click B3 href "skills/business/bia-workshop/" "bia-workshop, step 2: rate each process"
-    click B4 href "skills/business/bia-workshop/" "bia-workshop, step 3: MTD then RTO then RPO"
-    click B5 href "skills/business/bia-workshop/" "bia-workshop, step 3: alternate means"
-    click B6 href "skills/business/bia-workshop/" "bia-workshop: get it signed in the room"
-    click P1 href "skills/itscm-owner/itscm-program-assessment/" "itscm-program-assessment"
+    click B1 href "skills/business/bia-workshop/" "bia-workshop"
+    click B2 href "skills/business/bia-workshop/" "bia-workshop"
+    click B3 href "skills/business/bia-workshop/" "bia-workshop"
+    click B4 href "skills/business/bia-workshop/" "bia-workshop"
+    click B5 href "skills/business/bia-workshop/" "bia-workshop"
+    click B6 href "skills/business/bia-workshop/" "bia-workshop"
     click P2 href "skills/product-owner/iscp-completeness/" "iscp-completeness"
     click P3 href "skills/product-owner/iscp-sufficiency/" "iscp-sufficiency"
-    click P4 href "worksheets/" "the data-collection workbook"
+    click P4 href "worksheets/" "the workbook"
     click P5 href "worksheets/" "workbook tab 6"
     click P6 href "worksheets/" "workbook tab 7, the join"
-    click P7 href "skills/business/bia-workshop/" "bia-workshop, step 4: derive priorities"
+    click P7 href "skills/business/bia-workshop/" "bia-workshop, step 4"
     click P8 href "skills/product-owner/iscp-from-worksheet/" "iscp-from-worksheet"
+    click P1 href "skills/itscm-owner/itscm-program-assessment/" "itscm-program-assessment"
     click P10 href "skills/itscm-owner/enterprise-bia/" "enterprise-bia"
     click P11 href "skills/itscm-owner/itscm-coordinator-review/" "itscm-coordinator-review"
 ```
