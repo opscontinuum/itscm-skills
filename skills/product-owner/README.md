@@ -1,18 +1,24 @@
 # Product owner
 
-For whoever is accountable for a system or a program and has to produce a continuity plan for
-it. This side assembles what the other two produce.
+For the program manager accountable for a group of applications or infrastructure, who has to
+produce and defend a continuity plan for it.
 
 | Skill | What it does |
 |---|---|
-| [`itscm-program-assessment`](itscm-program-assessment/) | Start here. Eight questions about what exists today, then a one month, three month and one year roadmap |
 | [`iscp-completeness`](iscp-completeness/) | Is an existing plan intact against the standard that governs it |
 | [`iscp-sufficiency`](iscp-sufficiency/) | Can a program actually be derived from what that plan contains. A plan can pass one of these and fail the other |
 | [`iscp-from-worksheet`](iscp-from-worksheet/) | Turn a filled data-collection workbook into the plan, refusing to write any section the data does not support |
-| [`enterprise-bia`](enterprise-bia/) | Lay every program's BIA against the others and find where they contend for the same resource, DR capacity or people |
-| [`itscm-coordinator-review`](itscm-coordinator-review/) | Assess a whole documentation set and report a capability level per dimension |
 
-**Two of these serve a coordinator rather than a single system's owner.** `enterprise-bia` and
-`itscm-coordinator-review` are for whoever owns continuity across programs, which in a larger
-organization is a different person. They sit here because that role assembles rather than
-states, which is what this folder is.
+**Each of these reads one program's artifact.** Anything that reads across programs, or assesses
+the practice rather than a document, is in [`../itscm-owner/`](../itscm-owner/).
+
+## Where to start
+
+If a plan exists, audit it twice before touching it: `iscp-completeness` for whether the
+document is intact, `iscp-sufficiency` for whether anything can be built from what it says. Those
+answer different questions and a plan can pass one and fail the other.
+
+If no plan exists, the order is the business impact analysis first
+([`../business/bia-workshop/`](../business/bia-workshop/)), then the workbook, then
+`iscp-from-worksheet`. Writing the plan before the analysis produces a document that describes
+the architecture rather than what the business needs.

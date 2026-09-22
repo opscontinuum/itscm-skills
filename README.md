@@ -25,8 +25,9 @@ spreadsheet and the right people in a room will do.
 
 ## The whole process, and how much of it exists
 
-Business sets the requirement, the product owner assembles it, IT states what can actually be
-delivered. Color is completeness: green is done, red is nothing exists yet.
+Business states the requirement, the product owner assembles one program's plan, the ITSCM
+owner answers for the practice across programs, and IT states what can actually be delivered.
+Color is completeness: green is done, red is nothing exists yet.
 
 ```mermaid
 flowchart TD
@@ -46,9 +47,8 @@ flowchart TD
         B1 --> B2 --> B3 --> B4 --> B5 --> B6
     end
 
-    subgraph PO["2 . PRODUCT OWNER  ·  assembles the program"]
+    subgraph PO["2 . PRODUCT OWNER  ·  assembles one program's plan"]
         direction TB
-        P1[Assess what exists today]
         P2[Audit a plan for structure]
         P3[Audit a plan for derivability]
         P4[Collect into the workbook]
@@ -57,13 +57,18 @@ flowchart TD
         P7[Derive the recovery priority order]
         P8[Write the plan]
         P9[Onboard a PROGRAM<br/>not a single system]
-        P10[Find contention across programs]
-        P11[Review capability against ITIL]
-        P1 --> P2 --> P3 --> P4 --> P5 --> P6 --> P7 --> P8
-        P8 --> P9 --> P10 --> P11
+        P2 --> P3 --> P4 --> P5 --> P6 --> P7 --> P8 --> P9
     end
 
-    subgraph IT["3 . IT  ·  states the capability"]
+    subgraph OWN["3 . ITSCM OWNER  ·  owns the practice across programs"]
+        direction TB
+        P1[Assess what the organization has]
+        P10[Find contention across programs]
+        P11[Review capability against ITIL]
+        P1 --> P10 --> P11
+    end
+
+    subgraph IT["4 . IT  ·  states the capability"]
         direction TB
         I1[Infrastructure interview]
         I2[Application interview]
@@ -77,7 +82,7 @@ flowchart TD
         I1 --> I2 --> I3 --> I4 --> I5 --> I6 --> I7 --> I8 --> I9
     end
 
-    subgraph APP["4 . THE PRODUCT  ·  what it must hold"]
+    subgraph APP["5 . THE PRODUCT  ·  what it must hold"]
         direction TB
         X1[Reconciliation across<br/>four truth claims]
         X2[Approval control<br/>two principals]
@@ -94,15 +99,18 @@ flowchart TD
         X9 --> X10
     end
 
+    P1 -.->|"where to start"| P2
     B6 -.->|"the signed requirement"| P4
     I5 -.->|"the real capability"| P6
     P6 -.->|"what IT must deliver"| I6
-    P9 -.->|"needs all of section 4"| X4
+    P8 -.->|"one program's plan, per program"| P10
+    P9 -.->|"needs all of section 5"| X4
     I9 -.->|"breach raises an incident"| X10
 
     class B1,B2,B3,B4,B5 full
     class B6 half
-    class P1,P2,P3,P4,P7,P8,P10,P11 full
+    class P2,P3,P4,P7,P8 full
+    class P1,P10,P11 full
     class P5,P6 half
     class P9 none
     class I8 some
@@ -117,7 +125,7 @@ flowchart TD
     click B4 href "skills/business/bia-workshop/" "bia-workshop, step 3: MTD then RTO then RPO"
     click B5 href "skills/business/bia-workshop/" "bia-workshop, step 3: alternate means"
     click B6 href "skills/business/bia-workshop/" "bia-workshop: get it signed in the room"
-    click P1 href "skills/product-owner/itscm-program-assessment/" "itscm-program-assessment"
+    click P1 href "skills/itscm-owner/itscm-program-assessment/" "itscm-program-assessment"
     click P2 href "skills/product-owner/iscp-completeness/" "iscp-completeness"
     click P3 href "skills/product-owner/iscp-sufficiency/" "iscp-sufficiency"
     click P4 href "worksheets/" "the data-collection workbook"
@@ -125,8 +133,8 @@ flowchart TD
     click P6 href "worksheets/" "workbook tab 7, the join"
     click P7 href "skills/business/bia-workshop/" "bia-workshop, step 4: derive priorities"
     click P8 href "skills/product-owner/iscp-from-worksheet/" "iscp-from-worksheet"
-    click P10 href "skills/product-owner/enterprise-bia/" "enterprise-bia"
-    click P11 href "skills/product-owner/itscm-coordinator-review/" "itscm-coordinator-review"
+    click P10 href "skills/itscm-owner/enterprise-bia/" "enterprise-bia"
+    click P11 href "skills/itscm-owner/itscm-coordinator-review/" "itscm-coordinator-review"
 ```
 
 ### Reading it
@@ -162,7 +170,7 @@ an accepted risk. Collapse the two legs into one conversation and that gap stops
 
 ## Find your way in
 
-Three people have to do different things here, and doing somebody else's part is the most
+Four people have to do different things here, and doing somebody else's part is the most
 common way this goes wrong.
 
 ### You own a business process
@@ -190,29 +198,33 @@ because nobody promised it.
 Read [`bia-workshop`](skills/business/bia-workshop/) if you want to know what the session will ask
 before you walk into it.
 
-### You own a system and have to produce a plan
+### You own one program and have to produce its plan
 
-You are running this. The order matters, because each step feeds the next and doing them out of
+You are the program manager for one group of applications or infrastructure, and you are
+accountable for that program's plan. Your scope is one artifact. Reading across programs, and
+judging the continuity practice itself, belongs to the ITSCM owner in the next section.
+
+Which path you take depends on whether a plan already exists.
+
+If one does, audit it twice. [`iscp-completeness`](skills/product-owner/iscp-completeness/) asks
+whether the document is intact against the standard that governs it.
+[`iscp-sufficiency`](skills/product-owner/iscp-sufficiency/) asks whether anything can be derived
+from what it contains. A plan can pass either and fail the other, so run both before you decide
+whether to repair the plan or start again.
+
+If no plan exists, the order matters, because each step feeds the next and doing them out of
 order is how plans end up describing infrastructure instead of the business.
 
-1. Find out what already exists.
-   [`itscm-program-assessment`](skills/product-owner/itscm-program-assessment/) asks eight questions about
-   your organization and produces a one month, three month and one year roadmap. Start here
-   even when you are sure the answer is "nothing", because that produces a three item roadmap
-   rather than a forty item one.
-2. If a plan already exists, test it twice.
-   [`iscp-completeness`](skills/product-owner/iscp-completeness/) asks whether the document is intact against
-   the standard that governs it. [`iscp-sufficiency`](skills/product-owner/iscp-sufficiency/) asks whether
-   anything can be built from what it contains. A plan can pass either and fail the other.
-3. Collect the data.
+1. Run the session that produces the numbers.
+   [`bia-workshop`](skills/business/bia-workshop/) is half a day with the business, and it is
+   where the recovery objectives come from. Hold it before you collect anything technical, or
+   the targets get set against what the architecture already happens to do.
+2. Collect the data.
    [`worksheets/iscp-data-collection.xlsx`](worksheets/) has a tab for each thing a plan needs.
    Fill it in the order the tabs are numbered.
-4. Run the session that produces the numbers.
-   [`bia-workshop`](skills/business/bia-workshop/) is half a day with the business, and it is where the
-   recovery objectives come from.
-5. Write the plan.
-   [`iscp-from-worksheet`](skills/product-owner/iscp-from-worksheet/) takes the filled workbook and produces
-   the document, refusing to write any section the data does not support.
+3. Write the plan.
+   [`iscp-from-worksheet`](skills/product-owner/iscp-from-worksheet/) takes the filled workbook
+   and produces the document, refusing to write any section the data does not support.
 
 One warning, because it is the thing most likely to sink you. Tab 7 of the workbook records
 which components each business process depends on. Every standard template leaves it out, so
@@ -220,41 +232,52 @@ almost everybody skips it, and without it there is no route from "payroll matter
 "restore the database first". A plan missing that tab can look finished and still not say what
 to fix first.
 
-### You coordinate continuity across more than one system
-
-You are not producing a plan. You are answering whether the practice is in good order, usually
-for somebody who will not read a plan.
-
-[`itscm-coordinator-review`](skills/product-owner/itscm-coordinator-review/) is yours. It asks for the whole
-documentation set in one request, records what did not arrive as evidence in its own right, and
-reports a capability level from 1 to 5 across eight dimensions, using the [ITIL](GLOSSARY.md "IT Infrastructure Library") Maturity Model's
-practice capability scale applied to ITIL 4's Service Continuity Management practice. The scale
-and vocabulary are ITIL's so the result translates; the criteria are the skill's own, derived
-from failure modes seen in real documentation, because the practice success factors that real
-ITIL criteria come from sit behind a PeopleCert membership. The skill says so in its own words
-rather than letting a number imply a badge it cannot issue.
-
-Two things about it worth knowing before you run it. It treats "it exists, we just cannot find
-it" as closer to absent than to present, because a document nobody can produce at review time
-is a document nobody will produce during an incident. And the overall level is the lowest
-dimension rather than an average, because a well designed and widely trained recovery
-capability that has never been tested is an unproven one, and averaging hides exactly that.
+Finding out what the organization as a whole already has is a different question, one level up
+from your program, and the skill that asks it belongs to the ITSCM owner. Read the next section
+rather than running it yourself.
 
 ### You own ITSCM across more than one program
 
-Your problem is not any one plan. It is that every plan can be right on its own and the
+You are accountable for the continuity practice across every program rather than for any one
+plan. Two problems are yours and nobody else's. Every plan can be right on its own and the
 organization still cannot recover, because each was written as though its program were alone.
+And somebody who will never open a plan still has to be told whether the practice is in good
+order.
 
-[`enterprise-bia`](skills/product-owner/enterprise-bia/) lays them against each other. It finds four kinds of
-contention, and most reviews only look for the first: two processes sharing a resource with
-different deadlines, the same with different recovery point objectives, two programs planning to
-fail over into the same [DR](GLOSSARY.md "disaster recovery") capacity that was sized for one of them, and the same named engineer
-appearing in six recovery rosters that would all activate in the same regional event.
+Three skills are yours, and they answer three different questions.
+
+[`itscm-program-assessment`](skills/itscm-owner/itscm-program-assessment/) asks eight questions
+about your organization and produces a one month, three month and one year roadmap. Start here
+even when you are sure the answer is "nothing", because that produces a three item roadmap
+rather than a forty item one.
+
+[`enterprise-bia`](skills/itscm-owner/enterprise-bia/) lays the programs against each other. It
+finds four kinds of contention, and most reviews only look for the first: two processes sharing
+a resource with different deadlines, the same with different recovery point objectives, two
+programs planning to fail over into the same [DR](GLOSSARY.md "disaster recovery") capacity that
+was sized for one of them, and the same named engineer appearing in six recovery rosters that
+would all activate in the same regional event.
 
 It produces a ranked recovery priority list and a board paper, because the conflicts it finds
 are funding decisions and you are not the one who gets to make them. It will not resolve a
 contention by defaulting to the tightest deadline, which is the tempting answer that makes a
 report look finished while quietly committing money nobody approved.
+
+[`itscm-coordinator-review`](skills/itscm-owner/itscm-coordinator-review/) answers the capability
+question. It asks for the whole documentation set in one request, records what did not arrive as
+evidence in its own right, and reports a capability level from 1 to 5 across eight dimensions,
+using the [ITIL](GLOSSARY.md "IT Infrastructure Library") Maturity Model's practice capability
+scale applied to ITIL 4's Service Continuity Management practice. The scale and vocabulary are
+ITIL's so the result translates; the criteria are the skill's own, derived from failure modes
+seen in real documentation, because the practice success factors that real ITIL criteria come
+from sit behind a PeopleCert membership. The skill says so in its own words rather than letting a
+number imply a badge it cannot issue.
+
+Two things about it worth knowing before you run it. It treats "it exists, we just cannot find
+it" as closer to absent than to present, because a document nobody can produce at review time is
+a document nobody will produce during an incident. And the overall level is the lowest dimension
+rather than an average, because a well designed and widely trained recovery capability that has
+never been tested is an unproven one, and averaging hides exactly that.
 
 ### You run the infrastructure
 
@@ -291,10 +314,19 @@ goes wrong.
 
 ```
 skills/
-├── business/        states the requirement    1 skill
-├── product-owner/   assembles the program     6 skills
-└── it/              states the capability     empty, and that is the finding
+├── business/        states the requirement            1 skill
+├── product-owner/   assembles one program's plan      3 skills
+├── itscm-owner/     owns the practice across programs 3 skills
+└── it/              states the capability             empty, and that is the finding
 ```
+
+**Product owner and ITSCM owner are different people.** A product owner here is the program
+manager for a group of applications or infrastructure, accountable for one program's plan. The
+ITSCM owner is accountable for the continuity practice across every program, which is what
+makes contention between them visible at all.
+
+The test for which folder a skill belongs in: does it read one program's artifact, or does it
+read across programs and assess the practice itself?
 
 [`skills/it/`](skills/it/) holds a README and no skills. The folder exists so the gap is
 structural rather than a footnote: six pieces belong there and none is written, which is why a
@@ -302,10 +334,10 @@ walkthrough stops after the product owner.
 
 | Skill | What it does |
 |---|---|
-| [`itscm-program-assessment`](skills/product-owner/itscm-program-assessment/) | Interview an organization to find out what its continuity program actually contains, then produce a one month, three month and one year roadmap. Assumes no continuity tooling is installed. |
-| [`enterprise-bia`](skills/product-owner/enterprise-bia/) | Lay every program's BIA against the others, find where they contend for the same resource, DR capacity or people, and produce a ranked recovery priority list plus a board paper. Never defaults a contention to the tightest deadline. |
+| [`itscm-program-assessment`](skills/itscm-owner/itscm-program-assessment/) | Interview an organization to find out what its continuity program actually contains, then produce a one month, three month and one year roadmap. Assumes no continuity tooling is installed. |
+| [`enterprise-bia`](skills/itscm-owner/enterprise-bia/) | Lay every program's BIA against the others, find where they contend for the same resource, DR capacity or people, and produce a ranked recovery priority list plus a board paper. Never defaults a contention to the tightest deadline. |
 | [`bia-workshop`](skills/business/bia-workshop/) | Facilitate the Business Impact Analysis that becomes ISCP Appendix L, in the order NIST states it. Keeps recovery objectives keyed to business processes rather than to systems or tiers. |
-| [`itscm-coordinator-review`](skills/product-owner/itscm-coordinator-review/) | Assess a whole continuity documentation set rather than one plan. Requests every document it needs, records what did not arrive, and reports a capability level per dimension against ITIL 4 Service Continuity Management. |
+| [`itscm-coordinator-review`](skills/itscm-owner/itscm-coordinator-review/) | Assess a whole continuity documentation set rather than one plan. Requests every document it needs, records what did not arrive, and reports a capability level per dimension against ITIL 4 Service Continuity Management. |
 | [`iscp-completeness`](skills/product-owner/iscp-completeness/) | Audit a plan against FedRAMP SSP Appendix G v5.0 and NIST SP 800-34 Rev. 1 Appendix B. Reports what is missing, what is present but unfilled, and what is present and answered. Also asks whether the plan carries a fact sheet for whoever meets an incident first. |
 | [`iscp-sufficiency`](skills/product-owner/iscp-sufficiency/) | Decide whether a plan carries enough data to build a program from it. A field is required only when a named downstream artifact provably cannot be produced without it. |
 | [`iscp-from-worksheet`](skills/product-owner/iscp-from-worksheet/) | Turn a filled data-collection workbook into a plan, after checking the data can support one. Validates the joins between tabs rather than the presence of cells. |
@@ -313,10 +345,10 @@ walkthrough stops after the product owner.
 `itscm-program-assessment` is the entry point for an organization. `bia-workshop` is the entry
 point for a session with the business.
 
-The three document skills answer different questions about the same file and should not be
-collapsed into one. Whether the document is intact, whether a program can be derived from it,
-and what the organization has in people and cadence are three findings with three different
-remedies.
+The two plan audits answer different questions about the same file and should not be collapsed
+into one: whether the document is intact, and whether a program can be derived from it. What
+the organization has in people and cadence is a third finding with a third remedy, and it is
+the ITSCM owner's question rather than the product owner's.
 
 ## What is not here yet
 
