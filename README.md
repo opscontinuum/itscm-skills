@@ -25,11 +25,13 @@ spreadsheet and the right people in a room will do.
 
 ## The whole process, and how much of it exists
 
-Business states the requirement, the product owner assembles one program's plan, the ITSCM
-owner answers for the practice across programs, and IT states what can actually be delivered.
-The fifth section is not a person: it is what a product would have to hold for any of this to
-run in software.
-Color is completeness: green is done, red is nothing exists yet.
+Five columns, left to right. Business states the requirement, the product owner assembles one
+program's plan, the ITSCM owner answers for the practice across programs, and IT states what can
+actually be delivered. The fifth column is not a person: it is what a product would have to hold
+for any of this to run in software.
+
+Fill is completeness, green through red. The two thick arrows are the handoffs the whole
+arrangement exists for: the requirement going one way, the capability coming back.
 
 ```mermaid
 flowchart LR
