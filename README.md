@@ -25,17 +25,17 @@ spreadsheet and the right people in a room will do.
 
 ## The whole process, and how much of it exists
 
-Five columns, left to right. Business states the requirement, the product owner assembles one
-program's plan, the ITSCM owner answers for the practice across programs, and IT states what can
-actually be delivered. The fifth column is not a person: it is what a product would have to hold
-for any of this to run in software.
+Five bands, stacked in the order the work happens. Each band is one role and reads left to
+right. Business states the requirement, the product owner assembles one program's plan, the
+ITSCM owner answers for the practice across programs, and IT states what can actually be
+delivered. The fifth band is not a person: it is what a product would have to hold for any of
+this to run in software.
 
-Five bands, stacked. Each band runs left to right and is one role's work; the bands run top to
-bottom in the order the work happens. Fill is completeness, green through red.
+Fill is completeness, green through red. The thick arrows are the two handoffs the whole
+arrangement exists for: the business sends down a requirement, IT sends back a capability, and
+the product owner is where they meet.
 
-The thick arrows are the two handoffs the whole arrangement exists for: the business sends down
-a requirement, IT sends back a capability, and the product owner is where they meet. The widest
-band is the one with nothing in it.
+The band with nothing in it is the one that stops a walkthrough.
 
 ```mermaid
 flowchart TD
