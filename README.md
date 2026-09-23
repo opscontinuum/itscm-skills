@@ -30,56 +30,53 @@ program's plan, the ITSCM owner answers for the practice across programs, and IT
 actually be delivered. The fifth column is not a person: it is what a product would have to hold
 for any of this to run in software.
 
-Fill is completeness, green through red. The two thick arrows are the handoffs the whole
-arrangement exists for: the requirement going one way, the capability coming back.
+Five bands, stacked. Each band runs left to right and is one role's work; the bands run top to
+bottom in the order the work happens. Fill is completeness, green through red.
+
+The thick arrows are the two handoffs the whole arrangement exists for: the business sends down
+a requirement, IT sends back a capability, and the product owner is where they meet. The widest
+band is the one with nothing in it.
 
 ```mermaid
-flowchart LR
+flowchart TD
     classDef full fill:#e4f2e9,stroke:#1b7f3b,stroke-width:2px,color:#123
     classDef half fill:#fdf3d6,stroke:#b58600,stroke-width:2px,color:#321
     classDef some fill:#fdeadb,stroke:#d2650a,stroke-width:2px,color:#321
     classDef none fill:#f7dede,stroke:#c62828,stroke-width:2px,color:#411
 
-    subgraph BUS["1 · BUSINESS"]
-        direction TB
-        B1(["Name the processes"]) --> B2(["Define the impact scale"]) --> B3(["Rate impact per process"])
-        B3 --> B4(["Set MTD, RTO, RPO"]) --> B5(["Alternate ways of working"]) --> B6(["Sign the objectives"])
+    subgraph BUS["1 · BUSINESS, states the requirement"]
+        direction LR
+        B1(["Name the<br/>processes"]) --> B2(["Impact<br/>scale"]) --> B3(["Impact per<br/>process"])
+        B3 --> B4(["MTD, RTO<br/>and RPO"]) --> B5(["Alternate<br/>ways to work"]) --> B6(["Sign the<br/>objectives"])
     end
 
-    subgraph PO["2 · PRODUCT OWNER"]
-        direction TB
-        P2(["Audit plan: structure"]) --> P3(["Audit plan: derivability"]) --> P4(["Collect into the workbook"])
-        P4 --> P5(["Resource inventory"]) --> P6(["Map process to resources"]) --> P7(["Derive recovery priority"])
-        P7 --> P8(["Write the plan"]) --> P9(["Onboard a program"])
+    subgraph PO["2 · PRODUCT OWNER, assembles one program's plan"]
+        direction LR
+        P2(["Audit plan:<br/>structure"]) --> P3(["Audit plan:<br/>derivability"]) --> P4(["Collect into<br/>the workbook"]) --> P5(["Resource<br/>inventory"])
+        P6(["Map process<br/>to resources"]) --> P7(["Derive recovery<br/>priority"]) --> P8(["Write<br/>the plan"]) --> P9(["Onboard<br/>a program"])
     end
 
-    subgraph OWN["3 · ITSCM OWNER"]
-        direction TB
-        P1(["Assess the organization"]) --> P10(["Contention across programs"]) --> P11(["Capability against ITIL"])
+    subgraph OWN["3 · ITSCM OWNER, the practice across programs"]
+        direction LR
+        P1(["Assess the<br/>organization"]) --> P10(["Contention<br/>across programs"]) --> P11(["Capability<br/>against ITIL"])
     end
 
-    subgraph IT["4 · IT"]
-        direction TB
-        I1(["Infrastructure interview"]) --> I2(["Application interview"]) --> I3(["Governance interview"])
-        I3 --> I4(["Continuity interview"]) --> I5(["Achievable RTO and RPO"]) --> I6(["Author DR runbooks"])
-        I6 --> I7(["Capture freeze windows"]) --> I8(["Run the drill"]) --> I9(["Measure replication lag"])
+    subgraph IT["4 · IT, states the capability"]
+        direction LR
+        I1(["Infrastructure<br/>interview"]) --> I2(["Application<br/>interview"]) --> I3(["Governance<br/>interview"]) --> I4(["Continuity<br/>interview"])
+        I5(["Achievable<br/>RTO and RPO"]) --> I6(["Author DR<br/>runbooks"]) --> I7(["Freeze<br/>windows"]) --> I8(["Run the<br/>drill"]) --> I9(["Measure<br/>replication lag"])
     end
 
-    subgraph APP["5 · THE PRODUCT"]
-        direction TB
-        X1(["Reconciliation"]) --> X2(["Approval control"]) --> X3(["Execution record"])
-        X4(["Domain model"]) --> X5(["Storage, signed"]) --> X6(["Onboarding surface"])
-        X6 --> X7(["Sign-off routing"]) --> X8(["Capability picture"])
-        X9(["Failover and DR"]) --> X10(["MTD countdown"])
+    subgraph APP["5 · THE PRODUCT, holds and enforces it"]
+        direction LR
+        X1(["Reconcil-<br/>iation"]) --> X2(["Approval<br/>control"]) --> X3(["Execution<br/>record"]) --> X4(["Domain<br/>model"]) --> X5(["Storage,<br/>signed"])
+        X6(["Onboarding<br/>surface"]) --> X7(["Sign-off<br/>routing"]) --> X8(["Capability<br/>picture"]) --> X9(["Failover<br/>and DR"]) --> X10(["MTD<br/>countdown"])
     end
 
-    P1 -.-> P2
-    B6 == "the requirement" ==> P4
-    I5 == "the capability" ==> P6
-    P6 -.-> I6
-    P8 -.-> P10
-    P9 -.-> X4
-    I9 -.-> X10
+    BUS ==> PO
+    OWN -.-> PO
+    IT ==> PO
+    PO -.-> APP
 
     class B1,B2,B3,B4,B5 full
     class B6 half
