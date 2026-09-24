@@ -25,6 +25,7 @@ four run in order, each consuming the one before it.
 | [`doc-extract`](doc-extract/) | Pull the facts out of one document, with provenance, filling no gaps and recording whether objectives are keyed to processes or to infrastructure |
 | [`itil-scm-evidence-review`](itil-scm-evidence-review/) | Score the set against the ITIL 4 Service Continuity Management practice, capability levels 1 to 5 across the four dimensions of service management |
 | [`pi-roadmap`](pi-roadmap/) | Turn the blocking criteria into one, three, six, nine and twelve month horizons, sized for Program Increment planning |
+| [`program-status-view`](program-status-view/) | Lay every system in a program on one Markdown page, red, yellow or green by distance from a declared target level. Colors by what was evidenced, not what was claimed |
 
 `itscm-coordinator-review` and `itil-scm-evidence-review` overlap deliberately and are not
 duplicates. The first is run by a person working through a documentation set and asks for the

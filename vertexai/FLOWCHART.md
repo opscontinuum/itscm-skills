@@ -62,19 +62,31 @@ flowchart TD
         S5(["pi-roadmap"]) ~~~ I5(["The levels and<br/>blocking criteria"]) ~~~ O5(["ROADMAP<br/>five horizons on<br/>increment boundaries"])
     end
 
+    subgraph R6["RUN 6, once per program. Where are the gaps?"]
+        direction LR
+        S6(["program-<br/>status-view"]) ~~~ I6(["Every system's levels,<br/>plus the program's<br/>target level"]) ~~~ O6(["A MARKDOWN PAGE<br/>red, yellow, green<br/>by distance from target"])
+    end
+
     NOPE(["Never a certified ITIL Maturity Model assessment.<br/>That needs the licensed practice success factors,<br/>seven or more practices, and a licensed assessor."])
 
-    R1 ==> R2 ==> R3 ==> R4 ==> R5 ==> NOPE
+    R1 ==> R2 ==> R3 ==> R4 ==> R5
+    R4 ==> R6
+    R5 ==> NOPE
 
-    class S1,S2,S3,S4,S5 skill
-    class I1,I2,I3,I4,I5 doc
-    class O1,O2,O3,O4,O5 out
+    class S1,S2,S3,S4,S5,S6 skill
+    class I1,I2,I3,I4,I5,I6 doc
+    class O1,O2,O3,O4,O5,O6 out
     class NOPE warn
 ```
 
 **Run 2 repeats per document and run 3 repeats per dimension.** That is not parallelism, it is
 the same skill run again with different input. A spreadsheet and a Word plan are two runs of
 `doc-extract`, not one run that handles both.
+
+**Run 6 is for a program rather than a system.** Runs 1 through 5 evaluate one system. A program
+in the funded sense holds several, and run 6 lays every system's levels on one page. It branches
+from run 4 rather than run 5, because it draws levels rather than plans, and a program manager
+usually wants the picture before the roadmaps.
 
 **Run 4 uses the same skill file as run 3**, its scoring section. They are separated because
 answering criteria and assigning a level are different jobs, and a model doing both in one pass
