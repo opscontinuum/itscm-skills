@@ -14,6 +14,27 @@ role answers for whether the practice those plans belong to is in good order.
 | [`enterprise-bia`](enterprise-bia/) | Lay every program's business impact analysis against the others and find where they contend for the same resource, recovery capacity or people. Produces a ranked priority list and a board paper |
 | [`itscm-coordinator-review`](itscm-coordinator-review/) | Assess a whole documentation set rather than one plan, and report a capability level per dimension |
 
+## Evaluating documentation that already exists
+
+A second path, for when somebody hands over a folder rather than asking you to build one. These
+four run in order, each consuming the one before it.
+
+| Skill | What it does |
+|---|---|
+| [`doc-intake`](doc-intake/) | Establish what actually arrived. Classifies by reading rather than by title, and separates provided from claimed, absent and unreadable |
+| [`doc-extract`](doc-extract/) | Pull the facts out of one document, with provenance, filling no gaps and recording whether objectives are keyed to processes or to infrastructure |
+| [`itil-scm-evidence-review`](itil-scm-evidence-review/) | Score the set against the ITIL 4 Service Continuity Management practice, capability levels 1 to 5 across the four dimensions of service management |
+| [`pi-roadmap`](pi-roadmap/) | Turn the blocking criteria into one, three, six, nine and twelve month horizons, sized for Program Increment planning |
+
+`itscm-coordinator-review` and `itil-scm-evidence-review` overlap deliberately and are not
+duplicates. The first is run by a person working through a documentation set and asks for the
+documents as part of its own method. The second is the scoring instrument for the pipeline
+above: it takes already-extracted facts, and it is shaped to be split across agents that cannot
+see each other's answers.
+
+Neither reproduces the practice success factors from the licensed ITIL 4 practice guides, and
+neither invents any. Both say so in their own output.
+
 ## What only this role can do
 
 **See contention.** Every program's analysis is internally consistent. Two of them sharing a
