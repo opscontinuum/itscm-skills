@@ -1,11 +1,16 @@
 # The evaluation flow
 
+**This draws the subagent layout, which is the alternative rather than the recommendation.** One
+agent doing all five stages is the better configuration here, for the reasons in
+[`README.md`](README.md), and the same five stages apply to it. Read the bands as stages the one
+agent works through in order, and ignore the delegation.
+
 One root agent and eight subagents. The root holds the sequence, the running result, and the
 only knowledge files. Each subagent carries its own method in its instructions, because it
 cannot be given a file.
 
 Nothing here runs in parallel. The root delegates in order and carries findings between stages
-itself.
+itself, and every one of those handoffs is a place information is lost.
 
 ```mermaid
 flowchart TD

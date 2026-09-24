@@ -38,11 +38,13 @@ which section it came from, so a later reader can tell what to re-derive.
 It also puts a ceiling on how much method one subagent can hold, which is the practical argument
 for splitting evaluation four ways below.
 
-`agents/` holds one file per agent with the exact text to paste into each field:
+`agents/` holds one file per agent with the exact text to paste into each field. **Start with
+`single-agent.md`**; the rest are the alternative.
 
 | File | Agent |
 |---|---|
-| `agents/00-root.md` | The root, the only one with knowledge files and starter prompts |
+| `agents/single-agent.md` | **The recommended configuration. One agent, no delegation** |
+| `agents/00-root.md` | The root, if you split. The only one with knowledge files and starter prompts |
 | `agents/01-intake.md` | What arrived, and what did not |
 | `agents/02-extract.md` | The facts, with provenance |
 | `agents/03a-evaluate-org-people.md` | Organizations and people |
@@ -77,7 +79,56 @@ before citing it. Every agent's instructions say that, and say what it must neve
 looking up what a criterion should be, finding an organization's documents, or filling a gap in
 what the user provided. A gap is a finding.
 
-## Topology
+## Use one agent. Subagents are lossy here
+
+**Recommendation: one agent, no subagents.** [`agents/single-agent.md`](agents/single-agent.md)
+has the complete configuration.
+
+The eight-subagent layout in `agents/` is kept as a documented alternative, and it should be
+adopted only after the single agent demonstrably fails in a way subagents would fix. An earlier
+draft of this folder recommended it, for a reason that does not survive examination: the
+interface offers subagents, not that this work needs them.
+
+### Why delegation loses information here
+
+Three losses. The third is structural and the others follow from it.
+
+**Every delegation is a serialization boundary.** There is no state object. The root encodes its
+running result into prose, the subagent reads it, works, encodes an answer back, and the root
+reads that. Provenance is a structural property, a document and a location per fact, and it
+survives only as long as it keeps being written out and read back correctly. Eight subagents is
+a lot of round trips through natural language for something whose whole value is that it stayed
+exact.
+
+**A subagent cannot hold knowledge files.** It never sees the source documents or the skill it
+is applying. It works entirely from what the root typed at it.
+
+**The root decides what to forward without knowing what the subagent needs.** The criteria live
+in the subagent's instructions, which the root never reads. So the root filters for relevance
+while structurally unqualified to judge it, at exactly the point where dropping one fact changes
+a verdict. That is an information bottleneck in the worst available place.
+
+### What the split was buying, and why it was not worth it
+
+Isolation at the evaluation stage. One agent judging all four dimensions of service management
+lets a strong dimension carry a weak one, and four subagents that cannot see each other's
+answers prevent it structurally.
+
+That effect is real. It is also small next to a lossy bottleneck, and there is a cheaper
+mitigation inside one agent: **have it complete and write out one dimension's findings before
+starting the next.** The findings stay in a single context rather than round-tripping, so the
+protection costs nothing.
+
+### When the split would earn its cost, and how to tell
+
+Watch the single agent produce a level that flatters the weakest dimension. Then run the same
+document set through both configurations. If the split scores that dimension lower, it has
+earned its place; if the scores match, it has not.
+
+Decide it by measurement rather than by architecture taste, which is what produced the eight
+agent version in the first place.
+
+## Topology, if you use subagents anyway
 
 ```
 Root: ITSCM Documentation Review
@@ -91,33 +142,13 @@ Root: ITSCM Documentation Review
 └── 5 Roadmap           five horizons for Program Increment planning
 ```
 
-Eight subagents. The root holds the sequence and the running state.
+The root holds the sequence and the running state. Its instructions have to be explicit about
+carrying findings forward verbatim, because the default behavior is to summarize a subagent's
+answer, and a summarized finding has lost the provenance the scorer depends on.
 
-### Why evaluation is four subagents rather than one
-
-Two reasons, and neither is speed, since nothing here runs in parallel.
-
-**Isolation.** One agent holding all four dimensions judges the thin parts in the same context
-that just judged the good parts, and a strong dimension carries a weak one. Four subagents each
-see the facts and their own criteria, and never see each other's answers.
-
-**Room.** Since a subagent's method lives in its instructions, one evaluator would have to hold
-all four dimensions of criteria in a single field. Split four ways, each holds only its own.
-
-**If eight subagents is too many to configure**, collapse 3a through 3d into one evaluator and
-expect the weakest dimension to score about a level higher than it should. Do not collapse
-stages 4 or 5 into anything.
-
-### What the root has to do that the interface will not do for it
-
-With no state object, the root carries the running result in the conversation and passes the
-relevant part into each delegation. Its instructions have to be explicit about that, because the
-default behavior of a root agent is to summarize a subagent's answer rather than carry it
-forward intact.
-
-The specific risk: by stage 4 a summarized finding has lost its provenance, and a scorer cannot
-tell an extracted fact from an inferred one. The root's instructions repeat the provenance rule
-for that reason.
+Do not collapse stages 4 or 5 into anything. Scoring needs all four dimensions before it can
+find the lowest, and the roadmap is derived from what scoring found rather than from the
+documents.
 
 ## The honesty constraint, which shapes the criteria
 
