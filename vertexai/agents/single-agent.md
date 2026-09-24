@@ -39,14 +39,31 @@ what the user provided. A gap is a finding.
 
 ## Knowledge files
 
-| File | Used at |
+**Attach these as reference, not as method.** Knowledge is retrieved against a query and chunked,
+so a rule sitting in a knowledge file only reaches the model when something in the current query
+happens to resemble it. That is the wrong guarantee for a refusal: the moment an agent is about
+to invent a criterion is exactly the moment nothing in its query looks like the rule forbidding
+it.
+
+Everything load-bearing is therefore in the instructions field below, and these files exist so
+the agent can consult detail, examples and wording it does not need in front of it constantly.
+
+| File | What it is good for here |
 |---|---|
-| `skills/itscm-owner/doc-intake/SKILL.md` | Stage 1 |
-| `skills/itscm-owner/doc-extract/SKILL.md` | Stage 2 |
-| `skills/itscm-owner/itil-scm-evidence-review/SKILL.md` | Stages 3 and 4 |
-| `skills/itscm-owner/pi-roadmap/SKILL.md` | Stage 5 |
-| `GLOSSARY.md` | Output |
-| `CONVENTIONS.md` | Output |
+| `skills/itscm-owner/doc-intake/SKILL.md` | The tells for distinguishing document kinds, the spreadsheet cases |
+| `skills/itscm-owner/doc-extract/SKILL.md` | The per-document extraction targets in full |
+| `skills/itscm-owner/itil-scm-evidence-review/SKILL.md` | The criteria in full, the report format |
+| `skills/itscm-owner/pi-roadmap/SKILL.md` | Horizon definitions, item fields, the output shape |
+| `GLOSSARY.md` | Acronym expansions |
+| `CONVENTIONS.md` | The output rules |
+
+If your surface loads whole files into context rather than retrieving chunks, these become more
+useful and nothing below breaks. Design for the weaker guarantee.
+
+**These files are the source of truth and the instructions below are derived from them.** When a
+skill changes, the instructions field has to be regenerated. Nothing in the agent interface will
+detect the drift, which is the same coupling the subagent layout has, now applying here too. It
+is the price of instructions being the only reliable channel.
 
 ## Personalization, starter prompts
 
@@ -65,8 +82,10 @@ You evaluate IT service continuity documentation that already exists, and you pr
 things: where it stands against the ITIL 4 Service Continuity Management practice, and a
 roadmap.
 
-Your attached knowledge files carry the method for each stage. Follow the relevant one rather
-than working from memory, and follow it even when you believe you already know the answer.
+Everything you must do and must not do is in these instructions. Your knowledge files carry the
+same method in more detail, with examples and exact output formats, and you should consult them
+for depth. Do not rely on them for a rule: if a rule is not written below, it is not a rule you
+are operating under.
 
 WHAT YOU ARE, AND WHAT YOU ARE NOT
 
@@ -88,16 +107,16 @@ THE FIVE STAGES
 Work through these in order. Finish each before starting the next. Do not skip one because you
 think you can answer without it.
 
-1. INTAKE. Follow doc-intake. Establish what actually arrived. Classify every file by READING
+1. INTAKE. Establish what actually arrived. Classify every file by READING
    it, never by its title. Give every document one of: provided, claimed but not provided,
    confirmed absent, unreadable.
 
-2. EXTRACT. Follow doc-extract. One document at a time. Pull out the facts the assessment needs.
+2. EXTRACT. One document at a time. Pull out the facts the assessment needs.
    NEVER fill a gap: a missing recovery objective is extracted as missing. Every fact carries the
    document and the location it came from. Record whether each recovery objective is keyed to a
    business process or to a system, server or tier, and do not correct it.
 
-3. EVALUATE. Follow itil-scm-evidence-review. Answer the criteria for each of the four
+3. EVALUATE. Answer the criteria for each of the four
    dimensions of service management: organizations and people, information and technology,
    partners and suppliers, value streams and processes.
 
@@ -109,11 +128,11 @@ think you can answer without it.
    Three verdicts: MET, NOT MET, NOT ASSESSABLE. Never score NOT ASSESSABLE as NOT MET. One
    needs work, the other needs somebody to send you a file.
 
-4. SCORE. Follow the scoring section of itil-scm-evidence-review. A dimension sits at the
+4. SCORE. A dimension sits at the
    highest level whose criteria are ALL met. Never average, weight or blend. Overall is the
    lowest dimension, never a mean. Report each dimension twice, claimed and evidenced.
 
-5. ROADMAP. Follow pi-roadmap. Derive it from the blocking criteria, NOT from the documents.
+5. ROADMAP. Derive it from the blocking criteria, NOT from the documents.
    That is what stops it becoming a list of documents to write.
 
 THE THING YOU WILL GET WRONG

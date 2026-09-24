@@ -1,123 +1,122 @@
-# The evaluation flow
+# How the skills get used
 
-Five stages, worked through in order inside **one agent and one context**. Nothing is delegated,
-so nothing is serialized into prose and read back, so provenance survives to the stage that
-needs it.
+A skill here is a prose instrument. You give it to a model along with a document, and it returns
+structured output. That is the whole unit of work, and it is the same unit whether the model is
+Grok, a Vertex agent, or a person reading the skill and doing it by hand.
 
-Blue is the agent, green is a knowledge file, purple is a stage it works through, grey is what
-goes in and comes out.
+```mermaid
+flowchart LR
+    classDef skill fill:#e4f2e9,stroke:#1b7f3b,stroke-width:2px,color:#123
+    classDef doc fill:#f2f2f4,stroke:#8791a0,stroke-width:1px,color:#333
+    classDef model fill:#e8eff5,stroke:#2d5f8a,stroke-width:3px,color:#12283a
+    classDef out fill:#efe8f5,stroke:#6b4a8a,stroke-width:2px,color:#2a1a3a
+
+    SK(["THE SKILL<br/>a prose file"]) --> M(["A MODEL<br/>Grok, a Vertex agent,<br/>or a person"])
+    DOC(["THE DOCUMENT<br/>a plan, a spreadsheet,<br/>a test report"]) --> M
+    M --> O(["STRUCTURED OUTPUT<br/>a fixed shape the<br/>next stage consumes"])
+
+    class SK skill
+    class DOC doc
+    class M model
+    class O out
+```
+
+Nothing in a skill is executed. That is why the same file works in all three places, and it is
+why [`../CONVENTIONS.md`](../CONVENTIONS.md) rule 3 exists.
+
+## The five runs, and what goes into each
+
+Five of those units, chained. Each one's output is the next one's input.
+
+Green is the skill you paste in, grey is what you paste alongside it, purple is what comes back.
 
 ```mermaid
 flowchart TD
-    classDef agent fill:#e8eff5,stroke:#2d5f8a,stroke-width:3px,color:#12283a
-    classDef know fill:#e4f2e9,stroke:#1b7f3b,stroke-width:2px,color:#123
-    classDef stage fill:#efe8f5,stroke:#6b4a8a,stroke-width:2px,color:#2a1a3a
-    classDef io fill:#f2f2f4,stroke:#8791a0,stroke-width:1px,color:#333
+    classDef skill fill:#e4f2e9,stroke:#1b7f3b,stroke-width:2px,color:#123
+    classDef doc fill:#f2f2f4,stroke:#8791a0,stroke-width:1px,color:#333
+    classDef out fill:#efe8f5,stroke:#6b4a8a,stroke-width:2px,color:#2a1a3a
     classDef warn fill:#f7dede,stroke:#c62828,stroke-width:2px,color:#411
 
-    subgraph IN["WHAT THE USER BRINGS, in the conversation"]
+    subgraph R1["RUN 1, once. What is here?"]
         direction LR
-        D1(["BIA<br/>spreadsheet<br/>or document"]) ~~~ D2(["Contingency<br/>plan"]) ~~~ D3(["DR plan and<br/>runbooks"]) ~~~ D4(["Test and<br/>drill reports"]) ~~~ D5(["Contracts,<br/>training records"])
+        S1(["doc-intake"]) ~~~ I1(["Every file<br/>they sent"]) ~~~ O1(["INVENTORY<br/>provided, claimed,<br/>absent, unreadable"])
     end
 
-    subgraph AG["ONE AGENT, one context, no delegation"]
+    subgraph R2["RUN 2, once per document. What does it say?"]
         direction LR
-        A(["ITSCM Documentation Review"])
+        S2(["doc-extract"]) ~~~ I2(["ONE document,<br/>plus its line from<br/>the inventory"]) ~~~ O2(["EXTRACTED FACTS<br/>each with the document<br/>and location"])
     end
 
-    subgraph KN["KNOWLEDGE FILES, the method it follows"]
+    subgraph R3["RUN 3, once per dimension. Does it satisfy the criteria?"]
         direction LR
-        K1(["doc-intake"]) ~~~ K2(["doc-extract"]) ~~~ K3(["itil-scm-<br/>evidence-review"]) ~~~ K4(["pi-roadmap"]) ~~~ K5(["GLOSSARY<br/>CONVENTIONS"])
+        S3(["itil-scm-<br/>evidence-review"]) ~~~ I3(["All facts, plus<br/>the inventory"]) ~~~ O3(["FINDINGS<br/>met, not met,<br/>not assessable"])
     end
 
-    subgraph P1["STAGES 1 and 2, what is here and what does it say"]
+    subgraph R4["RUN 4, once. What level is that?"]
         direction LR
-        S1(["1 Intake<br/>classify by reading,<br/>never by title"]) --> S2(["2 Extract<br/>facts with provenance,<br/>fill no gaps"])
+        S4(["itil-scm-<br/>evidence-review<br/>scoring section"]) ~~~ I4(["All findings,<br/>all four dimensions"]) ~~~ O4(["LEVELS<br/>claimed and evidenced,<br/>plus the blocker"])
     end
 
-    subgraph P3["STAGE 3, four dimensions, one at a time, each written out before the next"]
+    subgraph R5["RUN 5, once. What do we do?"]
         direction LR
-        E1(["3a Organizations<br/>and people"]) --> E2(["3b Information<br/>and technology"]) --> E3(["3c Partners<br/>and suppliers"]) --> E4(["3d Value streams<br/>and processes"])
-    end
-
-    subgraph P4["STAGES 4 and 5, what it means and what to do"]
-        direction LR
-        S4(["4 Score<br/>criteria to levels,<br/>never averaged"]) --> S5(["5 Roadmap<br/>five horizons on<br/>increment boundaries"])
-    end
-
-    subgraph OUT["WHAT THE MANAGER GETS"]
-        direction LR
-        O1(["Proven or<br/>unproven"]) ~~~ O2(["A level per<br/>dimension"]) ~~~ O3(["The criterion<br/>blocking each"]) ~~~ O4(["Five horizons"])
+        S5(["pi-roadmap"]) ~~~ I5(["The levels and<br/>blocking criteria"]) ~~~ O5(["ROADMAP<br/>five horizons on<br/>increment boundaries"])
     end
 
     NOPE(["Never a certified ITIL Maturity Model assessment.<br/>That needs the licensed practice success factors,<br/>seven or more practices, and a licensed assessor."])
 
-    IN ==> AG
-    KN -.-> AG
-    AG ==> P1 ==> P3 ==> P4 ==> OUT
-    OUT -.-> NOPE
+    R1 ==> R2 ==> R3 ==> R4 ==> R5 ==> NOPE
 
-    class A agent
-    class K1,K2,K3,K4,K5 know
-    class S1,S2,E1,E2,E3,E4,S4,S5 stage
-    class D1,D2,D3,D4,D5,O1,O2,O3,O4 io
+    class S1,S2,S3,S4,S5 skill
+    class I1,I2,I3,I4,I5 doc
+    class O1,O2,O3,O4,O5 out
     class NOPE warn
 ```
 
-## Where it stops rather than guesses
+**Run 2 repeats per document and run 3 repeats per dimension.** That is not parallelism, it is
+the same skill run again with different input. A spreadsheet and a Word plan are two runs of
+`doc-extract`, not one run that handles both.
 
-Five refusals, written into the instructions rather than left to judgment.
+**Run 4 uses the same skill file as run 3**, its scoring section. They are separated because
+answering criteria and assigning a level are different jobs, and a model doing both in one pass
+tends to pick the level first and fit the criteria to it.
 
-| Stage | Refuses to |
-|---|---|
-| Intake | Believe a title. A file called a Disaster Recovery Plan is often a contingency plan and occasionally a runbook |
-| Extract | Fill a gap. A missing recovery objective is extracted as missing, never inferred from the architecture |
-| Evaluate | Reward a heading. The question is whether content satisfies the criterion, not whether a section exists |
-| Score | Average. A dimension sits at the highest level whose criteria are all met, and nine of ten met is the lower level |
-| Every stage | Author a practice success factor. Where a question needs the licensed model, the answer is that it is not assessable against it |
+## What has to survive between runs
 
-## Why stage 3 runs one dimension at a time
+The output of one run is pasted into the next, so everything the later stage needs has to be in
+that text. Two things get lost first.
 
-The four dimensions are separate questions about the same documents, and the common failure is a
-well documented set carrying a thin dimension upward: the same context that just found the plan
-excellent is the context judging the supplier evidence.
+**Provenance.** Every extracted fact carries the document and the location it came from. If a run
+2 output is summarized before being pasted into run 3, the facts arrive looking identical to
+guesses, and by run 4 nothing can tell them apart. Paste the output whole.
 
-Finishing and writing out one dimension's findings before starting the next is what prevents it.
-The findings stay in one context rather than being handed anywhere, so the protection costs no
-fidelity.
+**The four states.** `provided`, `claimed but not provided`, `confirmed absent` and `unreadable`
+are not decoration. Run 3 needs them to tell `NOT MET` from `NOT ASSESSABLE`, which have
+different remedies: one needs work, the other needs somebody to send a file.
 
-## The alternative, and what it costs
+## Where a hosted agent fits
 
-An earlier version of this design split the work across a root agent and eight subagents, one
-per stage and one per dimension. `agents/00-root.md` through `agents/05-roadmap.md` still carry
+A Vertex agent is one way to run the chain without pasting by hand. It does not change the
+instruments, and it adds one constraint worth knowing.
+
+**A rule must be in the agent's instructions, not in a knowledge file.** Knowledge is retrieved
+against a query and chunked, so a rule sitting there reaches the model only when something in the
+current query resembles it. The moment an agent is about to invent a criterion is exactly the
+moment nothing in its query looks like the rule forbidding it.
+
+So the instructions field carries everything load-bearing, derived from the skills, and the
+knowledge files carry detail and examples. [`agents/single-agent.md`](agents/single-agent.md) is
 that configuration.
 
-**It loses information at every handoff**, and the losses are structural rather than incidental:
+The skills stay the source of truth, and the instructions are derived from them. When a skill
+changes, the instructions have to be regenerated, and nothing in the agent interface will detect
+the drift.
 
-```mermaid
-flowchart LR
-    classDef ok fill:#e4f2e9,stroke:#1b7f3b,stroke-width:2px,color:#123
-    classDef bad fill:#f7dede,stroke:#c62828,stroke-width:2px,color:#411
+## Where it stops rather than guesses
 
-    R1(["Root holds<br/>the facts"]) --> L1(["Encodes to prose"]) --> L2(["Subagent reads"]) --> L3(["Works from<br/>what it was told"]) --> L4(["Encodes back"]) --> R2(["Root reads,<br/>summarizes"])
-
-    class R1,R2 ok
-    class L1,L2,L3,L4 bad
-```
-
-There is no state object, so the running result is serialized into natural language and read back
-at every hop. Provenance is a structural fact, a document and a location per item, and it is
-exactly the kind that does not survive repeated round trips.
-
-A subagent cannot hold knowledge files either, so it never sees the source documents or the skill
-it is applying. And the root decides what to forward without knowing what the subagent needs,
-because the criteria live in the subagent's instructions, which the root never reads. That puts a
-filter operated by the wrong party at the point where dropping one fact changes a verdict.
-
-**What the split buys** is that four evaluators cannot see each other's answers, which prevents
-the halo effect structurally rather than behaviorally. That is real and it is small next to the
-loss above.
-
-**When to revisit:** watch the single agent flatter its weakest dimension, then run the same
-document set through both and compare that one dimension. If the split scores it lower, it has
-earned its cost. If the scores match, it has not.
+| Run | Refuses to |
+|---|---|
+| 1 Intake | Believe a title. A file called a Disaster Recovery Plan is often a contingency plan and occasionally a runbook |
+| 2 Extract | Fill a gap. A missing recovery objective is extracted as missing, never inferred from the architecture |
+| 3 Evaluate | Reward a heading. The question is whether content satisfies the criterion, not whether a section exists |
+| 4 Score | Average. A dimension sits at the highest level whose criteria are all met, and nine of ten met is the lower level |
+| Every run | Author a practice success factor. Where a question needs the licensed model, the answer is that it is not assessable against it |
