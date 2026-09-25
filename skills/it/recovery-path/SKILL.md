@@ -462,6 +462,27 @@ Check the controller's own configuration. The definitions that tell a controller
 must themselves be in the repository. A freshly installed controller with no application
 definitions deploys nothing, and reports itself healthy while doing it.
 
+These definitions are part of each application's design, not the platform's. Record which
+application team owns each one. A definition missing from the source is a gap in that
+application's design, and it goes to that team by name, even when the platform team runs the
+controller.
+
+Then read each declared definition for two things a rebuild depends on and a running system never
+exercises.
+
+**Where it says to deploy.** A definition can name its target: a cluster address, a region, an
+account, a host. One that names the primary, installed at the standby, deploys into the site that
+is down, or fails and reports why somewhere nobody is looking. For each definition, record its
+target as either "the site the controller runs in" or the site it names. Count the ones that
+name a site, and list them.
+
+**How the controller reads the source.** The controller's credential to the repository is,
+correctly, not in the repository. That means a rebuild installs a controller that cannot read
+the repository it was just pointed at, unless the recovery restores that credential first. Record
+where the recovery gets it, and apply Step 6's rule: a credential restored from a store at the
+primary does not survive. If nobody can say where it comes from, the rebuild stops at its first
+step, and that is the finding.
+
 Declared state carries no data. A rebuild brings every data store back empty unless the recovery
 includes a restore from a copy that survived. Name each store and what would fill it.
 
@@ -579,7 +600,9 @@ NEEDED TO RECOVER, NOT TO RUN
 
 WHEN RECOVERY IS A REBUILD          (if recovery never rebuilds, say so and why)
   Declared source                    <repository, path, revision the controller tracks>
-  Controller's own definitions       DECLARED or NOT DECLARED
+  Controller's own definitions       DECLARED or NOT DECLARED, and the team that owns each
+  Definitions that name a site       <n>   <every definition and the site it names>
+  Controller's credential to source  <where the recovery gets it>   Survives: Yes, No or NOT MEASURED
   Running, not declared              <n>   <every item>           lost on rebuild
   Running, differs from declared     <n>   <every item and field>
   Declared, not running              <n>   <every item>
@@ -649,6 +672,8 @@ An acronym nobody expands is a reader quietly deciding the document was not writ
   through whatever it needs until that reached something outside the primary or something lost
   with it.
 - Every count in the rebuild section sits beside its full list.
+- In a rebuild, every declared definition has an owning team and a recorded target, and the
+  controller's credential to the source has a location and a survives answer.
 - No secret value, private key or personal data appears anywhere, the register included.
 - Every change you learned of has its stale facts listed.
 
