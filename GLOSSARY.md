@@ -64,6 +64,15 @@ with a zero RPO that loses eight seconds did not.
 the business is running again. The gap between them is real work, and the RTO must be shorter
 than the MTD because of it.
 
+**RTO against restoration time.** The RTO is the objective, how long the business requires.
+Restoration time is the outcome, what a drill or a walk actually measured on a given day, on the
+customer's side. They are compared, never equated, the same way an RPO is compared with data loss.
+
+**Restoration time against readiness time.** Readiness time ends when a component reports itself
+ready. Restoration time ends when the customer is actually served again. A component can report
+ready while the customer is still failing, and the gap between the two is itself a fact worth
+keeping, not something a report rounds away.
+
 **ISCP against ITSCP.** An ISCP is a system-level artifact under NIST and FedRAMP. An ITSCP is a
 service-level artifact under ITIL that may align to the ISCP structure without being one. A
 DRP, BCP or COOP is none of the above.
