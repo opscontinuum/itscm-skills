@@ -378,6 +378,16 @@ Do not produce a forty item roadmap for such a program. A roadmap longer than
 the organization can hold is a document that gets filed, and the assessment that
 produced it gets remembered as an expensive way to be told bad news.
 
+## Before it leaves the team
+
+Run [`outgoing-document-gate`](../outgoing-document-gate/SKILL.md) on the finished output, exactly
+as it will be sent. It holds any statement about the organization that the organization did not
+supply and that was not measured on its own systems, and it runs five further tests this method
+depends on. Nothing leaves the team until it passes.
+
+The roadmap is built from the eight answers. A roadmap item that describes the organization's
+current state traces to one of them, in the words of whoever gave it.
+
 ## Spell out every acronym in what you produce
 
 The report this skill produces is read by somebody who was not in the room: a director, a

@@ -187,6 +187,17 @@ Say what the missing input is, name the skill that produces it (`bia-workshop`, 
 workbook), and say how long it takes per program. Then the board is deciding whether to fund
 the analysis rather than being asked to resolve conflicts nobody has found yet.
 
+## Before it leaves the team
+
+Run [`outgoing-document-gate`](../outgoing-document-gate/SKILL.md) on the finished output, exactly
+as it will be sent. It holds any statement about the organization that the organization did not
+supply and that was not measured on its own systems, and it runs five further tests this method
+depends on. Nothing leaves the team until it passes.
+
+The board paper is the document this gate was written for. Its opening sentence is the one most
+likely to be read and the one most likely to carry the team's own material, so gate it first, and
+gate it even when nothing else is gated.
+
 ## Spell out every acronym in what you produce
 
 The report this skill produces is read by somebody who was not in the room: a director, a
