@@ -21,6 +21,7 @@ not be able to go.
 | **COOP** | Continuity of Operations Plan | Outside ISCP scope |
 | **CP** | Contingency Planning | The NIST SP 800-53 control family |
 | **CSO** | Cloud Service Offering | FedRAMP term |
+| **DNS** | Domain Name System | Resolves names to addresses. Usually needed to recover, and easy to leave inside the failure domain |
 | **DR** | disaster recovery |  |
 | **DRP** | Disaster Recovery Plan | Neither FedRAMP nor NIST publishes a template for one |
 | **EBS** | E-Business Suite | Oracle ERP |
@@ -29,6 +30,7 @@ not be able to go.
 | **FIPS** | Federal Information Processing Standards |  |
 | **GL** | general ledger |  |
 | **ISCP** | Information System Contingency Plan | A system-level plan under NIST SP 800-34 and FedRAMP |
+| **IT** | information technology |  |
 | **ITIL** | IT Infrastructure Library | The service management framework |
 | **ITSCM** | IT Service Continuity Management | The practice as a whole |
 | **ITSCP** | IT Service Continuity Plan | A service-level plan under ITIL. Aligns to the ISCP structure without being one |
@@ -48,6 +50,7 @@ not be able to go.
 | **SP** | Special Publication | As in NIST SP 800-34 |
 | **SSP** | System Security Plan | The ISCP is Appendix G of one |
 | **SVS** | Service Value System | ITIL 4 term |
+| **UTC** | Coordinated Universal Time | The one clock every measurement in an IT skill is recorded against |
 | **WRT** | Work Recovery Time | Technically available to actually usable: replaying interfaces, reconciling, finishing a close. Not a NIST term |
 
 ## Three pairs that get confused
