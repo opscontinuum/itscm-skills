@@ -530,6 +530,16 @@ because 90 percent of its headings carry text; it is complete when a person who
 has to recover the system at three in the morning can follow it. Report what is
 there and what is not, and let a human judge.
 
+## Before it leaves the team
+
+Run [`outgoing-document-gate`](../../itscm-owner/outgoing-document-gate/SKILL.md) on the finished
+output, exactly as it will be sent. It holds any statement about the organization that the
+organization did not supply and that was not measured on its own systems, and it runs five further
+tests this method depends on. Nothing leaves the team until it passes.
+
+The report states what the plan contains and lacks. It states nothing about the organization's
+systems that the plan or the organization's people did not supply.
+
 ## Spell out every acronym in what you produce
 
 The report this skill produces is read by somebody who was not in the room: a director, a

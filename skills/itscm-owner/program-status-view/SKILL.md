@@ -183,6 +183,16 @@ this page is more useful than the individual assessments.
 **Do not invent a target.** An assumed target is labeled in the header and in every heading, or
 it becomes a baseline by the third time somebody sees the page.
 
+## Before it leaves the team
+
+Run [`outgoing-document-gate`](../outgoing-document-gate/SKILL.md) on the finished output, exactly
+as it will be sent. It holds any statement about the organization that the organization did not
+supply and that was not measured on its own systems, and it runs five further tests this method
+depends on. Nothing leaves the team until it passes.
+
+This page goes to a director who will read nothing else. Every cell traces to the organization's own
+documents or measurements; a cell resting on the team's lab or design is held.
+
 ## Spell out every acronym in what you produce
 
 This page is read by somebody who was not in the room: a director, a program office, an auditor.

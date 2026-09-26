@@ -147,6 +147,17 @@ synchronous replication, you know the system's capability and you still do not k
 business's requirement. Writing the capability into the requirement destroys the only
 comparison that makes the document worth having.
 
+## Before it leaves the team
+
+Run [`outgoing-document-gate`](../../itscm-owner/outgoing-document-gate/SKILL.md) on the finished
+output, exactly as it will be sent. It holds any statement about the organization that the
+organization did not supply and that was not measured on its own systems, and it runs five further
+tests this method depends on. Nothing leaves the team until it passes.
+
+The plan's status line, any summary of what is met today, and every gap item's description of today
+are where a team's lab and designs get written up as the organization's. Gate the report and the
+plan separately, because they go to different readers.
+
 ## Spell out every acronym in what you produce
 
 The report this skill produces is read by somebody who was not in the room: a director, a

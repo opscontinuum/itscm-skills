@@ -410,6 +410,16 @@ One per dimension, and this is what people act on. It names a criterion, not a t
 
 Not: *"the [BIA](../../../GLOSSARY.md "Business Impact Analysis") needs strengthening."*
 
+## Before it leaves the team
+
+Run [`outgoing-document-gate`](../outgoing-document-gate/SKILL.md) on the finished output, exactly
+as it will be sent. It holds any statement about the organization that the organization did not
+supply and that was not measured on its own systems, and it runs five further tests this method
+depends on. Nothing leaves the team until it passes.
+
+Every level reported rests on a document the organization provided. A level resting on anything else
+is held.
+
 ## Spell out every acronym in what you produce
 
 The report this skill produces is read by somebody who was not in the room: a director, a

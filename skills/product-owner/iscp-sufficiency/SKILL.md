@@ -286,6 +286,16 @@ Two rules to state in the agenda, both from the [BIA](../../../GLOSSARY.md "Busi
   example impact values to illustrate the shape of the table. A plan that ships
   them has recorded an illustration as a decision.
 
+## Before it leaves the team
+
+Run [`outgoing-document-gate`](../../itscm-owner/outgoing-document-gate/SKILL.md) on the finished
+output, exactly as it will be sent. It holds any statement about the organization that the
+organization did not supply and that was not measured on its own systems, and it runs five further
+tests this method depends on. Nothing leaves the team until it passes.
+
+A proposal derived from the plan is labeled as a proposal. It becomes a statement about the
+organization only when the organization adopts it.
+
 ## Spell out every acronym in what you produce
 
 The report this skill produces is read by somebody who was not in the room: a director, a

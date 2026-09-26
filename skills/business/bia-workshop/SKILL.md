@@ -297,6 +297,18 @@ Then hand it to `iscp-from-worksheet`.
 objective nobody signed cannot be missed, because nobody promised it. Get the signatures in
 the room while the reasoning is fresh. Chasing them afterwards takes months and usually fails.
 
+## Before it leaves the team
+
+Run [`outgoing-document-gate`](../../itscm-owner/outgoing-document-gate/SKILL.md) on the finished
+output, exactly as it will be sent. It holds any statement about the organization that the
+organization did not supply and that was not measured on its own systems, and it runs five further
+tests this method depends on. Nothing leaves the team until it passes.
+
+The analysis is the business's own, but the session record is written by the facilitator. An
+illustration you offered, a figure typical of the industry, or a comparison with another
+organization stays out of the record unless the business adopted it, and then it is recorded as
+theirs, in their words, with who said it.
+
 ## Spell out every acronym in what you produce
 
 The report this skill produces is read by somebody who was not in the room: a director, a
