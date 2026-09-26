@@ -86,3 +86,21 @@ cannot answer whose work stopped, which is the only question an outage asks.
 An RPO is what the business will accept losing. Data loss is what a mechanism would actually
 cost on the day. They are compared, never equated. The same holds for a claimed capability level
 against an evidenced one, and for what a person reported against what was measured.
+
+## 7. Nothing is stated of an organization that the organization did not supply
+
+A statement about an organization's systems, business or recovery rests on something its own
+people said or wrote, or on a measurement of its own systems. Everything a team brings with it,
+its lab, its reference designs, its worked examples, its assumptions, its estimates and the story
+of its own process, appears only as a question, as a check to run there, or as a proposal labeled
+as the team's. A one-word tag meaning "this applies to them" is split into TRUE THERE, which needs
+a source, and CHECK THERE, which needs only to be worded as a check.
+
+[`outgoing-document-gate`](skills/itscm-owner/outgoing-document-gate/SKILL.md) enforces this on
+every document before it leaves the team, and every skill whose output goes to the organization
+ends by sending its output there.
+
+*Cost of breaking it:* in a rehearsal of this method, 24 statements in documents written for an
+organization presented the team's own material as the organization's. The audit of the plan
+caught 8. The first of the rest was the opening sentence of a board paper, which stated a
+condition of the team's lab as the condition of the company.

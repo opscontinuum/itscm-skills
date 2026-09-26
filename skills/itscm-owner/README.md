@@ -13,6 +13,7 @@ role answers for whether the practice those plans belong to is in good order.
 | [`itscm-program-assessment`](itscm-program-assessment/) | Start here. Eight questions about what the organization actually has, then a one month, three month and one year roadmap |
 | [`enterprise-bia`](enterprise-bia/) | Lay every program's business impact analysis against the others and find where they contend for the same resource, recovery capacity or people. Produces a ranked priority list and a board paper |
 | [`itscm-coordinator-review`](itscm-coordinator-review/) | Assess a whole documentation set rather than one plan, and report a capability level per dimension |
+| [`outgoing-document-gate`](outgoing-document-gate/) | Run on every document before it leaves the team. Holds anything stated of the organization that the organization did not supply, and runs the five tests every document here must pass. Reports; never rewrites |
 
 ## Evaluating documentation that already exists
 

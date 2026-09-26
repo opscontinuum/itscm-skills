@@ -267,6 +267,11 @@ a document nobody will produce during an incident. And the overall level is the 
 rather than an average, because a well designed and widely trained recovery capability that has
 never been tested is an unproven one, and averaging hides exactly that.
 
+Whichever of these you run, [`outgoing-document-gate`](skills/itscm-owner/outgoing-document-gate/)
+runs last, on every document before it leaves the team. The documents most likely to state your
+own lab, reference designs or estimates as the organization's condition are the ones written for
+people who will never open the evidence: the board paper, the status page, the summary.
+
 ### You run the infrastructure
 
 > **There is no skill for your part yet.** This section tells you what you own and what to
@@ -329,6 +334,7 @@ walkthrough stops after the product owner.
 | [`iscp-completeness`](skills/product-owner/iscp-completeness/) | Audit a plan against FedRAMP SSP Appendix G v5.0 and NIST SP 800-34 Rev. 1 Appendix B. Reports what is missing, what is present but unfilled, and what is present and answered. Also asks whether the plan carries a fact sheet for whoever meets an incident first. |
 | [`iscp-sufficiency`](skills/product-owner/iscp-sufficiency/) | Decide whether a plan carries enough data to build a program from it. A field is required only when a named downstream artifact provably cannot be produced without it. |
 | [`iscp-from-worksheet`](skills/product-owner/iscp-from-worksheet/) | Turn a filled data-collection workbook into a plan, after checking the data can support one. Validates the joins between tabs rather than the presence of cells. |
+| [`outgoing-document-gate`](skills/itscm-owner/outgoing-document-gate/) | Run on every document before it leaves the team. Holds any statement about the organization that the organization did not supply and that was not measured on its own systems, and runs the five tests every document here must pass. Reports findings; never rewrites. |
 
 `itscm-program-assessment` is the entry point for an organization. `bia-workshop` is the entry
 point for a session with the business.
