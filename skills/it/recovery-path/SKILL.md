@@ -637,6 +637,21 @@ needed-to-recover table asks the same question as the "Survives loss of the prim
 column on tab 11 of [`worksheets/iscp-data-collection.xlsx`](../../../worksheets/), for things
 that are not backups. The workbook has no tab for them, so the table travels in this report.
 
+## Before it leaves the team
+
+Run [`outgoing-document-gate`](../../itscm-owner/outgoing-document-gate/SKILL.md) on the finished
+output, exactly as it will be sent. It holds any statement about the organization that the
+organization did not supply and that was not measured on its own systems, and it runs five further
+tests this method depends on. Nothing leaves the team until it passes.
+
+Every MEASURED fact in this walk was read from the organization's own systems, at a stated vantage
+point. A timing carried in from the team's lab, a reference design or an earlier engagement is not
+this organization's evidence, however similar the architecture, and the gate holds it the same way
+it holds a lab measurement dressed up as a customer's. ESTIMATE, INFERENCE, UPSTREAM DESIGN and NOT
+MEASURED travel with their labels into the outgoing report; a label dropped from a summary line, an
+answer in the answers-first table, or a cell in the copies-compared table is what the gate exists to
+catch.
+
 ## Spell out every acronym in what you produce
 
 The report this skill produces is read by somebody who was not in the room: a director, a
