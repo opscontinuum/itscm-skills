@@ -217,8 +217,13 @@ keys. A map that stops at the applications calls a tier recoverable when it is n
 ### Test 6: words
 
 - Objective and outcome get different words: an RPO is what the business accepts losing; data loss
-  is what a mechanism would cost. A claimed level and an evidenced level are compared, never
-  equated.
+  is what a mechanism would cost. An RTO is what the business requires; restoration time is what a
+  drill or a walk measured. A claimed level and an evidenced level are compared, never equated, and
+  neither is a single drill's restoration time or data loss a general statement of the
+  organization's capability.
+- Readiness time is not restoration time. A component reporting ready is not a customer recovered,
+  and the gap between the two, where it was measured, travels with the figure rather than being
+  rounded away.
 - The one-word "applies to them" tag is split, as above.
 - "Cannot", "will", "always" and "never" are attached only to what was supplied or measured, never
   to an estimate or a design. Said of the organization, that is Test 1, estimate stated as fact;

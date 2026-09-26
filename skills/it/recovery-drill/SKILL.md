@@ -568,6 +568,20 @@ should still know which failures remain unproven.
 | A guess where a measurement is missing | NOT MEASURED is a complete answer. A guess is a number somebody will later quote |
 | Changing the bounds during the drill | Bounds changed under pressure are bounds nobody checked |
 
+## Before it leaves the team
+
+Run [`outgoing-document-gate`](../../itscm-owner/outgoing-document-gate/SKILL.md) on the finished
+output, exactly as it will be sent. It holds any statement about the organization that the
+organization did not supply and that was not measured on its own systems, and it runs five further
+tests this method depends on. Nothing leaves the team until it passes.
+
+A drill measures one scenario, under stated bounds, on one day. Restoration time and data loss
+travel into the outgoing record as what they are: the outcome of that scenario, never a general
+statement of the organization's capability and never a claimed level. Readiness time is not
+restoration time, and reporting the first as the second is the failure this skill exists to catch;
+the gate holds it too, under words. What a person reported with no register entry behind it is NOT
+MEASURED, however it looks once it is typed into a table.
+
 ## Spell out every acronym in what you produce
 
 The report this skill produces is read by somebody who was not in the room: a director, a
